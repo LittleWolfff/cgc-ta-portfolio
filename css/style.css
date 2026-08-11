@@ -306,14 +306,30 @@ ul{list-style:none}
 .projects-title{font-family:var(--serif);font-size:26px;margin-bottom:22px;text-align:center}
 .project-role{font-size:13px;color:var(--accent);margin-top:2px;letter-spacing:1px}
 .project-date{font-size:15px;color:var(--text);font-weight:600;margin-right:8px}
+/* 项目卡片网格 */
+.projects-grid{max-width:var(--maxw);margin:0 auto;display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
 .project-card{
   background:var(--surface);border:1px solid var(--line);border-radius:16px;
-  padding:26px 30px;margin-bottom:18px;transition:.3s;
+  overflow:hidden;transition:.3s;
 }
-.project-card:hover{border-color:var(--line-2);box-shadow:var(--shadow)}
-.project-head{margin-bottom:10px}
-.project-head h4{font-family:var(--serif);font-size:18px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-.project-card p{color:var(--muted);font-size:14.5px}
+.project-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--line-2)}
+/* 项目缩略图 */
+.project-thumb{
+  aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:10px;position:relative;overflow:hidden;
+}
+.project-thumb::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.35));
+}
+.project-thumb-icon{font-size:36px;position:relative;z-index:1;opacity:.9}
+.project-thumb-label{
+  font-family:var(--serif);font-size:18px;font-weight:700;color:var(--text);
+  position:relative;z-index:1;letter-spacing:1px;
+}
+/* 项目正文 */
+.project-body{padding:22px 24px 24px}
+.project-body p{color:var(--muted);font-size:14.5px;margin-top:10px;line-height:1.75}
 
 /* ---------- 教育 ---------- */
 .edu-card{
@@ -420,6 +436,7 @@ ul{list-style:none}
 @media (max-width:960px){
   .about-grid{grid-template-columns:1fr;gap:34px}
   .skills-grid{grid-template-columns:1fr}
+  .projects-grid{grid-template-columns:1fr}
   .works-grid{grid-template-columns:repeat(2,1fr)}
 }
 @media (max-width:680px){
