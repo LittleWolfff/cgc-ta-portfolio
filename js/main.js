@@ -114,11 +114,11 @@
   }
 
   /* ---------- 视频展开/收起 ---------- */
-  grid.addEventListener("click", function(e){
+  document.addEventListener("click", function(e){
     var btn = e.target.closest(".video-expand-btn");
     if (!btn) return;
-    e.stopPropagation(); // 防止触发卡片点击
-    var card = btn.closest(".work-card-h");
+    e.stopPropagation();
+    var card = btn.closest(".work-card-h, .project-card");
     if (card) card.classList.toggle("expanded");
   });
 

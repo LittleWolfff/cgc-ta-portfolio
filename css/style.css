@@ -336,6 +336,19 @@ ul{list-style:none}
 .project-thumb:has(.project-thumb-img):not(:has(img[src=""])) .project-thumb-label,
 .project-thumb:has(.project-thumb-video):not(:has(video[src=""])) .project-thumb-icon,
 .project-thumb:has(.project-thumb-video):not(:has(video[src=""])) .project-thumb-label{display:none}
+/* 项目卡片视频展开 */
+.project-card .video-expand-btn{
+  position:absolute;top:10px;right:10px;z-index:10;
+  width:34px;height:34px;border-radius:8px;border:1px solid rgba(255,255,255,.25);
+  background:rgba(0,0,0,.55);color:#fff;font-size:16px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .25s,border-color .25s;
+  -webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);
+}
+.project-card .video-expand-btn:hover{background:var(--accent);color:#14100a;border-color:var(--accent)}
+.project-card.expanded .project-thumb{aspect-ratio:auto;max-height:78vh}
+.project-card.expanded .project-thumb-video{max-height:78vh}
+.project-card.expanded .video-expand-btn{transform:rotate(180deg)}
 /* 项目正文 */
 .project-body{padding:22px 24px 24px}
 .project-body p{color:var(--muted);font-size:14.5px;margin-top:10px;line-height:1.75}
