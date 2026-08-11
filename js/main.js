@@ -162,6 +162,7 @@
     document.body.style.overflow = "";
   }
   vm.addEventListener("click", function(e){
+    if (e.target.closest(".vm-unfullscreen")) { closeVideo(); return; }
     if (e.target.hasAttribute("data-close")) closeVideo();
   });
   document.addEventListener("keydown", function(e){
