@@ -42,7 +42,7 @@
       var html = '<article class="work-card work-card-h">'+
         '<span class="work-cat">'+CAT_LABEL[w.cat]+'</span>';
       if (hasFile){
-        html += '<div class="work-video-wrap"><video src="'+w.file+'" controls preload="metadata" poster="'+w.poster+'"></video><div class="fullscreen-trap" title="网页全屏"></div></div>';
+        html += '<div class="work-video-wrap"><video src="'+w.file+'" controls preload="metadata" poster="'+w.poster+'"></video></div>';
       } else {
         html += '<div class="work-thumb-empty">视频制作中，稍后上线</div>';
       }
@@ -113,23 +113,23 @@
     else openLightboxAt(w);
   }
 
-  /* ---------- 透明层拦截原生全屏 → 网页全屏 ---------- */
-  document.addEventListener("click", function(e){
-    var trap = e.target.closest(".fullscreen-trap");
-    if (!trap) return;
-    e.stopPropagation();
-    e.preventDefault();
-    var container = trap.closest(".work-video-wrap, .project-thumb");
-    if (!container) return;
-    var video = container.querySelector("video");
-    if (!video || !video.src) return;
+  /* ---------- 原生全屏按钮 → 网页全屏（模态层盖住闪烁） ---------- */
+  document.addEventListener("fullscreenchange", function(){
+    var el = document.fullscreenElement;
+    if (!el || el.tagName !== "VIDEO") return;
+    // 立刻弹出模态层盖住浏览器全屏
+    vm.classList.add("open");
+    vm.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+    // 设置视频
+    vmVideo.src = el.src;
     var title = "";
-    var card = trap.closest(".work-card-h, .project-card");
-    if (card) {
-      var t = card.querySelector(".work-title, h4");
-      if (t) title = t.textContent.trim();
-    }
-    openVideoModal(video.src, title);
+    var card = el.closest(".work-card-h, .project-card");
+    if (card) { var t = card.querySelector(".work-title, h4"); if (t) title = t.textContent.trim(); }
+    vmTitle.textContent = title;
+    // 退出浏览器全屏（用户看到的是模态层，无闪烁）
+    if (document.exitFullscreen) document.exitFullscreen();
+    else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
   });
 
   function openVideoModal(src, title){
