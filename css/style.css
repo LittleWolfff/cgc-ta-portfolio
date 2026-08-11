@@ -232,7 +232,7 @@ ul{list-style:none}
 .work-video-wrap video{width:100%;display:block}
 /* 视频展开按钮 */
 .video-expand-btn{
-  position:absolute;bottom:10px;right:10px;z-index:5;
+  position:absolute;top:10px;right:10px;z-index:5;
   width:34px;height:34px;border-radius:8px;border:1px solid rgba(255,255,255,.25);
   background:rgba(0,0,0,.55);color:#fff;font-size:16px;cursor:pointer;
   display:flex;align-items:center;justify-content:center;

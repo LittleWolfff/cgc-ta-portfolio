@@ -94,8 +94,8 @@ PR 导出的视频放进 `作品展示镜像/{分类}/`，然后命令行压缩�
 # 工具路径
 FFMPEG="D:/Conley/ClaudeCodeWorkspace/C_工具/视频压缩/小丸工具箱/App/tools/ffmpeg.exe"
 
-# 压缩命令（CRF 21 近无损）
-"$FFMPEG" -i 原视频.mp4 -c:v libx264 -crf 21 -preset slower -c:a aac -b:a 256k 输出_crf21.mp4 -y
+# 压缩命令（CRF 18 视觉无损，推荐默认）
+"$FFMPEG" -i 原视频.mp4 -c:v libx264 -crf 18 -preset slower -c:a aac -b:a 256k 输出_crf18.mp4 -y
 ```
 
 | 参数 | 含义 | 可选值 |
@@ -104,7 +104,7 @@ FFMPEG="D:/Conley/ClaudeCodeWorkspace/C_工具/视频压缩/小丸工具箱/App/
 | `-preset` | 压缩速度 | slower（最优）/ slow / medium / fast |
 | `-c:a aac -b:a 256k` | 音频编码 | 256k 够用 |
 
-> 202 MB → 25 MB（实测，CRF 21），画质肉眼无差。
+> 202 MB → 33 MB（实测，CRF 18 视觉无损），画质肉眼无差。GitHub 单文件 100 MB 以内尽管用 CRF 18。
 
 ### 第三步：放进网站
 
