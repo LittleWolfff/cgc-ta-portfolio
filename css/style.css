@@ -230,11 +230,17 @@ ul{list-style:none}
 .work-card-h{display:flex;gap:28px;align-items:flex-start}
 .work-video-wrap{flex-shrink:0;width:58%;border-radius:12px;overflow:hidden;background:#000;position:relative}
 .work-video-wrap video{width:100%;display:block}
-/* 透明拦截层：盖住原生全屏按钮，点击=网页全屏 */
+/* 拦截层：盖住原生全屏按钮，点击=网页全屏 */
 .fullscreen-trap{
   position:absolute;bottom:0;right:0;width:48px;height:36px;z-index:5;
   cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
 }
+.fullscreen-trap::after{
+  content:"⛶";color:rgba(255,255,255,.85);font-size:14px;
+  transition:color .2s;
+}
+.fullscreen-trap:hover::after{color:#fff}
 /* 隐藏原生全屏按钮（避免视觉重复） */
 video::-webkit-media-controls-fullscreen-button{display:none !important}
 .work-card-h .work-info{flex:1;padding:8px 0}
