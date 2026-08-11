@@ -113,24 +113,22 @@
     else openLightboxAt(w);
   }
 
-  /* ---------- 原生全屏按钮 → 网页全屏（模态层盖住闪烁） ---------- */
-  document.addEventListener("fullscreenchange", function(){
-    var el = document.fullscreenElement;
-    if (!el || el.tagName !== "VIDEO") return;
-    // 立刻弹出模态层盖住浏览器全屏
-    vm.classList.add("open");
-    vm.setAttribute("aria-hidden", "false");
-    document.body.style.overflow = "hidden";
-    // 设置视频
-    vmVideo.src = el.src;
-    var title = "";
-    var card = el.closest(".work-card-h, .project-card");
-    if (card) { var t = card.querySelector(".work-title, h4"); if (t) title = t.textContent.trim(); }
-    vmTitle.textContent = title;
-    // 退出浏览器全屏（用户看到的是模态层，无闪烁）
-    if (document.exitFullscreen) document.exitFullscreen();
-    else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
-  });
+  /* ---------- 劫持 requestFullscreen：原生按钮 → 网页全屏 ---------- */
+  (function(){
+    var videoProto = HTMLVideoElement.prototype;
+    if (videoProto._hijacked) return;
+    videoProto._hijacked = true;
+    videoProto.requestFullscreen = function(){
+      var video = this;
+      var title = "";
+      var card = video.closest(".work-card-h, .project-card");
+      if (card) { var t = card.querySelector(".work-title, h4"); if (t) title = t.textContent.trim(); }
+      openVideoModal(video.src, title);
+      return Promise.resolve();
+    };
+    // webkit 兼容
+    videoProto.webkitRequestFullscreen = videoProto.requestFullscreen;
+  })();
 
   function openVideoModal(src, title){
     vmTitle.textContent = title || "";
