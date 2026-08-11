@@ -8,7 +8,7 @@
   var WORKS = [
     {id:"c1", type:"video", cat:"char",
      title:"【Unity】角色渲染——千早爱音", tag:"NPR · 卡通",
-     file:"assets/videos/unity-anon-char-render.mp4", poster:"assets/images/portfolio-poster.webp",
+     file:"assets/videos/unity-anon-char-render.mp4", poster:"assets/images/poster-anon.webp",
      size:"约33MB · 1080P",
      desc:"暂无描述信息"},
   ];
