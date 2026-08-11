@@ -6,23 +6,14 @@
 
   /* ---------- 作品数据 ---------- */
   var WORKS = [
-    /* ---- 示例：加作品就按这个格式往里面加 ----
-    {id:"m1", type:"video", cat:"render",
-     title:"Monkey King 角色渲染", tag:"Dota2 仿制",
-     file:"assets/videos/monkeyking.mp4", poster:"assets/images/monkeyking-poster.webp",
-     size:"约15MB · 1080P",
-     desc:"从 Blender 模型导入到 UE5 材质全流程复现。法线解压、通道打包。"},
-    {id:"m2", type:"bilibili", cat:"render",
-     title:"角色渲染演示", tag:"B站视频",
-     poster:"assets/images/bilibili-poster.webp",
-     bvid:"BVxxxxxxxxxx",
-     desc:"B站嵌入示例，把 bvid 换成你的视频 ID 就行。"},
-    {id:"m3", type:"image", cat:"shader",
-     title:"Shader 节点截图", src:"assets/images/shader-node.webp"},
-    ---- */
+    {id:"c1", type:"video", cat:"char",
+     title:"【Unity】角色渲染——千早爱音", tag:"NPR · 卡通",
+     file:"assets/videos/unity-anon-char-render.mp4", poster:"assets/images/portfolio-poster.webp",
+     size:"约25MB · 1080P",
+     desc:"暂无描述信息"},
   ];
 
-  var CAT_LABEL = {render:"渲染作品", shader:"Shader", tool:"工具 / 管线"};
+  var CAT_LABEL = {char:"角色渲染", grass:"草渲染", render:"渲染作品", shader:"Shader", tool:"工具/管线"};
   var EMPTY_FALLBACK = '<p class="works-empty">作品还在路上，稍后就到</p>';
 
   /* ---------- DOM ---------- */
@@ -47,11 +38,18 @@
 
   function cardHTML(w, i){
     if (w.type === "video"){
-      return '<article class="work-card" data-index="'+i+'" data-open="video" tabindex="0" role="button" aria-label="播放视频 '+esc(w.title)+'">'+
-        '<div class="work-thumb"><img loading="lazy" src="'+w.poster+'" alt="'+esc(w.title)+'"><span class="play-badge"></span></div>'+
-        '<span class="work-cat">'+CAT_LABEL[w.cat]+'</span>'+
-        '<div class="work-info"><h3 class="work-title">'+esc(w.title)+'<span class="tag">'+esc(w.tag)+'</span></h3>'+
-        '<p class="work-sub">点击播放 · '+esc(w.size)+'</p></div></article>';
+      var hasFile = w.file && w.poster;
+      var html = '<article class="work-card work-card-h">'+
+        '<span class="work-cat">'+CAT_LABEL[w.cat]+'</span>';
+      if (hasFile){
+        html += '<div class="work-video-wrap"><video src="'+w.file+'" controls preload="metadata" poster="'+w.poster+'"></video></div>';
+      } else {
+        html += '<div class="work-thumb-empty">视频制作中，稍后上线</div>';
+      }
+      html += '<div class="work-info"><h3 class="work-title">'+esc(w.title)+'</h3>';
+      if (w.desc) html += '<p class="work-desc">'+esc(w.desc)+'</p>';
+      html += '</div></article>';
+      return html;
     }
     if (w.type === "script"){
       return '<article class="work-card" data-index="'+i+'" data-open="script" tabindex="0" role="button" aria-label="打开剧本 '+esc(w.title)+'">'+
@@ -80,16 +78,18 @@
   }
 
   /* ---------- 筛选 ---------- */
-  filters.addEventListener("click", function(e){
-    var btn = e.target.closest(".filter-btn");
-    if (!btn) return;
-    filters.querySelectorAll(".filter-btn").forEach(function(b){ b.classList.remove("active"); });
-    btn.classList.add("active");
-    currentFilter = btn.getAttribute("data-filter");
-    render();
-    var y = document.getElementById("works").getBoundingClientRect().top + window.pageYOffset - 80;
-    window.scrollTo({top: y, behavior: "smooth"});
-  });
+  if (filters) {
+    filters.addEventListener("click", function(e){
+      var btn = e.target.closest(".filter-btn");
+      if (!btn) return;
+      filters.querySelectorAll(".filter-btn").forEach(function(b){ b.classList.remove("active"); });
+      btn.classList.add("active");
+      currentFilter = btn.getAttribute("data-filter");
+      render();
+      var y = document.getElementById("works").getBoundingClientRect().top + window.pageYOffset - 80;
+      window.scrollTo({top: y, behavior: "smooth"});
+    });
+  }
 
   /* ---------- 卡片点击 ---------- */
   grid.addEventListener("click", function(e){
@@ -108,8 +108,8 @@
     var idx = parseInt(card.getAttribute("data-index"), 10);
     var w = WORKS[idx];
     if (!w) return;
-    if (w.type === "video") openVideo(w);
-    else if (w.type === "script") window.open(w.file, "_blank");
+    if (w.type === "video") return; // 视频直接嵌入，不弹窗
+    if (w.type === "script") window.open(w.file, "_blank");
     else openLightboxAt(w);
   }
 
@@ -181,6 +181,34 @@
   if (backTop) backTop.addEventListener("click", function(){
     window.scrollTo({top:0, behavior:"smooth"});
   });
+
+  /* ---------- 左栏高亮：滚到哪，亮到哪 ---------- */
+  var sections = [];
+  document.querySelectorAll("section[id]").forEach(function(s){
+    sections.push({el:s, id:s.id});
+  });
+  var sidebarLinks = document.querySelectorAll(".sidebar-link, .sidebar-name");
+  var lastId = null;
+
+  var ticking = false;
+  function updateSidebar(){
+    var scrollY = window.pageYOffset + 80;
+    var current = sections[0];
+    sections.forEach(function(s){
+      if (s.el.offsetTop <= scrollY) current = s;
+    });
+    if (current && current.id !== lastId){
+      sidebarLinks.forEach(function(l){ l.classList.remove("active"); });
+      var link = document.querySelector('.sidebar-link[href="#'+current.id+'"]');
+      if (!link) link = document.querySelector('.sidebar-name[href="#'+current.id+'"]');
+      if (link) link.classList.add("active");
+      lastId = current.id;
+    }
+  }
+  window.addEventListener("scroll", function(){
+    if (!ticking){ requestAnimationFrame(function(){ updateSidebar(); ticking = false; }); ticking = true; }
+  }, {passive:true});
+  updateSidebar();
 
   /* ---------- 复制 ---------- */
   window.copyText = function(btn){
