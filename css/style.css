@@ -228,8 +228,23 @@ ul{list-style:none}
 .filter-btn.active{background:var(--accent);color:#14100a;border-color:var(--accent);font-weight:600}
 .works-grid{max-width:var(--maxw);margin:0 auto;display:flex;flex-direction:column;gap:24px}
 .work-card-h{display:flex;gap:28px;align-items:flex-start}
-.work-video-wrap{flex-shrink:0;width:58%;border-radius:12px;overflow:hidden;background:#000}
+.work-video-wrap{flex-shrink:0;width:58%;border-radius:12px;overflow:hidden;background:#000;position:relative}
 .work-video-wrap video{width:100%;display:block}
+/* 视频展开按钮 */
+.video-expand-btn{
+  position:absolute;bottom:10px;right:10px;z-index:5;
+  width:34px;height:34px;border-radius:8px;border:1px solid rgba(255,255,255,.25);
+  background:rgba(0,0,0,.55);color:#fff;font-size:16px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .25s,border-color .25s;
+  -webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);
+}
+.video-expand-btn:hover{background:var(--accent);color:#14100a;border-color:var(--accent)}
+/* 展开状态：视频铺满内容区 */
+.work-card-h.expanded{flex-direction:column}
+.work-card-h.expanded .work-video-wrap{width:100%;max-height:78vh}
+.work-card-h.expanded .work-video-wrap video{max-height:78vh}
+.work-card-h.expanded .video-expand-btn{transform:rotate(180deg)}
 .work-card-h .work-info{flex:1;padding:8px 0}
 .work-card{
   position:relative;border-radius:16px;overflow:hidden;cursor:pointer;

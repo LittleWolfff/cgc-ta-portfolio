@@ -42,7 +42,7 @@
       var html = '<article class="work-card work-card-h">'+
         '<span class="work-cat">'+CAT_LABEL[w.cat]+'</span>';
       if (hasFile){
-        html += '<div class="work-video-wrap"><video src="'+w.file+'" controls preload="metadata" poster="'+w.poster+'"></video></div>';
+        html += '<div class="work-video-wrap"><video src="'+w.file+'" controls preload="metadata" poster="'+w.poster+'"></video><button class="video-expand-btn" title="放大/收起" aria-label="放大视频">⛶</button></div>';
       } else {
         html += '<div class="work-thumb-empty">视频制作中，稍后上线</div>';
       }
@@ -112,6 +112,15 @@
     if (w.type === "script") window.open(w.file, "_blank");
     else openLightboxAt(w);
   }
+
+  /* ---------- 视频展开/收起 ---------- */
+  grid.addEventListener("click", function(e){
+    var btn = e.target.closest(".video-expand-btn");
+    if (!btn) return;
+    e.stopPropagation(); // 防止触发卡片点击
+    var card = btn.closest(".work-card-h");
+    if (card) card.classList.toggle("expanded");
+  });
 
   /* ---------- 视频弹窗 ---------- */
   function openVideo(w){
