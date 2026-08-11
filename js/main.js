@@ -42,7 +42,7 @@
       var html = '<article class="work-card work-card-h">'+
         '<span class="work-cat">'+CAT_LABEL[w.cat]+'</span>';
       if (hasFile){
-        html += '<div class="work-video-wrap"><video src="'+w.file+'" controls controlsList="nofullscreen" preload="metadata" poster="'+w.poster+'"></video><button class="video-expand-btn" title="网页全屏" aria-label="网页全屏">⛶</button></div>';
+        html += '<div class="work-video-wrap"><video src="'+w.file+'" controls preload="metadata" poster="'+w.poster+'"></video></div>';
       } else {
         html += '<div class="work-thumb-empty">视频制作中，稍后上线</div>';
       }
@@ -113,23 +113,34 @@
     else openLightboxAt(w);
   }
 
-  /* ---------- 视频展开 → 网页全屏弹窗 ---------- */
-  document.addEventListener("click", function(e){
-    var btn = e.target.closest(".video-expand-btn");
-    if (!btn) return;
-    e.stopPropagation();
-    var container = btn.closest(".work-video-wrap, .project-thumb");
-    if (!container) return;
-    var video = container.querySelector("video");
-    if (!video || !video.src) return;
-    // 找标题
-    var title = "";
-    var card = btn.closest(".work-card-h, .project-card");
-    if (card) {
-      var t = card.querySelector(".work-title, h4");
-      if (t) title = t.textContent.trim();
+  /* ---------- 原生全屏按钮 → 拦截为网页全屏 ---------- */
+  document.addEventListener("fullscreenchange", function(){
+    var el = document.fullscreenElement;
+    if (el && el.tagName === "VIDEO") {
+      document.exitFullscreen().then(function(){
+        var title = "";
+        var card = el.closest(".work-card-h, .project-card");
+        if (card) {
+          var t = card.querySelector(".work-title, h4");
+          if (t) title = t.textContent.trim();
+        }
+        openVideoModal(el.src, title);
+      });
     }
-    openVideoModal(video.src, title);
+  });
+  // Safari 兼容
+  document.addEventListener("webkitfullscreenchange", function(){
+    var el = document.webkitFullscreenElement;
+    if (el && el.tagName === "VIDEO") {
+      document.webkitExitFullscreen();
+      var title = "";
+      var card = el.closest(".work-card-h, .project-card");
+      if (card) {
+        var t = card.querySelector(".work-title, h4");
+        if (t) title = t.textContent.trim();
+      }
+      openVideoModal(el.src, title);
+    }
   });
 
   function openVideoModal(src, title){

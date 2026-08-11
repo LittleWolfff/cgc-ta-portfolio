@@ -230,18 +230,6 @@ ul{list-style:none}
 .work-card-h{display:flex;gap:28px;align-items:flex-start}
 .work-video-wrap{flex-shrink:0;width:58%;border-radius:12px;overflow:hidden;background:#000;position:relative}
 .work-video-wrap video{width:100%;display:block}
-/* 视频展开按钮（作品区 + 项目区通用） */
-.video-expand-btn{
-  position:absolute;bottom:40px;right:10px;z-index:10;
-  width:34px;height:34px;border-radius:8px;border:1px solid rgba(255,255,255,.25);
-  background:rgba(0,0,0,.55);color:#fff;font-size:16px;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;
-  transition:background .25s,border-color .25s;
-  -webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);
-}
-.video-expand-btn:hover{background:var(--accent);color:#14100a;border-color:var(--accent)}
-/* 彻底隐藏浏览器原生全屏按钮 */
-video::-webkit-media-controls-fullscreen-button{display:none !important}
 .work-card-h .work-info{flex:1;padding:8px 0}
 .work-card{
   position:relative;border-radius:16px;overflow:hidden;cursor:pointer;
