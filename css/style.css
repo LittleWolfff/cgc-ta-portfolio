@@ -232,11 +232,12 @@ ul{list-style:none}
 .work-video-wrap video{width:100%;display:block}
 /* 覆盖原生全屏按钮位置，点击=网页全屏 */
 .fullscreen-trap{
-  position:absolute;right:40px;bottom:30px;width:28px;height:28px;z-index:5;
+  position:absolute;top:10px;right:10px;width:30px;height:30px;z-index:5;
   cursor:pointer;display:flex;align-items:center;justify-content:center;
+  background:rgba(0,0,0,.45);border-radius:6px;
 }
 .fullscreen-trap::after{
-  content:"⛶";color:#fff;font-size:16px;font-family:Arial,sans-serif;line-height:1;
+  content:"⛶";color:#fff;font-size:15px;font-family:Arial,sans-serif;line-height:1;
 }
 video::-webkit-media-controls-fullscreen-button{display:none !important}
 .work-card-h .work-info{flex:1;padding:8px 0}
@@ -429,15 +430,6 @@ video::-webkit-media-controls-fullscreen-button{display:none !important}
   color:#fff;width:38px;height:38px;border-radius:8px;font-size:20px;cursor:pointer;transition:.3s;
 }
 .vm-close:hover{background:var(--accent);color:#14100a;border-color:var(--accent)}
-/* 弹窗内退出网页全屏按钮 */
-.vm-unfullscreen{
-  position:absolute;bottom:16px;right:16px;z-index:10;
-  width:28px;height:28px;border:none;background:rgba(0,0,0,.5);
-  color:#fff;font-size:16px;cursor:pointer;border-radius:4px;
-  display:flex;align-items:center;justify-content:center;
-  border:1px solid rgba(255,255,255,.2);
-}
-.vm-unfullscreen:hover{background:var(--accent);color:#14100a;border-color:var(--accent)}
 
 /* ---------- 滚动显现 ---------- */
 .reveal{transition:opacity .7s ease,transform .7s ease}
