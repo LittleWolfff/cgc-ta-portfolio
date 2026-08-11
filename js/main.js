@@ -42,7 +42,7 @@
       var html = '<article class="work-card work-card-h">'+
         '<span class="work-cat">'+CAT_LABEL[w.cat]+'</span>';
       if (hasFile){
-        html += '<div class="work-video-wrap"><video src="'+w.file+'" controls preload="metadata" poster="'+w.poster+'"></video><button class="video-expand-btn" title="放大/收起" aria-label="放大视频">⛶</button></div>';
+        html += '<div class="work-video-wrap"><video src="'+w.file+'" controls controlsList="nofullscreen" preload="metadata" poster="'+w.poster+'"></video><button class="video-expand-btn" title="网页全屏" aria-label="网页全屏">⛶</button></div>';
       } else {
         html += '<div class="work-thumb-empty">视频制作中，稍后上线</div>';
       }
