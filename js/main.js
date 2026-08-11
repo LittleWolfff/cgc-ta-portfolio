@@ -149,7 +149,26 @@
     if (e.key === "Escape"){ if (vm.classList.contains("open")) closeVideo(); if (lightbox.classList.contains("open")) closeLightbox(); }
   });
 
+  /* ---------- 项目缩略图点击查看大图 ---------- */
+  document.addEventListener("click", function(e){
+    var thumb = e.target.closest(".project-thumb");
+    if (!thumb) return;
+    var fullSrc = thumb.getAttribute("data-full-img");
+    if (!fullSrc) return;
+    e.preventDefault();
+    openLightboxDirect(fullSrc, thumb.querySelector(".project-thumb-label")?.textContent || "");
+  });
+
   /* ---------- 图片灯箱 ---------- */
+  function openLightboxDirect(src, caption){
+    lbImg.src = src;
+    lbCap.textContent = caption;
+    document.getElementById("lbPrev").style.display = "none";
+    document.getElementById("lbNext").style.display = "none";
+    lightbox.classList.add("open");
+    lightbox.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  }
   function openLightboxAt(w){
     var i = IMAGE_WORKS.indexOf(w);
     if (i < 0) return;
@@ -172,6 +191,8 @@
   function closeLightbox(){
     lightbox.classList.remove("open");
     lightbox.setAttribute("aria-hidden", "true");
+    document.getElementById("lbPrev").style.display = "";
+    document.getElementById("lbNext").style.display = "";
     document.body.style.overflow = "";
   }
   document.getElementById("lbClose").addEventListener("click", closeLightbox);
