@@ -230,9 +230,9 @@ ul{list-style:none}
 .work-card-h{display:flex;gap:28px;align-items:flex-start}
 .work-video-wrap{flex-shrink:0;width:58%;border-radius:12px;overflow:hidden;background:#000;position:relative}
 .work-video-wrap video{width:100%;display:block}
-/* 视频展开按钮 */
+/* 视频展开按钮（作品区 + 项目区通用） */
 .video-expand-btn{
-  position:absolute;top:10px;right:10px;z-index:5;
+  position:absolute;top:10px;right:10px;z-index:10;
   width:34px;height:34px;border-radius:8px;border:1px solid rgba(255,255,255,.25);
   background:rgba(0,0,0,.55);color:#fff;font-size:16px;cursor:pointer;
   display:flex;align-items:center;justify-content:center;
@@ -240,11 +240,6 @@ ul{list-style:none}
   -webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);
 }
 .video-expand-btn:hover{background:var(--accent);color:#14100a;border-color:var(--accent)}
-/* 展开状态：视频铺满内容区 */
-.work-card-h.expanded{flex-direction:column}
-.work-card-h.expanded .work-video-wrap{width:100%;max-height:78vh}
-.work-card-h.expanded .work-video-wrap video{max-height:78vh}
-.work-card-h.expanded .video-expand-btn{transform:rotate(180deg)}
 .work-card-h .work-info{flex:1;padding:8px 0}
 .work-card{
   position:relative;border-radius:16px;overflow:hidden;cursor:pointer;
@@ -336,19 +331,6 @@ ul{list-style:none}
 .project-thumb:has(.project-thumb-img):not(:has(img[src=""])) .project-thumb-label,
 .project-thumb:has(.project-thumb-video):not(:has(video[src=""])) .project-thumb-icon,
 .project-thumb:has(.project-thumb-video):not(:has(video[src=""])) .project-thumb-label{display:none}
-/* 项目卡片视频展开 */
-.project-card .video-expand-btn{
-  position:absolute;top:10px;right:10px;z-index:10;
-  width:34px;height:34px;border-radius:8px;border:1px solid rgba(255,255,255,.25);
-  background:rgba(0,0,0,.55);color:#fff;font-size:16px;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;
-  transition:background .25s,border-color .25s;
-  -webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);
-}
-.project-card .video-expand-btn:hover{background:var(--accent);color:#14100a;border-color:var(--accent)}
-.project-card.expanded .project-thumb{aspect-ratio:auto;max-height:78vh}
-.project-card.expanded .project-thumb-video{max-height:78vh}
-.project-card.expanded .video-expand-btn{transform:rotate(180deg)}
 /* 项目正文 */
 .project-body{padding:22px 24px 24px}
 .project-body p{color:var(--muted);font-size:14.5px;margin-top:10px;line-height:1.75}
@@ -432,22 +414,22 @@ ul{list-style:none}
 .video-modal.open{display:flex}
 .vm-backdrop{position:absolute;inset:0;background:rgba(5,6,9,.94);animation:fadeIn .25s ease}
 .vm-box{
-  position:relative;z-index:1;width:min(96vw,1100px);
-  background:var(--surface);border:1px solid var(--line-2);border-radius:16px;overflow:hidden;
+  position:relative;z-index:1;width:100%;height:100%;
+  display:flex;flex-direction:column;
   animation:zoomIn .3s ease;
 }
 @keyframes zoomIn{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:none}}
-.vm-head{display:flex;align-items:center;gap:12px;padding:18px 22px;flex-wrap:wrap}
-.vm-head h3{font-family:var(--serif);font-size:19px}
-.vm-body{display:flex;gap:0}
-.vm-body video{width:70%;max-height:68vh;background:#000;display:block}
-.vm-info{width:30%;padding:20px;overflow-y:auto;max-height:68vh}
+.vm-head{display:flex;align-items:center;gap:12px;padding:14px 20px;flex-shrink:0}
+.vm-head h3{font-family:var(--serif);font-size:17px;flex:1}
+.vm-body{flex:1;display:flex;align-items:center;justify-content:center;background:#000;min-height:0}
+.vm-body video{width:100%;height:100%;max-height:100%;display:block;object-fit:contain}
+.vm-info{display:none}
 .vm-desc{color:var(--muted);font-size:14px;line-height:1.8}
 .vm-close{
-  position:absolute;top:10px;right:12px;z-index:2;background:rgba(0,0,0,.5);border:none;
-  color:#fff;width:36px;height:36px;border-radius:50%;font-size:20px;cursor:pointer;transition:.3s;
+  position:absolute;top:12px;right:16px;z-index:10;background:rgba(0,0,0,.55);border:1px solid rgba(255,255,255,.2);
+  color:#fff;width:38px;height:38px;border-radius:8px;font-size:20px;cursor:pointer;transition:.3s;
 }
-.vm-close:hover{background:var(--accent);color:#14100a}
+.vm-close:hover{background:var(--accent);color:#14100a;border-color:var(--accent)}
 
 /* ---------- 滚动显现 ---------- */
 .reveal{transition:opacity .7s ease,transform .7s ease}
@@ -481,9 +463,6 @@ ul{list-style:none}
   .lb-prev{left:10px}.lb-next{right:10px}
   .lb-close{top:14px;right:14px}
   .vm-head h3{max-width:calc(100% - 40px)}
-  .vm-body{flex-direction:column}
-  .vm-body video{width:100%;max-height:50vh}
-  .vm-info{width:100%;max-height:none}
 }
 /* ---------- 剧本卡片缩略图 ---------- */
 .script-thumb{

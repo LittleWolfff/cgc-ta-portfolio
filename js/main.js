@@ -113,14 +113,36 @@
     else openLightboxAt(w);
   }
 
-  /* ---------- 视频展开/收起 ---------- */
+  /* ---------- 视频展开 → 网页全屏弹窗 ---------- */
   document.addEventListener("click", function(e){
     var btn = e.target.closest(".video-expand-btn");
     if (!btn) return;
     e.stopPropagation();
+    var container = btn.closest(".work-video-wrap, .project-thumb");
+    if (!container) return;
+    var video = container.querySelector("video");
+    if (!video || !video.src) return;
+    // 找标题
+    var title = "";
     var card = btn.closest(".work-card-h, .project-card");
-    if (card) card.classList.toggle("expanded");
+    if (card) {
+      var t = card.querySelector(".work-title, h4");
+      if (t) title = t.textContent.trim();
+    }
+    openVideoModal(video.src, title);
   });
+
+  function openVideoModal(src, title){
+    vmTitle.textContent = title || "";
+    vmTag.textContent = "";
+    vmDesc.textContent = "";
+    vmVideo.src = src;
+    vm.classList.add("open");
+    vm.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+    var p = vmVideo.play();
+    if (p && p.catch) p.catch(function(){});
+  }
 
   /* ---------- 视频弹窗 ---------- */
   function openVideo(w){
