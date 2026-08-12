@@ -20,7 +20,8 @@
      desc:"暂无描述信息"},
     {id:"g2", type:"image", cat:"grass",
      title:"【Unity】草渲染——面片草", src:"assets/images/grass-quad.png",
-     desc:"用面片草把草渲染流程完整走了一遍：顶点色红通道当摆动权重（根部固定、顶部摆），法线统一朝上让明暗更平滑，再拿噪声图采样做风吹的顶点动画。LOD 没用减面，而是直接切 shader——远处草砍掉动画和阴影，只留颜色。\n收获：搞懂了顶点色其实是个数据通道、法线怎么影响光照，还有怎么用噪声图做出自然的风吹摆动。"},
+     desc:"用面片草把草渲染流程完整走了一遍：顶点色红通道当摆动权重（根部固定、顶部摆），法线统一朝上让明暗更平滑，再拿噪声图采样做风吹的顶点动画。LOD 没用减面，而是直接切 shader——远处草砍掉动画和阴影，只留颜色。\n收获：了解了面片草的大致流程，了解草渲染的更多方案。",
+     link:"https://zhuanlan.zhihu.com/p/1982165167371473318"},
     {id:"w1", type:"video", cat:"water",
      title:"【Unity】水渲染——卡通交互水", tag:"Shader · 交互",
      file:"assets/videos/unity-water-render.mp4", poster:"",
@@ -68,6 +69,7 @@
       }
       html += '<div class="work-info"><h3 class="work-title">'+esc(w.title)+'</h3>';
       if (w.desc) html += '<p class="work-desc">'+esc(w.desc).replace(/\n/g,'<br>')+'</p>';
+      if (w.link) html += '<p class="work-link">流程笔记知乎链接：<a href="'+esc(w.link)+'" target="_blank" rel="noopener">'+esc(w.link)+'</a></p>';
       html += '</div></article>';
       return html;
     }
@@ -85,6 +87,7 @@
       '<div class="work-video-wrap"><img loading="lazy" src="'+w.src+'" alt="'+esc(w.title)+'" style="width:100%;aspect-ratio:16/9;object-fit:cover;object-position:top;display:block;cursor:pointer"></div>'+
       '<div class="work-info"><h3 class="work-title">'+esc(w.title)+'</h3>'+
       (w.desc ? '<p class="work-desc">'+esc(w.desc).replace(/\n/g,'<br>')+'</p>' : '<p class="work-desc">点击图片查看大图</p>')+
+      (w.link ? '<p class="work-link">流程笔记知乎链接：<a href="'+esc(w.link)+'" target="_blank" rel="noopener">'+esc(w.link)+'</a></p>' : '')+
       '</div></article>';
   }
 
