@@ -23,9 +23,14 @@
      file:"assets/videos/unity-water-render.mp4", poster:"",
      size:"约35MB · 1080P",
      desc:"暂无描述信息"},
+    {id:"v1", type:"video", cat:"vfx",
+     title:"【Unity】特效——爆炸", tag:"VFX · Shader",
+     file:"assets/videos/unity-vfx-explosion.mp4", poster:"",
+     size:"约2.4MB · 1080P",
+     desc:"暂无描述信息"},
   ];
 
-  var CAT_LABEL = {char:"角色渲染", grass:"草渲染", water:"水渲染", render:"渲染作品", shader:"Shader", tool:"工具/管线"};
+  var CAT_LABEL = {char:"角色渲染", grass:"草渲染", water:"水渲染", vfx:"特效", render:"渲染作品", shader:"Shader", tool:"工具/管线"};
   var EMPTY_FALLBACK = '<p class="works-empty">作品还在路上，稍后就到</p>';
 
   /* ---------- DOM ---------- */
