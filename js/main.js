@@ -81,7 +81,7 @@
     // image — 跟视频一样的横排大图卡片
     return '<article class="work-card work-card-h" data-open="image">'+
       '<span class="work-cat">'+CAT_LABEL[w.cat]+'</span>'+
-      '<div class="work-video-wrap"><img loading="lazy" src="'+w.src+'" alt="'+esc(w.title)+'" style="width:100%;display:block;cursor:pointer"></div>'+
+      '<div class="work-video-wrap"><img loading="lazy" src="'+w.src+'" alt="'+esc(w.title)+'" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer"></div>'+
       '<div class="work-info"><h3 class="work-title">'+esc(w.title)+'</h3>'+
       '<p class="work-desc">点击图片查看大图</p></div></article>';
   }
