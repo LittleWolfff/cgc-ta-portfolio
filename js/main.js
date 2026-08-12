@@ -18,9 +18,14 @@
      desc:"暂无描述信息"},
     {id:"g2", type:"image", cat:"grass",
      title:"【Unity】草渲染——面片草", src:"assets/images/grass-quad.webp"},
+    {id:"w1", type:"video", cat:"water",
+     title:"【Unity】水渲染——卡通交互水", tag:"Shader · 交互",
+     file:"assets/videos/unity-water-render.mp4", poster:"",
+     size:"约35MB · 1080P",
+     desc:"暂无描述信息"},
   ];
 
-  var CAT_LABEL = {char:"角色渲染", grass:"草渲染", render:"渲染作品", shader:"Shader", tool:"工具/管线"};
+  var CAT_LABEL = {char:"角色渲染", grass:"草渲染", water:"水渲染", render:"渲染作品", shader:"Shader", tool:"工具/管线"};
   var EMPTY_FALLBACK = '<p class="works-empty">作品还在路上，稍后就到</p>';
 
   /* ---------- DOM ---------- */
