@@ -59,7 +59,7 @@
   function formatDesc(w){
     var s = esc(w.desc);
     s = s.replace(/^(背景|流程|收获|目标|结论|方案|原理)[：:]/gm, '<span class="desc-label">$1：</span>');
-    if (w.link) s = s.replace(/\{\{link\}\}/g, '流程笔记链接：<a class="desc-link" href="'+esc(w.link)+'" target="_blank" rel="noopener">'+esc(w.link)+'</a>');
+    if (w.link) s = s.replace(/\{\{link\}\}/g, '<span class="desc-label">流程笔记链接：</span><a class="desc-link" href="'+esc(w.link)+'" target="_blank" rel="noopener">'+esc(w.link)+'</a>');
     s = s.replace(/\n/g,'<br>');
     return s;
   }
