@@ -11,6 +11,8 @@
      file:"assets/videos/unity-anon-char-render.mp4", poster:"assets/images/poster-anon.webp",
      size:"约33MB · 1080P",
      desc:"暂无描述信息"},
+    {id:"c2", type:"image", cat:"char",
+     title:"【UE】角色渲染——克雷斯蒂娜", src:"assets/images/ue-char-christina.webp"},
     {id:"g1", type:"video", cat:"grass",
      title:"【Unity】草渲染——GPU草", tag:"Compute Shader · GPU",
      file:"assets/videos/unity-grass-render.mp4", poster:"",
