@@ -43,7 +43,7 @@
 
   function cardHTML(w, i){
     if (w.type === "video"){
-      var hasFile = w.file && w.poster;
+      var hasFile = w.file;
       var html = '<article class="work-card work-card-h">'+
         '<span class="work-cat">'+CAT_LABEL[w.cat]+'</span>';
       if (hasFile){
