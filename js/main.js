@@ -27,7 +27,7 @@
      title:"【Unity】水渲染——卡通交互水", tag:"Shader · 交互",
      file:"assets/videos/unity-water-render.mp4", poster:"",
      size:"约35MB · 1080P",
-     desc:"暂无描述信息"},
+     desc:"背景：想了解卡通风格的水渲染，以及水面交互的做法。\n流程：用深度图做深浅水渐变，岸边用噪声图和深度判断出泡沫；折射用 GrabPass 抓屏幕、法线贴图偏移采样；交互拿一个正交相机跟随角色，把角色渲染到 RenderTexture，水面 shader 采样它，在角色周围产生涟漪。\n收获：了解了卡通水的基本做法，以及用 RenderTexture 和正交相机做水面交互的思路。"},
     {id:"v1", type:"video", cat:"vfx",
      title:"【Unity】特效——爆炸", tag:"VFX · Shader",
      file:"assets/videos/unity-vfx-explosion.mp4", poster:"",
