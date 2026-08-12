@@ -45,7 +45,7 @@
   var vmTag = document.getElementById("vmTag");
   var vmDesc = document.getElementById("vmDesc");
 
-  var currentFilter = "all";
+  var currentFilter = "char";
   var lbIndex = -1;
 
   /* ---------- 渲染作品卡片 ---------- */
