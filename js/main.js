@@ -58,7 +58,7 @@
   }
   function formatDesc(s){
     return esc(s)
-      .replace(/^(背景|流程|收获|目标|结论|方案|原理)[：:]/gm, '<span class="desc-label">$1</span>')
+      .replace(/^(背景|流程|收获|目标|结论|方案|原理)[：:]/gm, '<span class="desc-label">$1：</span>')
       .replace(/\n/g,'<br>');
   }
 
