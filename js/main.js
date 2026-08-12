@@ -56,6 +56,11 @@
   function esc(s){
     return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
   }
+  function formatDesc(s){
+    return esc(s)
+      .replace(/^(背景|流程|收获|目标|结论|方案|原理)[：:]/gm, '<span class="desc-label">$1</span>')
+      .replace(/\n/g,'<br>');
+  }
 
   function cardHTML(w, i){
     if (w.type === "video"){
@@ -68,7 +73,7 @@
         html += '<div class="work-thumb-empty">视频制作中，稍后上线</div>';
       }
       html += '<div class="work-info"><h3 class="work-title">'+esc(w.title)+'</h3>';
-      if (w.desc) html += '<p class="work-desc">'+esc(w.desc).replace(/\n/g,'<br>')+'</p>';
+      if (w.desc) html += '<p class="work-desc">'+formatDesc(w.desc)+'</p>';
       if (w.link) html += '<p class="work-link">流程笔记知乎链接：<a href="'+esc(w.link)+'" target="_blank" rel="noopener">'+esc(w.link)+'</a></p>';
       html += '</div></article>';
       return html;
@@ -86,7 +91,7 @@
       '<span class="work-cat">'+CAT_LABEL[w.cat]+'</span>'+
       '<div class="work-video-wrap"><img loading="lazy" src="'+w.src+'" alt="'+esc(w.title)+'" style="width:100%;aspect-ratio:16/9;object-fit:cover;object-position:top;display:block;cursor:pointer"></div>'+
       '<div class="work-info"><h3 class="work-title">'+esc(w.title)+'</h3>'+
-      (w.desc ? '<p class="work-desc">'+esc(w.desc).replace(/\n/g,'<br>')+'</p>' : '<p class="work-desc">点击图片查看大图</p>')+
+      (w.desc ? '<p class="work-desc">'+formatDesc(w.desc)+'</p>' : '<p class="work-desc">点击图片查看大图</p>')+
       (w.link ? '<p class="work-link">流程笔记知乎链接：<a href="'+esc(w.link)+'" target="_blank" rel="noopener">'+esc(w.link)+'</a></p>' : '')+
       '</div></article>';
   }
