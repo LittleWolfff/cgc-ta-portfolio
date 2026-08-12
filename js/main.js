@@ -71,13 +71,12 @@
         '<div class="work-info"><h3 class="work-title">'+esc(w.title)+'<span class="tag">'+esc(w.tag)+'</span></h3>'+
         '<p class="work-sub">'+esc(w.desc)+'</p></div></article>';
     }
-    // image
-    var label = (w.cat === "design") ? "视觉设计" : "概念资产";
-    return '<article class="work-card" data-index="'+i+'" data-open="image" tabindex="0" role="button" aria-label="查看图片 '+esc(w.title)+'">'+
-      '<div class="work-thumb"><img loading="lazy" src="'+w.src+'" alt="'+esc(w.title)+'"></div>'+
-      '<span class="work-cat">'+label+'</span>'+
+    // image — 跟视频一样的横排大图卡片
+    return '<article class="work-card work-card-h" data-open="image">'+
+      '<span class="work-cat">'+CAT_LABEL[w.cat]+'</span>'+
+      '<div class="work-video-wrap"><img loading="lazy" src="'+w.src+'" alt="'+esc(w.title)+'" style="width:100%;display:block;cursor:pointer"></div>'+
       '<div class="work-info"><h3 class="work-title">'+esc(w.title)+'</h3>'+
-      '<p class="work-sub">点击查看大图</p></div></article>';
+      '<p class="work-desc">点击图片查看大图</p></div></article>';
   }
 
   function render(){
@@ -124,6 +123,19 @@
     if (w.type === "script") window.open(w.file, "_blank");
     else openLightboxAt(w);
   }
+
+  /* ---------- 作品区图片点击 → 灯箱 ---------- */
+  grid.addEventListener("click", function(e){
+    var img = e.target.closest(".work-card-h[data-open='image'] img");
+    if (!img) return;
+    document.getElementById("lbPrev").style.display = "none";
+    document.getElementById("lbNext").style.display = "none";
+    lbImg.src = img.src;
+    lbCap.textContent = img.alt;
+    lightbox.classList.add("open");
+    lightbox.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  });
 
   /* ---------- 覆盖层拦截原生全屏 → 网页全屏 ---------- */
   document.addEventListener("click", function(e){
