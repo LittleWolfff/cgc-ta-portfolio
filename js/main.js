@@ -20,7 +20,7 @@
      desc:"暂无描述信息"},
     {id:"g2", type:"image", cat:"grass",
      title:"【Unity】草渲染——面片草", src:"assets/images/grass-quad.png",
-     desc:"背景：了解草渲染的更多方案是如何实现的。\n流程：用面片草把草渲染流程完整走了一遍：顶点色红通道当摆动权重（根部固定、顶部摆），法线统一朝上让明暗更平滑，再拿噪声图采样做风吹的顶点动画。LOD 没用减面，而是直接切 shader——远处草砍掉动画和阴影，只留颜色。\n收获：了解了面片草的大致流程。",
+     desc:"背景：了解草渲染的更多方案是如何实现的。\n流程：顶点色红通道当摆动权重（根部固定、顶部摆），法线统一朝上让明暗更平滑，再拿噪声图采样做风吹的顶点动画。LOD 没用减面，而是直接切 shader——远处草砍掉动画和阴影，只留颜色。{{link}}\n收获：了解了面片草的大致流程。",
      link:"https://zhuanlan.zhihu.com/p/1982165167371473318"},
     {id:"w1", type:"video", cat:"water",
      title:"【Unity】水渲染——卡通交互水", tag:"Shader · 交互",
@@ -56,10 +56,12 @@
   function esc(s){
     return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
   }
-  function formatDesc(s){
-    return esc(s)
-      .replace(/^(背景|流程|收获|目标|结论|方案|原理)[：:]/gm, '<span class="desc-label">$1：</span>')
-      .replace(/\n/g,'<br>');
+  function formatDesc(w){
+    var s = esc(w.desc);
+    s = s.replace(/^(背景|流程|收获|目标|结论|方案|原理)[：:]/gm, '<span class="desc-label">$1：</span>');
+    if (w.link) s = s.replace(/\{\{link\}\}/g, ' <a class="desc-link" href="'+esc(w.link)+'" target="_blank" rel="noopener">流程笔记</a>');
+    s = s.replace(/\n/g,'<br>');
+    return s;
   }
 
   function cardHTML(w, i){
@@ -73,8 +75,7 @@
         html += '<div class="work-thumb-empty">视频制作中，稍后上线</div>';
       }
       html += '<div class="work-info"><h3 class="work-title">'+esc(w.title)+'</h3>';
-      if (w.desc) html += '<p class="work-desc">'+formatDesc(w.desc)+'</p>';
-      if (w.link) html += '<p class="work-link">流程笔记知乎链接：<a href="'+esc(w.link)+'" target="_blank" rel="noopener">'+esc(w.link)+'</a></p>';
+      if (w.desc) html += '<p class="work-desc">'+formatDesc(w)+'</p>';
       html += '</div></article>';
       return html;
     }
@@ -91,8 +92,7 @@
       '<span class="work-cat">'+CAT_LABEL[w.cat]+'</span>'+
       '<div class="work-video-wrap"><img loading="lazy" src="'+w.src+'" alt="'+esc(w.title)+'" style="width:100%;aspect-ratio:16/9;object-fit:cover;object-position:top;display:block;cursor:pointer"></div>'+
       '<div class="work-info"><h3 class="work-title">'+esc(w.title)+'</h3>'+
-      (w.desc ? '<p class="work-desc">'+formatDesc(w.desc)+'</p>' : '<p class="work-desc">点击图片查看大图</p>')+
-      (w.link ? '<p class="work-link">流程笔记知乎链接：<a href="'+esc(w.link)+'" target="_blank" rel="noopener">'+esc(w.link)+'</a></p>' : '')+
+      (w.desc ? '<p class="work-desc">'+formatDesc(w)+'</p>' : '<p class="work-desc">点击图片查看大图</p>')+
       '</div></article>';
   }
 
