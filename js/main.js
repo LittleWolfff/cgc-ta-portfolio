@@ -11,6 +11,11 @@
      file:"assets/videos/unity-anon-char-render.mp4", poster:"assets/images/poster-anon.webp",
      size:"约33MB · 1080P",
      desc:"暂无描述信息"},
+    {id:"g1", type:"video", cat:"grass",
+     title:"【Unity】草渲染——GPU草", tag:"Compute Shader · GPU",
+     file:"assets/videos/unity-grass-render.mp4", poster:"",
+     size:"约24MB · 1080P",
+     desc:"基于 Compute Shader 实现的 GPU 草地渲染，支持风场模拟与 LOD 管理。"},
   ];
 
   var CAT_LABEL = {char:"角色渲染", grass:"草渲染", render:"渲染作品", shader:"Shader", tool:"工具/管线"};
