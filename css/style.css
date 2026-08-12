@@ -239,7 +239,6 @@ ul{list-style:none}
 .fullscreen-trap::after{
   content:"⛶";color:#fff;font-size:15px;font-family:Arial,sans-serif;line-height:1;
 }
-video::-webkit-media-controls-fullscreen-button{display:none !important}
 .work-card-h .work-info{flex:1;padding:8px 0}
 .work-card{
   position:relative;border-radius:16px;overflow:hidden;cursor:pointer;
