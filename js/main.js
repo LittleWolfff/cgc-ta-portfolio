@@ -10,7 +10,7 @@
      title:"【Unity】角色渲染——千早爱音", tag:"NPR · 卡通",
      file:"assets/videos/unity-anon-char-render.mp4", poster:"assets/images/poster-anon.webp",
      size:"约33MB · 1080P",
-     desc:"暂无描述信息"},
+     desc:"在学习了星见雅和其他一些角色的渲染方式后，为了体会落地的过程，从零开始制作角色，包括Blender建模、蒙皮、K动画，SP画纹理和画遮罩，Unity实现渲染和人物移动。\n收获:网上的教程往往伴随着素材，这次的遮罩等素材自己画，提高了我的动手能力，也加强了我对流程的理解，通过改渲染逻辑，也让我对角色渲染有了更深的了解"},
     {id:"c2", type:"image", cat:"char",
      title:"【UE】角色渲染——克雷斯蒂娜", src:"assets/images/ue-char-christina.webp"},
     {id:"g1", type:"video", cat:"grass",
@@ -19,7 +19,8 @@
      size:"约24MB · 1080P",
      desc:"暂无描述信息"},
     {id:"g2", type:"image", cat:"grass",
-     title:"【Unity】草渲染——面片草", src:"assets/images/grass-quad.webp"},
+     title:"【Unity】草渲染——面片草", src:"assets/images/grass-quad.png",
+     desc:"用面片草把草渲染流程完整走了一遍：顶点色红通道当摆动权重（根部固定、顶部摆），法线统一朝上让明暗更平滑，再拿噪声图采样做风吹的顶点动画。LOD 没用减面，而是直接切 shader——远处草砍掉动画和阴影，只留颜色。\n收获：真正搞懂了顶点色其实就是个数据通道、法线怎么影响光照，还有怎么用噪声图做出自然的风吹摆动。"},
     {id:"w1", type:"video", cat:"water",
      title:"【Unity】水渲染——卡通交互水", tag:"Shader · 交互",
      file:"assets/videos/unity-water-render.mp4", poster:"",
@@ -66,7 +67,7 @@
         html += '<div class="work-thumb-empty">视频制作中，稍后上线</div>';
       }
       html += '<div class="work-info"><h3 class="work-title">'+esc(w.title)+'</h3>';
-      if (w.desc) html += '<p class="work-desc">'+esc(w.desc)+'</p>';
+      if (w.desc) html += '<p class="work-desc">'+esc(w.desc).replace(/\n/g,'<br>')+'</p>';
       html += '</div></article>';
       return html;
     }
@@ -83,7 +84,8 @@
       '<span class="work-cat">'+CAT_LABEL[w.cat]+'</span>'+
       '<div class="work-video-wrap"><img loading="lazy" src="'+w.src+'" alt="'+esc(w.title)+'" style="width:100%;aspect-ratio:16/9;object-fit:cover;object-position:top;display:block;cursor:pointer"></div>'+
       '<div class="work-info"><h3 class="work-title">'+esc(w.title)+'</h3>'+
-      '<p class="work-desc">点击图片查看大图</p></div></article>';
+      (w.desc ? '<p class="work-desc">'+esc(w.desc).replace(/\n/g,'<br>')+'</p>' : '<p class="work-desc">点击图片查看大图</p>')+
+      '</div></article>';
   }
 
   function render(){
