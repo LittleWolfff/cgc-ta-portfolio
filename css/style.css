@@ -187,7 +187,7 @@ ul{list-style:none}
 .mini-card p{color:var(--muted);font-size:14px}
 
 /* ---------- 技能 ---------- */
-.skills-grid{max-width:var(--maxw);margin:0 auto;display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.skills-grid{max-width:var(--maxw);margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
 .skill-card{
   background:var(--surface);border:1px solid var(--line);border-radius:16px;
   padding:30px 30px 26px;transition:.3s;position:relative;overflow:hidden;
@@ -203,6 +203,10 @@ ul{list-style:none}
 .skill-num{font-family:var(--serif);color:var(--accent);font-size:15px}
 .skill-card h3{font-family:var(--serif);font-size:22px}
 .skill-card p{color:var(--muted);font-size:15px;margin-bottom:18px}
+.skill-list{list-style:none;padding:0}
+.skill-list li{position:relative;color:var(--muted);font-size:14.5px;margin-bottom:10px;padding-left:16px;line-height:1.7}
+.skill-list li:last-child{margin-bottom:0}
+.skill-list li::before{content:"—";position:absolute;left:0;color:var(--accent)}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
 .chips span{
   font-size:12.5px;padding:5px 12px;border-radius:999px;
