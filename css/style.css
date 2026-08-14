@@ -40,7 +40,7 @@ ul{list-style:none}
 /* ---------- 整体布局 ---------- */
 .layout{display:flex;min-height:100vh}
 .sidebar{position:fixed;top:0;left:0;width:240px;height:100vh;background:rgba(10,10,15,.95);border-right:1px solid rgba(255,255,255,.06);display:flex;flex-direction:column;padding:48px 32px;z-index:100;overflow-y:auto}
-.sidebar-top{margin-bottom:24px}
+.sidebar-top{margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid var(--line)}
 .sidebar-name{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--text);text-decoration:none;letter-spacing:1px;transition:color .25s}
 .sidebar-name:hover,.sidebar-name.active{color:var(--accent)}
 .sidebar-nav{display:flex;flex-direction:column;gap:6px}
@@ -60,6 +60,7 @@ ul{list-style:none}
 
 /* ---------- 导航 ---------- */
 .nav{
+  display:none;
   position:fixed;top:0;left:0;right:0;z-index:100;
   transition:background .35s,box-shadow .35s,border-color .35s;
   border-bottom:1px solid transparent;
@@ -360,7 +361,7 @@ ul{list-style:none}
 .extra ul li::before{content:"✦";position:absolute;left:0;color:var(--accent);font-size:12px;top:2px}
 
 /* ---------- 联系 ---------- */
-.section-contact{background:linear-gradient(180deg,var(--bg-2),var(--bg));padding-bottom:40vh}
+.section-contact{background:var(--bg);padding-bottom:40vh}
 .contact-grid{max-width:var(--maxw);margin:0 auto;text-align:center;color:var(--muted);font-size:16px;display:flex;flex-direction:column;gap:10px}
 .contact-item{
   display:flex;align-items:center;gap:18px;background:var(--surface);
@@ -471,6 +472,32 @@ ul{list-style:none}
   .lb-close{top:14px;right:14px}
   .vm-head h3{max-width:calc(100% - 40px)}
 }
+/* ---------- 移动端汉堡菜单（≤860px 顶部导航替代左栏） ---------- */
+@media(max-width:860px){
+  .nav{display:block}
+  .nav-inner{justify-content:flex-end}
+  .nav-links{
+    position:fixed;top:68px;left:0;right:0;flex-direction:column;gap:0;
+    background:rgba(11,12,16,.97);border-bottom:1px solid var(--line);
+    padding:10px 0 18px;display:none;z-index:99;
+  }
+  .nav-links.open{display:flex}
+  .nav-links a{display:flex;align-items:center;gap:14px;padding:13px 26px;font-size:16px;width:100%}
+  .nav-links a::after{display:none}
+  .nav-links a.active{color:var(--accent)}
+  .nav-links a.active .sidebar-num{color:var(--accent)}
+  .nav-links .nav-home{
+    font-family:var(--serif);font-size:18px;font-weight:700;color:var(--text);
+    padding:14px 26px;border-bottom:1px solid var(--line);margin-bottom:8px;
+  }
+  .nav-links .nav-home:hover{color:var(--accent)}
+  .nav-toggle{display:flex}
+  .hero{padding-top:110px}
+}
+/* ---------- 游戏经历 ---------- */
+.games-note{max-width:760px;font-size:17px;line-height:1.9;color:var(--text)}
+.games-note p{margin:0 0 14px}
+.games-sub{color:var(--muted);font-size:15px}
 /* ---------- 剧本卡片缩略图 ---------- */
 .script-thumb{
   display:flex;align-items:center;justify-content:center;

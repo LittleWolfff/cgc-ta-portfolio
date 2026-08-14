@@ -283,7 +283,7 @@
   document.querySelectorAll("section[id]").forEach(function(s){
     sections.push({el:s, id:s.id});
   });
-  var sidebarLinks = document.querySelectorAll(".sidebar-link, .sidebar-name");
+  var sidebarLinks = document.querySelectorAll(".sidebar-link, .sidebar-name, .nav-links a");
   var lastId = null;
 
   var ticking = false;
@@ -295,7 +295,7 @@
     });
     if (current && current.id !== lastId){
       sidebarLinks.forEach(function(l){ l.classList.remove("active"); });
-      var link = document.querySelector('.sidebar-link[href="#'+current.id+'"]');
+      var link = document.querySelector('.sidebar-link[href="#'+current.id+'"], .nav-links a[href="#'+current.id+'"]');
       if (!link) link = document.querySelector('.sidebar-name[href="#'+current.id+'"]');
       if (link) link.classList.add("active");
       lastId = current.id;
@@ -305,6 +305,25 @@
     if (!ticking){ requestAnimationFrame(function(){ updateSidebar(); ticking = false; }); ticking = true; }
   }, {passive:true});
   updateSidebar();
+
+  /* ---------- 移动端汉堡菜单 ---------- */
+  var navToggle = document.getElementById("navToggle");
+  var navLinksEl = document.getElementById("navLinks");
+  if (navToggle && navLinksEl){
+    function closeNav(){
+      navLinksEl.classList.remove("open");
+      navToggle.classList.remove("open");
+      navToggle.setAttribute("aria-expanded", "false");
+    }
+    navToggle.addEventListener("click", function(){
+      var open = navLinksEl.classList.toggle("open");
+      navToggle.classList.toggle("open", open);
+      navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+    navLinksEl.querySelectorAll("a").forEach(function(a){
+      a.addEventListener("click", closeNav);
+    });
+  }
 
   /* ---------- 复制 ---------- */
   window.copyText = function(btn){
