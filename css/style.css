@@ -497,9 +497,9 @@ ul{list-style:none}
 /* ---------- 游戏经历 ---------- */
 .games-note{max-width:760px;margin:0 auto}
 .games-list{list-style:none;padding:0}
-.games-list li{display:flex;align-items:baseline;margin-bottom:18px;color:var(--muted);font-size:16px;line-height:1.8}
+.games-list li{color:var(--muted);font-size:16px;line-height:1.9;margin-bottom:14px;padding:14px 20px;background:var(--surface);border:1px solid var(--line);border-radius:12px}
 .games-list li:last-child{margin-bottom:0}
-.games-type{flex-shrink:0;width:180px;color:var(--accent);font-weight:600;font-size:15px;letter-spacing:1px}
+.games-type{color:var(--accent);font-weight:600;margin-right:12px}
 /* ---------- 剧本卡片缩略图 ---------- */
 .script-thumb{
   display:flex;align-items:center;justify-content:center;
