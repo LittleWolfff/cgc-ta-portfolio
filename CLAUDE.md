@@ -9,6 +9,17 @@
 | 仓库 | https://github.com/LittleWolfff/cgc-ta-portfolio |
 | 公网地址 | https://littlewolfff.github.io/cgc-ta-portfolio/ |
 | 部署方式 | GitHub Pages（master 分支），push 即更新 |
+| 视频托管 | 腾讯云 COS（视频走 COS，代码/图片走 GitHub Pages） |
+
+### COS 视频托管配置（2026-08 建桶留档）
+
+- **存储桶名**：`cgc-portfolio-1466904848`
+- **地域**：广州 `ap-guangzhou`
+- **访问权限**：公有读私有写（关键，否则视频打不开）
+- **请求域名**：`cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com`
+- 视频外链格式：`https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/{文件名}.mp4`
+- 控制台：https://console.cloud.tencent.com/cos
+- 其他（版本控制/加密/压缩/日志）：全部不开启
 
 ## 双仓库工作流 ⚠️ 重要
 
