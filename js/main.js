@@ -237,6 +237,7 @@
     lightbox.classList.add("open");
     lightbox.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
+    lbReset();
   }
   function openLightboxAt(w){
     var i = IMAGE_WORKS.indexOf(w);
@@ -263,7 +264,51 @@
     document.getElementById("lbPrev").style.display = "";
     document.getElementById("lbNext").style.display = "";
     document.body.style.overflow = "";
+    lbReset();
   }
+
+  /* ---------- 灯箱缩放 + 拖拽 ---------- */
+  var lbScale = 1, lbTx = 0, lbTy = 0;
+  var lbDragging = false, lbDragStartX = 0, lbDragStartY = 0, lbDragOrigTx = 0, lbDragOrigTy = 0;
+  function lbApplyTransform(){
+    lbImg.style.transform = 'translate('+lbTx+'px,'+lbTy+'px) scale('+lbScale+')';
+    lbImg.style.cursor = lbScale > 1 ? 'grab' : 'zoom-in';
+  }
+  function lbReset(){
+    lbScale = 1; lbTx = 0; lbTy = 0;
+    lbApplyTransform();
+  }
+  // 滚轮缩放
+  lbImg.addEventListener('wheel', function(e){
+    e.preventDefault();
+    var delta = e.deltaY > 0 ? -0.15 : 0.15;
+    lbScale = Math.max(1, Math.min(5, lbScale + delta));
+    if (lbScale === 1){ lbTx = 0; lbTy = 0; }
+    lbApplyTransform();
+  }, {passive:false});
+  // 拖动平移
+  lbImg.addEventListener('mousedown', function(e){
+    if (lbScale <= 1) return;
+    lbDragging = true;
+    lbDragStartX = e.clientX; lbDragStartY = e.clientY;
+    lbDragOrigTx = lbTx; lbDragOrigTy = lbTy;
+    lbImg.style.cursor = 'grabbing';
+    e.preventDefault();
+  });
+  document.addEventListener('mousemove', function(e){
+    if (!lbDragging) return;
+    lbTx = lbDragOrigTx + (e.clientX - lbDragStartX);
+    lbTy = lbDragOrigTy + (e.clientY - lbDragStartY);
+    lbApplyTransform();
+  });
+  document.addEventListener('mouseup', function(){
+    if (lbDragging){
+      lbDragging = false;
+      lbImg.style.cursor = lbScale > 1 ? 'grab' : 'zoom-in';
+    }
+  });
+  // 双击重置
+  lbImg.addEventListener('dblclick', function(){ lbReset(); });
   document.getElementById("lbClose").addEventListener("click", closeLightbox);
   document.getElementById("lbPrev").addEventListener("click", function(){ stepLb(-1); });
   document.getElementById("lbNext").addEventListener("click", function(){ stepLb(1); });
