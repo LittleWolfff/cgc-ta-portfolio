@@ -11,15 +11,31 @@
 | 部署方式 | GitHub Pages（master 分支），push 即更新 |
 | 视频托管 | 腾讯云 COS（视频走 COS，代码/图片走 GitHub Pages） |
 
-### COS 视频托管配置（2026-08 建桶留档）
+### COS 视频托管 SOP ⚠️（为什么 + 怎么做，新对话照着走）
 
-- **存储桶名**：`cgc-portfolio-1466904848`
-- **地域**：广州 `ap-guangzhou`
-- **访问权限**：公有读私有写（关键，否则视频打不开）
-- **请求域名**：`cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com`
-- 视频外链格式：`https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/{文件名}.mp4`
-- 控制台：https://console.cloud.tencent.com/cos
-- 其他（版本控制/加密/压缩/日志）：全部不开启
+**为什么用 COS**：GitHub Pages 服务器在海外，视频文件大，国内访问卡（换流量/WiFi 都没用，物理距离决定）。代码和图片小，继续走 GitHub Pages；只有大视频走 COS。
+
+**已有配置（2026-08 建桶，别重复建）**：
+
+| 项 | 值 |
+|----|-----|
+| 存储桶名 | `cgc-portfolio-1466904848` |
+| 地域 | 广州 `ap-guangzhou` |
+| 访问权限 | 公有读私有写（关键，否则视频打不开） |
+| 请求域名 | `cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com` |
+| 控制台 | https://console.cloud.tencent.com/cos |
+
+**加新视频到 COS 的流程**：
+
+1. 视频先按「加视频作品 SOP」压缩处理（≤50MB 直传，>50MB 用 ffmpeg CRF 18）
+2. 打开 COS 控制台 → 点进 `cgc-portfolio-1466904848` 桶 → 上传文件（网页拖拽即可，单个视频几十 MB 没问题）
+3. 视频外链 = 请求域名 + 文件名：`https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/xxx.mp4`
+4. 改 `js/main.js` 的 `WORKS` 数组（或 `index.html` 项目卡），把 `file:"assets/videos/xxx.mp4"` 换成 COS 外链
+5. 本地视频文件可以删掉（省 GitHub 仓库体积），或保留做备份
+
+**建桶时的关键设置**（以后万一要新建桶照着填）：地域广州、访问权限「公有读私有写」、数据冗余单 AZ，其他（版本控制/加密/极智压缩/日志/内容安全/自定义域名）全部不开启。
+
+**名词解释**（阿聪问过）：AZ = 可用区 = 一个独立机房；单 AZ = 数据存一个机房（便宜，个人够用），多 AZ = 存多个机房（贵，防机房故障）。
 
 ## 双仓库工作流 ⚠️ 重要
 
