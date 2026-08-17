@@ -215,14 +215,17 @@
     if (e.key === "Escape"){ if (vm.classList.contains("open")) closeVideo(); if (lightbox.classList.contains("open")) closeLightbox(); }
   });
 
-  /* ---------- 项目缩略图点击查看大图 ---------- */
+  /* ---------- 项目缩略图/游戏封面 点击查看大图 ---------- */
   document.addEventListener("click", function(e){
-    var thumb = e.target.closest(".project-thumb");
+    var thumb = e.target.closest(".project-thumb, .game-cover");
     if (!thumb) return;
     var fullSrc = thumb.getAttribute("data-full-img");
     if (!fullSrc) return;
     e.preventDefault();
-    openLightboxDirect(fullSrc, thumb.querySelector(".project-thumb-label")?.textContent || "");
+    var caption = thumb.classList.contains("game-cover")
+      ? (thumb.getAttribute("alt") || "")
+      : (thumb.querySelector(".project-thumb-label")?.textContent || "");
+    openLightboxDirect(fullSrc, caption);
   });
 
   /* ---------- 图片灯箱 ---------- */

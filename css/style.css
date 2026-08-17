@@ -348,7 +348,8 @@ ul{list-style:none}
 .games-table th{text-align:left;padding:16px 20px;color:var(--accent);font-weight:600;font-size:15px;border-bottom:1px solid var(--line);vertical-align:middle;white-space:nowrap;width:200px;border-left:3px solid transparent}
 .games-table td{padding:12px 20px;border-bottom:1px solid var(--line)}
 .game-name-cell{display:flex;align-items:center;gap:10px;color:var(--text);font-weight:600;font-size:15px;white-space:nowrap;padding-right:24px}
-.game-cover{width:140px;height:auto;object-fit:cover;border-radius:4px;flex-shrink:0}
+.game-cover{width:140px;height:auto;object-fit:cover;border-radius:4px;flex-shrink:0;cursor:pointer;transition:opacity .2s}
+.game-cover:hover{opacity:.85}
 .game-desc-cell{color:var(--muted);font-size:14px;line-height:1.6}
 .game-spacer td{padding:0;height:22px;border:none;background:transparent}
 
