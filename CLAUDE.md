@@ -25,13 +25,47 @@
 | 请求域名 | `cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com` |
 | 控制台 | https://console.cloud.tencent.com/cos |
 
-**加新视频到 COS 的流程**：
+**COS 桶文件夹结构**（对齐镜像文件夹的两个大类，英文名避免 URL 中文编码）：
 
-1. 视频先按「加视频作品 SOP」压缩处理（≤50MB 直传，>50MB 用 ffmpeg CRF 18）
-2. 打开 COS 控制台 → 点进 `cgc-portfolio-1466904848` 桶 → 上传文件（网页拖拽即可，单个视频几十 MB 没问题）
-3. 视频外链 = 请求域名 + 文件名：`https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/xxx.mp4`
-4. 改 `js/main.js` 的 `WORKS` 数组（或 `index.html` 项目卡），把 `file:"assets/videos/xxx.mp4"` 换成 COS 外链
-5. 本地视频文件可以删掉（省 GitHub 仓库体积），或保留做备份
+```
+works/        ← 作品展示
+├── char/     角色渲染
+├── grass/    草渲染
+├── water/    水渲染
+├── vfx/      特效
+└── tool/     工具
+projects/     ← 项目经历
+├── project-dream-maker.mp4
+└── project-amuse-ourselves.mp4
+```
+
+**视频外链格式**：`https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/{大类}/{子类}/{文件名}.mp4`
+例如：`.../works/char/unity-anon-char-render.mp4`
+
+**加新视频到 COS 的完整流程**（小辞命令行操作，不用网页）：
+
+1. **压缩**（网站视频统一压到 CRF 23，画质够 + 文件小）：
+   ```bash
+   FFMPEG="D:/Conley/ClaudeCodeWorkspace/C_工具/视频压缩/小丸工具箱/App/tools/ffmpeg.exe"
+   "$FFMPEG" -i 原视频.mp4 -c:v libx264 -crf 23 -preset slow -c:a aac -b:a 128k 输出.mp4 -y
+   ```
+   ⚠️ 坑：个别视频（如自娱自乐，PR 高码率导出的）用 CRF 23 反而变大，得降到 CRF 26 重压。
+2. **上传**（coscmd，密钥已配置在本地 `C:\Users\Serendipity\.cos.conf`）：
+   ```bash
+   COSCMD="D:/C_Software/Python/App/Python/Scripts/coscmd.exe"
+   "$COSCMD" upload 本地文件.mp4 works/char/文件名.mp4
+   ```
+3. **改 src**：`js/main.js` 的 WORKS 数组或 `index.html` 项目卡，把视频链接换成 COS 外链
+4. **删旧文件**：`"$COSCMD" delete -f 旧路径`（保持桶干净）
+5. 本地视频文件可删（省 GitHub 体积）或保留备份
+
+**coscmd 常用命令**：
+```bash
+coscmd list                              # 列出桶内文件
+coscmd upload 本地路径 cos远端路径       # 上传
+coscmd delete -f cos路径                 # 删除
+coscmd config -a ID -s KEY -b 桶名 -r 地域   # 重新配置密钥
+```
 
 **建桶时的关键设置**（以后万一要新建桶照着填）：地域广州、访问权限「公有读私有写」、数据冗余单 AZ，其他（版本控制/加密/极智压缩/日志/内容安全/自定义域名）全部不开启。
 
