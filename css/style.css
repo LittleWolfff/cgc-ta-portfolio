@@ -342,6 +342,13 @@ ul{list-style:none}
 /* 项目正文 */
 .project-body{padding:22px 24px 24px}
 .project-body p{color:var(--muted);font-size:14.5px;margin-top:10px;line-height:1.75}
+/* 游戏列表 */
+.game-list{list-style:none;padding:0}
+.game-list li{margin-bottom:14px}
+.game-list li:last-child{margin-bottom:0}
+.game-name{color:var(--text);font-weight:600;font-size:15px}
+.game-hours{color:var(--accent);font-weight:400;font-size:13px;margin-left:6px}
+.game-desc{color:var(--muted);font-size:13.5px;margin-top:2px;line-height:1.6}
 
 /* ---------- 教育 ---------- */
 .edu-card{
