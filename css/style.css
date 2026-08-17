@@ -345,11 +345,10 @@ ul{list-style:none}
 /* 游戏经历表格 */
 .games-table-wrap{max-width:900px;margin:0 auto;overflow-x:auto}
 .games-table{width:100%;border-collapse:collapse}
-.games-table th{text-align:left;padding:16px 20px;color:var(--accent);font-weight:600;font-size:15px;border-bottom:1px solid var(--line);vertical-align:top;white-space:nowrap;width:200px}
+.games-table th{text-align:left;padding:16px 20px;color:var(--accent);font-weight:600;font-size:15px;border-bottom:1px solid var(--line);vertical-align:middle;white-space:nowrap;width:200px;border-left:3px solid transparent}
 .games-table td{padding:12px 20px;border-bottom:1px solid var(--line)}
 .game-name-cell{color:var(--text);font-weight:600;font-size:15px;white-space:nowrap;width:160px}
 .game-desc-cell{color:var(--muted);font-size:14px;line-height:1.6}
-.game-type-icon{margin-right:6px}
 
 /* ---------- 教育 ---------- */
 .edu-card{
