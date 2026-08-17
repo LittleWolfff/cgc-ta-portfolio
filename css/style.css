@@ -342,12 +342,14 @@ ul{list-style:none}
 /* 项目正文 */
 .project-body{padding:22px 24px 24px}
 .project-body p{color:var(--muted);font-size:14.5px;margin-top:10px;line-height:1.75}
-/* 游戏列表 */
-.game-list{list-style:none;padding:0}
-.game-list li{margin-bottom:14px}
-.game-list li:last-child{margin-bottom:0}
-.game-name{color:var(--text);font-weight:600;font-size:15px}
-.game-desc{color:var(--muted);font-size:13.5px;margin-top:3px;line-height:1.6}
+/* 游戏经历表格 */
+.games-table-wrap{max-width:900px;margin:0 auto;overflow-x:auto}
+.games-table{width:100%;border-collapse:collapse}
+.games-table th{text-align:left;padding:16px 20px;color:var(--accent);font-weight:600;font-size:15px;border-bottom:1px solid var(--line);vertical-align:top;white-space:nowrap;width:200px}
+.games-table td{padding:12px 20px;border-bottom:1px solid var(--line)}
+.game-name-cell{color:var(--text);font-weight:600;font-size:15px;white-space:nowrap;width:160px}
+.game-desc-cell{color:var(--muted);font-size:14px;line-height:1.6}
+.game-type-icon{margin-right:6px}
 
 /* ---------- 教育 ---------- */
 .edu-card{
