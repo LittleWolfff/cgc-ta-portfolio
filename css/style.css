@@ -349,6 +349,7 @@ ul{list-style:none}
 .games-table td{padding:12px 20px;border-bottom:1px solid var(--line)}
 .game-name-cell{color:var(--text);font-weight:600;font-size:15px;white-space:nowrap;width:160px}
 .game-desc-cell{color:var(--muted);font-size:14px;line-height:1.6}
+.game-spacer td{padding:0;height:22px;border:none;background:transparent}
 
 /* ---------- 教育 ---------- */
 .edu-card{
