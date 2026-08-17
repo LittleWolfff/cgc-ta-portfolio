@@ -76,7 +76,7 @@
       var html = '<article class="work-card work-card-h">'+
         '<span class="work-cat">'+CAT_LABEL[w.cat]+'</span>';
       if (hasFile){
-        html += '<div class="work-video-wrap"><video src="'+w.file+'" controls preload="metadata" poster="'+w.poster+'"></video><div class="fullscreen-trap" title="网页全屏"></div></div>';
+        html += '<div class="work-video-wrap"><video src="'+w.file+'" controls preload="auto" poster="'+w.poster+'"></video><div class="fullscreen-trap" title="网页全屏"></div></div>';
       } else {
         html += '<div class="work-thumb-empty">视频制作中，稍后上线</div>';
       }
