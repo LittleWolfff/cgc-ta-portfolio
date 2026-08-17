@@ -347,8 +347,7 @@ ul{list-style:none}
 .game-list li{margin-bottom:14px}
 .game-list li:last-child{margin-bottom:0}
 .game-name{color:var(--text);font-weight:600;font-size:15px}
-.game-hours{color:var(--accent);font-weight:400;font-size:13px;margin-left:6px}
-.game-desc{color:var(--muted);font-size:13.5px;margin-top:2px;line-height:1.6}
+.game-desc{color:var(--muted);font-size:13.5px;margin-top:3px;line-height:1.6}
 
 /* ---------- 教育 ---------- */
 .edu-card{
