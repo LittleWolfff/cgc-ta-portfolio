@@ -25,19 +25,24 @@
 | 请求域名 | `cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com` |
 | 控制台 | https://console.cloud.tencent.com/cos |
 
-**COS 桶文件夹结构**（对齐镜像文件夹的两个大类，英文名避免 URL 中文编码）：
+**COS 桶文件夹结构**（对齐镜像文件夹的两个大类，英文名避免 URL 中文编码。**视频+图片+简历都在 COS，统一管理**）：
 
 ```
 works/        ← 作品展示
-├── char/     角色渲染
-├── grass/    草渲染
-├── water/    水渲染
-├── vfx/      特效
-└── tool/     工具
+├── char/     角色渲染：unity-anon-char-render.mp4 + poster-anon.webp + ue-char-christina.webp
+├── grass/    草渲染：unity-grass-render.mp4 + grass-quad.png
+├── water/    水渲染：unity-water-render.mp4
+├── vfx/      特效：unity-vfx-explosion.mp4
+└── tool/     工具：blender-asset-tool.mp4
 projects/     ← 项目经历
-├── project-dream-maker.mp4
-└── project-amuse-ourselves.mp4
+├── project-dream-maker.mp4 + poster-dream-maker.webp
+├── project-amuse-ourselves.mp4
+├── photon-training.webp + photon-training-full.webp
+└── fuchenlu.webp + fuchenlu-full.webp
+resume.pdf    ← 简历（原名「简历.pdf」，传 COS 改英文名避免 URL 中文编码）
 ```
+
+> 代码（HTML/CSS/JS）仍走 GitHub Pages，只有**媒体资源（视频/图片/PDF）走 COS**。本地 `assets/` 里的源文件可删可留作备份。
 
 **视频外链格式**：`https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/{大类}/{子类}/{文件名}.mp4`
 例如：`.../works/char/unity-anon-char-render.mp4`
