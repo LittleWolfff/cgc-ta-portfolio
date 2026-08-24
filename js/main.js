@@ -215,6 +215,24 @@
     if (e.key === "Escape"){ if (vm.classList.contains("open")) closeVideo(); if (lightbox.classList.contains("open")) closeLightbox(); }
   });
 
+  /* ---------- 多图缩略图左右箭头切换 ---------- */
+  document.addEventListener("click", function(e){
+    var nav = e.target.closest(".thumb-nav");
+    if (!nav) return;
+    e.stopPropagation();
+    var thumb = nav.closest(".project-thumb");
+    var thumbs = thumb.getAttribute("data-thumbs");
+    if (!thumbs) return;
+    var list = thumbs.split("|").map(function(s){ return s.trim(); });
+    var img = thumb.querySelector(".project-thumb-img");
+    var cur = img.getAttribute("src");
+    var idx = list.indexOf(cur);
+    var next = nav.classList.contains("thumb-next")
+      ? (idx + 1) % list.length
+      : (idx - 1 + list.length) % list.length;
+    img.setAttribute("src", list[next]);
+  });
+
   /* ---------- 项目缩略图/游戏封面 点击查看大图 ---------- */
   var lbGallery = null, lbGalleryIndex = 0;
   document.addEventListener("click", function(e){
