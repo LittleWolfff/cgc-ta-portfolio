@@ -357,10 +357,10 @@ ul{list-style:none}
 .game-group{margin-bottom:34px}
 .game-group-title{
   display:flex;align-items:center;gap:10px;
-  color:var(--accent);font-size:16px;font-weight:700;letter-spacing:1px;
-  margin-bottom:14px;
+  color:var(--text);font-size:19px;font-weight:700;letter-spacing:2px;
+  margin-bottom:16px;
 }
-.game-group-title::before{content:"";width:4px;height:18px;background:var(--gc,#c0504d);border-radius:2px}
+.game-group-title::before{content:"";width:5px;height:20px;background:var(--gc,#c0504d);border-radius:3px}
 .game-row{
   display:flex;align-items:center;gap:16px;
   padding:10px 0;border-bottom:1px solid var(--line);
