@@ -361,6 +361,7 @@ ul{list-style:none}
   margin-bottom:16px;
 }
 .game-group-title::before{content:"";width:5px;height:20px;background:var(--gc,#c0504d);border-radius:3px}
+.game-group-num{color:var(--accent);font-size:15px;font-weight:600;margin-right:4px}
 .game-row{
   display:flex;align-items:center;gap:16px;
   padding:10px 0;border-bottom:1px solid var(--line);
