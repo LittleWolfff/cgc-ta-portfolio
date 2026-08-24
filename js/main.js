@@ -246,8 +246,16 @@
     var multi = thumb.getAttribute("data-full-imgs");
     if (multi){
       lbGallery = multi.split("|").map(function(s){ return s.trim(); });
+      // 跟随缩略图当前显示的第几张
       lbGalleryIndex = 0;
-      openLightboxDirect(lbGallery[0], caption);
+      var imgEl = thumb.querySelector(".project-thumb-img");
+      if (imgEl){
+        var curThumb = imgEl.getAttribute("src");
+        var thumbs = (thumb.getAttribute("data-thumbs") || "").split("|").map(function(s){ return s.trim(); });
+        var ti = thumbs.indexOf(curThumb);
+        if (ti >= 0 && ti < lbGallery.length) lbGalleryIndex = ti;
+      }
+      openLightboxDirect(lbGallery[lbGalleryIndex], caption);
       return;
     }
     var fullSrc = thumb.getAttribute("data-full-img");
