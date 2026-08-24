@@ -360,8 +360,8 @@ ul{list-style:none}
 .game-name-cell{display:flex;align-items:center;gap:10px;color:var(--text);font-weight:600;font-size:15px;white-space:nowrap;padding:6px 24px 6px 0}
 .game-cover{width:140px;height:66px;object-fit:cover;border-radius:4px;flex-shrink:0;cursor:pointer;transition:opacity .2s}
 .game-cover:hover{opacity:.85}
-/* 手机图标：正方形，与封面等高对齐 */
-.game-cover-icon{width:66px;height:66px;object-fit:cover}
+/* 手机图标：正方形画布，手游分区专用 */
+.game-cover-icon{width:96px;height:96px;object-fit:cover;border-radius:12px}
 .game-desc-cell{color:var(--muted);font-size:14px;line-height:1.6;vertical-align:middle}
 .game-spacer td{padding:0;height:22px;border:none;background:transparent}
 
