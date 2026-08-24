@@ -261,6 +261,41 @@ B站「仅自己可见」无法生成分享链接，不能嵌入网站。结论�
 - **描述用阿聪自己的口语，小辞只润色不通顺的地方**：保留「我觉得」「那种」「猜中的时候」这种活人感，别过度精简、别 AI 化（教训：曾把王者荣耀、星露谷描述压成书面语，被指「没有活人感」）
 - 时长写进描述开头（`200h+ · xxx`），没时长就直接写描述
 
+### 游戏封面图工作流 ⚠️（19个游戏已配齐，新游戏照做）
+
+**图源选择（按优先级）**：
+1. **Steam CDN**（单机游戏）— `https://cdn.cloudflare.steamstatic.com/steam/apps/{appid}/header.jpg`
+   - appid 查法：Steam 商店页 URL 里的数字，或搜「游戏名 steam appid」
+   - ⚠️ appid 错了会拿到别的游戏封面（教训：丝之歌用了 1091500 拿到赛博朋克，正确是 1030300）
+2. **iTunes API**（手游）— 用**中文名**搜：`https://itunes.apple.com/search?term={URL编码的游戏名}&country=cn&entity=software`，取 `artworkUrl512`
+   - ⚠️ 必须用中文名（金铲铲之战、洛克王国世界），英文名会搜到别的 app
+3. **官网/图片站**（无 Steam 无 iOS，如塞尔达）— 找官方横版图，或让阿聪自己给图（最快）
+
+**处理**（Steam 横版封面 → 140px 小图 + 大图；手游图标 → 96×96 方形）：
+```bash
+FFMPEG="D:/Conley/ClaudeCodeWorkspace/C_工具/视频压缩/小丸工具箱/App/tools/ffmpeg.exe"
+# 横版封面：140px宽小图 + 原图大图
+"$FFMPEG" -i 图.jpg -vf "scale=140:-1" -quality 85 名.webp -y
+"$FFMPEG" -i 图.jpg -quality 90 名-full.webp -y
+# 手游方形图标：96x96
+"$FFMPEG" -i 图.jpg -vf "scale=96:96:force_original_aspect_ratio=increase,crop=96:96" -quality 85 名.webp -y
+```
+
+**上传 + 嵌入**：
+```bash
+COSCMD="D:/C_Software/Python/App/Python/Scripts/coscmd.exe"
+"$COSCMD" upload 名.webp games/名.webp
+"$COSCMD" upload 名-full.webp games/名-full.webp
+```
+```html
+<!-- 单机游戏：横版封面 -->
+<td class="game-name-cell"><img class="game-cover" src=".../games/名.webp" alt="游戏名" data-full-img=".../games/名-full.webp">游戏名</td>
+<!-- 手游：方形图标加 game-cover-icon -->
+<td class="game-name-cell"><img class="game-cover game-cover-icon" src=".../games/名.webp" alt="游戏名" data-full-img=".../games/名-full.webp">游戏名</td>
+```
+
+**布局**：封面图 `align-items:flex-start` 靠顶、保持 140×66 比例；手游图标 `game-cover-icon` 96×96 方形圆角。
+
 ## 左栏导航
 
 - HTML 在 `<aside class="sidebar">` 里
