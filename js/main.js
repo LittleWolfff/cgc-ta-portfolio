@@ -236,6 +236,7 @@
   /* ---------- 项目缩略图/游戏封面 点击查看大图 ---------- */
   var lbGallery = null, lbGalleryIndex = 0;
   document.addEventListener("click", function(e){
+    if (e.target.closest(".thumb-nav")) return; // 箭头切换不触发灯箱
     var thumb = e.target.closest(".project-thumb, .game-cover");
     if (!thumb) return;
     e.preventDefault();
