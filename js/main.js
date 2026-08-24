@@ -216,15 +216,23 @@
   });
 
   /* ---------- 项目缩略图/游戏封面 点击查看大图 ---------- */
+  var lbGallery = null, lbGalleryIndex = 0;
   document.addEventListener("click", function(e){
     var thumb = e.target.closest(".project-thumb, .game-cover");
     if (!thumb) return;
-    var fullSrc = thumb.getAttribute("data-full-img");
-    if (!fullSrc) return;
     e.preventDefault();
     var caption = thumb.classList.contains("game-cover")
       ? (thumb.getAttribute("alt") || "")
       : (thumb.querySelector(".project-thumb-label")?.textContent || "");
+    var multi = thumb.getAttribute("data-full-imgs");
+    if (multi){
+      lbGallery = multi.split("|").map(function(s){ return s.trim(); });
+      lbGalleryIndex = 0;
+      openLightboxDirect(lbGallery[0], caption);
+      return;
+    }
+    var fullSrc = thumb.getAttribute("data-full-img");
+    if (!fullSrc) return;
     openLightboxDirect(fullSrc, caption);
   });
 
@@ -232,8 +240,10 @@
   function openLightboxDirect(src, caption){
     lbImg.src = src;
     lbCap.textContent = caption;
-    document.getElementById("lbPrev").style.display = "none";
-    document.getElementById("lbNext").style.display = "none";
+    var prevBtn = document.getElementById("lbPrev"), nextBtn = document.getElementById("lbNext");
+    var showArrows = lbGallery && lbGallery.length > 1;
+    prevBtn.style.display = showArrows ? "" : "none";
+    nextBtn.style.display = showArrows ? "" : "none";
     lightbox.classList.add("open");
     lightbox.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
@@ -265,6 +275,8 @@
     document.getElementById("lbNext").style.display = "";
     document.body.style.overflow = "";
     lbReset();
+    lbGallery = null;
+    lbGalleryIndex = 0;
   }
 
   /* ---------- 灯箱缩放 + 拖拽 ---------- */
@@ -310,8 +322,22 @@
   // 双击重置
   lbImg.addEventListener('dblclick', function(){ lbReset(); });
   document.getElementById("lbClose").addEventListener("click", closeLightbox);
-  document.getElementById("lbPrev").addEventListener("click", function(){ stepLb(-1); });
-  document.getElementById("lbNext").addEventListener("click", function(){ stepLb(1); });
+  document.getElementById("lbPrev").addEventListener("click", function(){
+    if (lbGallery && lbGallery.length > 1){
+      lbGalleryIndex = (lbGalleryIndex - 1 + lbGallery.length) % lbGallery.length;
+      openLightboxDirect(lbGallery[lbGalleryIndex], lbCap.textContent.split(" · ").pop());
+    } else {
+      stepLb(-1);
+    }
+  });
+  document.getElementById("lbNext").addEventListener("click", function(){
+    if (lbGallery && lbGallery.length > 1){
+      lbGalleryIndex = (lbGalleryIndex + 1) % lbGallery.length;
+      openLightboxDirect(lbGallery[lbGalleryIndex], lbCap.textContent.split(" · ").pop());
+    } else {
+      stepLb(1);
+    }
+  });
   lightbox.addEventListener("click", function(e){
     if (e.target === lightbox) closeLightbox();
   });
