@@ -352,18 +352,26 @@ ul{list-style:none}
 /* 项目正文 */
 .project-body{padding:22px 24px 24px}
 .project-body p{color:var(--muted);font-size:14.5px;margin-top:10px;line-height:1.75}
-/* 游戏经历表格 */
-.games-table-wrap{max-width:900px;margin:0 auto;overflow-x:auto}
-.games-table{width:100%;border-collapse:collapse}
-.games-table th{text-align:left;padding:16px 20px;color:var(--accent);font-weight:600;font-size:15px;border-bottom:1px solid var(--line);vertical-align:middle;white-space:nowrap;width:200px;border-left:3px solid transparent}
-.games-table td{padding:12px 20px;border-bottom:1px solid var(--line)}
-.game-name-cell{display:flex;align-items:flex-start;gap:10px;color:var(--text);font-weight:600;font-size:15px;white-space:nowrap;padding:6px 24px 6px 0}
-.game-cover{width:140px;height:66px;object-fit:cover;border-radius:4px;flex-shrink:0;cursor:pointer;transition:opacity .2s;display:block}
+/* 游戏经历（div 分组布局） */
+.games-list{max-width:900px;margin:0 auto}
+.game-group{margin-bottom:34px}
+.game-group-title{
+  display:flex;align-items:center;gap:10px;
+  color:var(--accent);font-size:16px;font-weight:700;letter-spacing:1px;
+  margin-bottom:14px;
+}
+.game-group-title::before{content:"";width:4px;height:18px;background:var(--gc,#c0504d);border-radius:2px}
+.game-row{
+  display:flex;align-items:center;gap:16px;
+  padding:10px 0;border-bottom:1px solid var(--line);
+}
+.game-row:last-child{border-bottom:none}
+.game-cover{width:140px;height:66px;object-fit:cover;border-radius:4px;flex-shrink:0;cursor:pointer;transition:opacity .2s}
 .game-cover:hover{opacity:.85}
 /* 手机图标：正方形画布，手游分区专用 */
 .game-cover-icon{width:96px;height:96px;object-fit:cover;border-radius:12px}
-.game-desc-cell{color:var(--muted);font-size:14px;line-height:1.6;vertical-align:middle}
-.game-spacer td{padding:0;height:22px;border:none;background:transparent}
+.game-name{color:var(--text);font-weight:600;font-size:15px;white-space:nowrap;flex-shrink:0;min-width:110px}
+.game-desc{color:var(--muted);font-size:14px;line-height:1.7;margin:0;flex:1}
 
 /* ---------- 教育 ---------- */
 .edu-card{
