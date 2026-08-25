@@ -13,7 +13,7 @@
      desc:"背景：在学习了星见雅和其他一些角色的渲染方式后，为了体会自己独立落地的过程，从零开始制作角色。\n流程：Blender建模、蒙皮、K动画，SP画纹理和画遮罩，Unity实现渲染和人物移动。\n收获：网上的教程往往伴随着素材，这次的遮罩等素材自己画，提高了我的动手能力，比如通过琢磨油管教程，成功总结了怎么画面部SDF。通过改渲染逻辑，也让我对角色渲染有了更深的了解，比如为了解决头发自阴影的问题，尝试用遮罩把后发的阴影固定住。\n{{link:面部SDF画法：}}", link:"https://my.feishu.cn/wiki/Xly1wKjVViIqt3kfLt5c8YlLn8o?from=from_copylink"},
     {id:"c2", type:"image", cat:"char",
      title:"【UE】角色渲染——克雷斯蒂娜", src:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/char/ue-char-christina.webp?v=2", contain:true,
-     desc:"背景：学习UE的角色渲染流程。\n流程：从网上获取模型fbx和基础贴图，导入UE进行渲染学习。\n收获：对UE材质节点和UE角色渲染有了更深的了解。"},
+     desc:"背景：学习UE的角色渲染流程。\n流程：从网上获取模型fbx和基础贴图，导入UE进行渲染学习。\n收获：对UE材质节点和UE角色渲染有了更深的了解。\n{{link:角色流程文档：}}", link:"https://my.feishu.cn/wiki/BMHkwoxW0imCmckgQ2Lctx7Rn0b"},
     {id:"g1", type:"video", cat:"grass",
      title:"【Unity】草渲染——GPU草", tag:"几何着色器 · 曲面细分",
      file:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/grass/unity-grass-render.mp4", poster:"",
