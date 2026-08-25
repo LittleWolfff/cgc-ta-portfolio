@@ -126,7 +126,7 @@ ul{list-style:none}
   font-family:var(--serif);font-size:clamp(54px,10vw,108px);font-weight:700;
   line-height:1.05;letter-spacing:6px;
 }
-.hero-grad{font-size:.32em;font-weight:400;color:var(--accent);letter-spacing:2px;margin-left:10px}
+.hero-grad{font-size:.32em;font-weight:400;color:var(--text);letter-spacing:2px;margin-left:10px}
 .hero-tagline{
   margin-top:26px;font-size:clamp(17px,2.4vw,23px);color:var(--muted);line-height:1.9;
 }
