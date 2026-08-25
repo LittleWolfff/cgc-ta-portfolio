@@ -401,7 +401,7 @@ ul{list-style:none}
 }
 .contact-row:hover{border-color:var(--line-2)}
 .contact-label{font-size:15px;font-weight:600;color:var(--accent);flex-shrink:0;width:50px;text-align:right;letter-spacing:2px}
-.contact-value{font-size:16px;color:var(--text);flex:1;letter-spacing:1px;user-select:all}
+.contact-value{font-size:16px;color:var(--text);flex:1;letter-spacing:1px}
 .contact-copy{
   flex-shrink:0;background:rgba(226,163,62,.12);color:var(--accent);
   border:1px solid rgba(226,163,62,.3);border-radius:6px;padding:6px 14px;
