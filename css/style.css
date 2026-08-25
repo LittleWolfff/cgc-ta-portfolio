@@ -393,15 +393,22 @@ ul{list-style:none}
 
 /* ---------- 联系 ---------- */
 .section-contact{background:var(--bg);padding-bottom:40vh}
-.contact-grid{max-width:var(--maxw);margin:0 auto;text-align:center;color:var(--muted);font-size:16px;display:flex;flex-direction:column;gap:10px}
-.contact-item{
-  display:flex;align-items:center;gap:18px;background:var(--surface);
-  border:1px solid var(--line);border-radius:14px;padding:20px 24px;transition:.3s;cursor:pointer;
+.contact-grid{max-width:640px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+.contact-row{
+  display:flex;align-items:center;gap:20px;
+  background:var(--surface);border:1px solid var(--line);border-radius:12px;
+  padding:16px 22px;transition:.3s;
 }
-.contact-item:hover{border-color:var(--accent);box-shadow:var(--shadow);transform:translateY(-2px)}
-.contact-icon{font-size:24px}
-.contact-item div{display:flex;flex-direction:column;flex:1}
-.contact-label{font-size:12px;color:var(--faint);letter-spacing:2px}
+.contact-row:hover{border-color:var(--line-2)}
+.contact-label{font-size:15px;font-weight:600;color:var(--accent);flex-shrink:0;width:50px;text-align:right;letter-spacing:2px}
+.contact-value{font-size:16px;color:var(--text);flex:1;letter-spacing:1px;user-select:all}
+.contact-copy{
+  flex-shrink:0;background:rgba(226,163,62,.12);color:var(--accent);
+  border:1px solid rgba(226,163,62,.3);border-radius:6px;padding:6px 14px;
+  font-size:13px;cursor:pointer;transition:.25s;
+}
+.contact-copy:hover{background:var(--accent);color:#14100a;border-color:var(--accent)}
+.contact-copy.done{background:rgba(80,160,112,.15);color:#50a070;border-color:rgba(80,160,112,.4)}
 .contact-value{font-size:17px;font-family:var(--serif)}
 .copy-btn{
   background:var(--accent-soft);color:var(--accent);border:1px solid rgba(226,163,62,.25);
