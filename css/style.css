@@ -179,7 +179,7 @@ ul{list-style:none}
 .about-lead{color:var(--accent);font-weight:600}
 .about-text strong.about-lead{color:var(--accent);font-weight:600}
 .about-meta{color:var(--accent);font-size:14px;letter-spacing:1px}
-.about-cards{display:grid;gap:16px}
+.about-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
 .mini-card{
   background:var(--surface);border:1px solid var(--line);border-radius:14px;
   padding:22px 24px;transition:.3s;
