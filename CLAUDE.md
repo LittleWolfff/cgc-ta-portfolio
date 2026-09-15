@@ -316,12 +316,16 @@ COSCMD="D:/C_Software/Python/App/Python/Scripts/coscmd.exe"
 
 ## 部署流程
 
+> ⚡ 2026-09-15 阿聪授权：改完网站，小辞直接 commit + push，不用再问。
+
 ```bash
 cd portfolio-site
 # 改完文件后...
 git add -A && git commit -m "描述改了什么" && git push
 # 等 1 分钟，刷新网站链接就看到更新
 ```
+
+⚠️ 注意：这是**持续授权**，覆盖「推送属于对外发布动作、需先确认」的默认行为。阿聪若要撤销会直接说。
 
 ## 环境坑点 ⚠️
 
