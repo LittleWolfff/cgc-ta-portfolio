@@ -48,6 +48,8 @@ ul{list-style:none}
 .sidebar-link:hover{color:var(--text);background:rgba(255,255,255,.03)}
 .sidebar-link.active{color:var(--accent);background:rgba(255,215,100,.06)}
 .sidebar-link.active .sidebar-num{color:var(--accent)}
+.sidebar-link.hl{color:var(--accent)}
+.sidebar-link.hl .sidebar-num{color:var(--accent)}
 .sidebar-num{font-family:var(--serif);font-size:13px;color:var(--muted);width:22px;transition:color .25s}
 .sidebar-label{font-weight:500}
 .main-area{flex:1;margin-left:240px;min-width:0}
