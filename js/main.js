@@ -46,6 +46,11 @@
      title:"【AI】视频转文字流水线", tag:"ASR · LLM 纠错 · Python",
      src:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/ai/video-to-text.webp?v=2", portrait:true,
      desc:"背景：学一个新领域时，同一个纯理论课题在 B 站往往有一堆教程，一个个从头看完效率太低，有时看完了才发现不是自己想要的。于是想把视频转成文字，再让 AI 先帮我梳理这个领域的知识框架，快速锁定精华，挑值得的教程回看。\n流程：下载 → ASR 识别 → LLM 术语级纠错，把每期视频转成文章后汇总喂给 AI 梳理。中间踩了一堆坑——6GB 显存要分片处理、funasr 依赖的 editdistance 没有预编译包得自写纯 Python 垫片顶替、Windows glob 大小写不敏感导致重复处理需用 set() 去重、下载被 412 反爬从 yt-dlp 换 you-get。\n收获：现在学新领域时，能先把整套教程转成文字让 AI 梳理框架、锁定精华，再挑需要的视频回看，不用一个个从头啃；识别准确率也从几乎乱码提升到可直接阅读的程度。"},
+    {id:"a3", type:"video", cat:"ai",
+     title:"【AI】飞书知识库共享", tag:"MCP · 飞书 API · pandoc",
+     file:"", poster:"",
+     emptyText:"截图整理中，稍后上线",
+     desc:"背景：本地攒的 markdown 笔记散在硬盘里没法检索，想把它们搬到飞书知识库统一管理，同时让 AI 助手能直接搜、读、写。但飞书没有「本地 md 直接导入」的通道，逐块搬运在图片多的笔记上开销爆炸——一篇 79 张图的笔记要走 158 次 API 调用。\n流程：pandoc 转 docx（用 Lua filter 把图片宽度统一成 680px 适配飞书正文区），再走开放平台 API 六步导入——分片上传 → import_tasks → 轮询状态 → move_docs_to_wiki；反向还写了 wiki → 本地 md 的增量同步。踩了不少坑——medias API 报 1061004 权限不足改走 files 通道、import_tasks 不支持挂载 wiki 要先导云空间再搬、MCP 改不了文档标题只能自己写脚本直调 API。\n收获：29.6MB、含 79 张图的笔记成功导入，产出 0 表格 / 80 图片块 / 42 标题的干净排版（从 v1 迭代到 v6）；知识库 30+ 文档全量缓存，AI 助手能直接检索。"},
   ];
 
   var CAT_LABEL = {char:"角色渲染", grass:"草渲染", water:"水渲染", vfx:"特效", render:"渲染作品", shader:"Shader", tool:"工具/管线", ai:"AI 应用"};
