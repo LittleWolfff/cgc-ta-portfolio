@@ -40,7 +40,7 @@
      desc:"背景：游戏项目里只有我一个 3D 美术，需要处理大量 3D 模型，经常要检查法线对不对、修改器有没有应用、名字有没有规范命名、原点在不在模型底部等等，耗精力且容易忘记检查而出错，于是想到用 CodeBuddy 生成一个规范化的工具。\n流程：边 vibe coding 边测试功能，同时应用于实际的游戏开发场景，不断更新迭代，实现了快速命名、检查 UV 是否拉伸严重、原点归零等操作一键处理、检查法线是否正确、快捷导出模型（内部配置了正确的导出设置）。同时考虑了上手难度，专门设置了顺序步骤，美术只需跟着步骤点击，简单易上手。\n收获：切实感受到自动化工具的好处，也为后续开发一系列 skill 和工具打下了基础。"},
     {id:"a1", type:"image", cat:"ai",
      title:"【AI】UE 资产读取工具", tag:"MCP · UAssetAPI · Python",
-     src:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/ai/ue-asset-tool.webp", portrait:true,
+     src:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/ai/ue-asset-tool.webp?v=2", portrait:true,
      desc:"背景：UE 材质节点有时会出 bug，自己排查容易卡住，于是做了这个工具让 AI 能读到材质资产、帮忙分析节点逻辑——问题很快就定位到了；顺带还能让它讲解我还没看懂的节点实现。\n流程：基于 UAssetAPI 解析 .uasset 二进制文件，封装成 MCP Server 供 Claude Code 调用，让它能读到材质的参数、蓝图的父类、变量名与函数图。踩了不少坑——MCP 配置只认项目根目录的 .mcp.json、依赖装到 mcp 2.0 会直接崩、切换工程后必须重启 CC、Git Bash 会把 /Game/... 路径改写成 C:/Program Files/Git/Game/... 导致找不到资产。\n收获：现在做 UE 材质和蓝图时，卡住的地方可以让 AI 一起看逻辑，不用自己硬啃；已索引两个 UE 工程，能读取 5 个蓝图的父类、变量名、函数图名与接口函数签名，以及材质资产的 domain / blend_mode，产出 dump_blueprint.py 等可复用脚本。"},
     {id:"a2", type:"image", cat:"ai",
      title:"【AI】视频转文字流水线", tag:"ASR · LLM 纠错 · Python",
@@ -114,9 +114,9 @@
         '<p class="work-sub">'+esc(w.desc)+'</p></div></article>';
     }
     // image — 横排大图卡片；portrait 竖图改为贴合图片自身高度，不留左右黑边
-    var wrapStyle = w.portrait ? 'background:#000;width:auto' : 'background:#000';
+    var wrapStyle = w.portrait ? 'background:#000;width:28%' : 'background:#000';
     var imgStyle = w.portrait
-      ? 'display:block;max-height:480px;width:auto;cursor:pointer'
+      ? 'display:block;width:100%;height:auto;cursor:pointer'
       : 'width:100%;aspect-ratio:16/9;'+(w.contain ? 'object-fit:contain;' : 'object-fit:cover;object-position:top;')+'display:block;cursor:pointer';
     return '<article class="work-card work-card-h" data-open="image">'+
       '<span class="work-cat">'+CAT_LABEL[w.cat]+'</span>'+
