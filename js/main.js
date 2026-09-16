@@ -43,7 +43,7 @@
     {id:"a4", type:"image", cat:"ai",
      title:"【AI】知乎原文阅读工具", tag:"CLI 工具 · Python",
      src:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/ai/zhihu-reader.webp", portrait:true,
-     desc:"背景：写角色开发管线文档时，要引用 UV 尺寸、烘焙 Padding、面数标准这类参数，但搜索返回的是「多篇文章聚合提炼后的摘要」——读得到内容，却引用不出原文，也拿不到最专业的那层细节。参数必须来自原文才能信，于是想让 AI 能直接读到知乎原文。\n流程：先试纯 API 直连，卡在知乎的 x-zse-96 动态签名上（前端 JS 用 URL + Cookie + 时间戳现算），换 UA、加 Referer、带完整 Cookie 全部 403；又试了真实浏览器方案，启动慢、新会话没登录态被风控拦、短信登录还要过滑块验证。最后发现现成的 zhihu-toolkit CLI，一条命令跑通。中途还踩了个环境坑——本机的 PYTHONHOME 会让 uv 装的隔离工具串用系统 Python 库，一跑就报 SRE module mismatch，得先清空它。\n收获：现在能把知乎原文（含图）直接抓成 markdown，写技术文档时可以引用原文级的参数，不用再靠二手摘要凑；另外留了条兜底路线——Cookie 失效或知乎改版时，浏览器另存 HTML 丢进脚本解析也能用。"},
+     desc:"背景：平时主要在知乎上学东西，但很多时候 AI 帮不上忙——它读不到原文，只能拿搜索给的「多篇文章聚合提炼后的摘要」回答，细节经常对不上，也没法就着真实内容深入讲。想让 AI 在我学习时真正能答疑、帮我梳理知识，就得先解决「让它读到原文」这件事。\n流程：先试纯 API 直连，卡在知乎的 x-zse-96 动态签名上（前端 JS 用 URL + Cookie + 时间戳现算），换 UA、加 Referer、带完整 Cookie 全部 403；又试了真实浏览器方案，启动慢、新会话没登录态被风控拦、短信登录还要过滑块验证。最后发现现成的 zhihu-toolkit CLI，一条命令跑通。中途还踩了个环境坑——本机的 PYTHONHOME 会让 uv 装的隔离工具串用系统 Python 库，一跑就报 SRE module mismatch，得先清空它。\n收获：现在遇到不懂的内容，可以直接把原文（含图）抓成 markdown 喂给 AI，就着原文问、让它帮我梳理成体系；拿到的还是原文细节，不用再靠搜索的二手摘要凑，学起来踏实也高效。另外留了条兜底路线——Cookie 失效或知乎改版时，浏览器另存 HTML 丢进脚本解析也能用。"},
     {id:"p1", type:"project", cat:"amuse",
      title:"【Unity】《自娱自乐》", date:"2026.01 — 2026.06", role:"Unity / 3D美术 / 技术美术",
      video:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/projects/project-amuse-ourselves.mp4",
