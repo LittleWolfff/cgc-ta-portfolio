@@ -42,7 +42,7 @@
      title:"【AI】UE 资产读取工具", tag:"MCP · UAssetAPI · Python",
      file:"", poster:"",
      emptyText:"演示录制中，稍后上线",
-     desc:"背景：想让 AI 不打开 UE 编辑器就能读懂工程里的资产，方便快速分析、学习 UE 项目结构。\n流程：基于 UAssetAPI 解析 .uasset 二进制文件，封装成 MCP Server 供 Claude Code 调用。踩了不少坑——MCP 配置只认项目根目录的 .mcp.json、依赖装到 mcp 2.0 会直接崩、切换工程后必须重启 CC、Git Bash 会把 /Game/... 路径改写成 C:/Program Files/Git/Game/... 导致找不到资产。\n收获：已索引两个 UE 工程，能读取 5 个蓝图的父类、变量名、函数图名与接口函数签名，以及材质资产的 domain / blend_mode；产出 dump_blueprint.py 等可复用脚本。"},
+     desc:"背景：在 UE 项目里做渲染时，经常要翻蓝图（父类、变量、函数图）来排查问题、理解实现思路，但 AI 助手看不到工程内的资产，想让它帮忙分析也无从下手。于是做了这个工具，把工程信息接给 AI，辅助我查 bug 和学 UE。\n流程：基于 UAssetAPI 解析 .uasset 二进制文件，封装成 MCP Server 供 Claude Code 调用，让它能读到蓝图的父类、变量名、函数图与材质资产参数。踩了不少坑——MCP 配置只认项目根目录的 .mcp.json、依赖装到 mcp 2.0 会直接崩、切换工程后必须重启 CC、Git Bash 会把 /Game/... 路径改写成 C:/Program Files/Git/Game/... 导致找不到资产。\n收获：现在开着 UE 做项目时，可以让 AI 一起看蓝图查问题、帮我理解工程的实现，学习效率提升明显；已索引两个 UE 工程，能读取 5 个蓝图的父类、变量名、函数图名与接口函数签名，以及材质资产的 domain / blend_mode，产出 dump_blueprint.py 等可复用脚本。"},
     {id:"a2", type:"video", cat:"ai",
      title:"【AI】视频转文字流水线", tag:"ASR · LLM 纠错 · Python",
      file:"", poster:"",
