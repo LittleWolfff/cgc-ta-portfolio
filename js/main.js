@@ -159,7 +159,7 @@
       return '<article class="project-card">'+thumb+
         '<div class="project-body">'+
           '<div class="project-head">'+
-            '<h4><span class="project-date">'+esc(w.date)+'</span> '+esc(w.title)+(w.titleSuffix||"")+'</h4>'+
+            '<h4>'+esc(w.title)+(w.titleSuffix||"")+'<span class="project-date">'+esc(w.date)+'</span></h4>'+
             '<p class="project-role">'+esc(w.role)+'</p>'+
           '</div>'+
           '<p>'+formatDesc(w)+'</p>'+
