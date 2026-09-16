@@ -53,6 +53,14 @@
   ];
 
   var CAT_LABEL = {char:"角色渲染", grass:"草渲染", water:"水渲染", vfx:"特效", render:"渲染作品", shader:"Shader", tool:"工具/管线", ai:"AI 应用"};
+
+  /* ---------- 栏首说明（按分类切换，未配置的分类不显示） ---------- */
+  var CAT_INTRO = {
+    ai: {
+      text: "把 AI 当作协作者，而不只是问答工具",
+      tags: ["Claude Code", "DeepSeek-V4", "Qwen-VL-Plus"]
+    }
+  };
   var EMPTY_FALLBACK = '<p class="works-empty">作品还在路上，稍后就到</p>';
 
   /* ---------- DOM ---------- */
@@ -135,6 +143,21 @@
     grid.innerHTML = list.map(cardHTML).join("");
   }
 
+  /* ---------- 栏首说明渲染 ---------- */
+  function renderIntro(cat){
+    var el = document.getElementById("worksIntro");
+    if (!el) return;
+    var cfg = CAT_INTRO[cat];
+    if (!cfg){ el.hidden = true; el.innerHTML = ""; return; }
+    var html = "";
+    if (cfg.text) html += '<p class="intro-text">'+esc(cfg.text)+'</p>';
+    if (cfg.tags && cfg.tags.length){
+      html += '<ul class="intro-tags">'+cfg.tags.map(function(t){ return "<li>"+esc(t)+"</li>"; }).join("")+"</ul>";
+    }
+    el.innerHTML = html;
+    el.hidden = false;
+  }
+
   /* ---------- 筛选 ---------- */
   if (filters) {
     filters.addEventListener("click", function(e){
@@ -143,6 +166,7 @@
       filters.querySelectorAll(".filter-btn").forEach(function(b){ b.classList.remove("active"); });
       btn.classList.add("active");
       currentFilter = btn.getAttribute("data-filter");
+      renderIntro(currentFilter);
       render();
       var y = document.getElementById("works").getBoundingClientRect().top + window.pageYOffset - 80;
       window.scrollTo({top: y, behavior: "smooth"});
@@ -487,5 +511,6 @@
   document.querySelectorAll(".reveal").forEach(function(el){ io.observe(el); });
 
   /* ---------- 初始化 ---------- */
+  renderIntro(currentFilter);
   render();
 })();
