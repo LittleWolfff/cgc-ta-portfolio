@@ -61,7 +61,7 @@
      thumbBg:"linear-gradient(135deg,#1a0e1f,#2d1a35,#120818)",
      desc:"背景：Unity 引擎的卡通解密游戏。依旧作为唯一的 3D 美术兼 TA，不过相比以前更有开发经验，更加得心应手\n流程：负责所有 3D 资产建模、贴图与场景搭建；用混元 3D 生成高模，再手动拓扑成低模\n收获：独立开发模块化卡通渲染方案，拆分漫反射、阴影、环境光、边缘光等光照模块，实现 Ramp 卡通明暗、风格化条纹阴影、平滑法线描边、材质 ID 多色分区；自写全局设置系统与 Editor 工具链配合，流程更专业\n{{link:技术文档链接：:https://my.feishu.cn/wiki/ZFk3wSNKOiUtReke0XQcBVKfnZe}}"},
     {id:"p2", type:"project", cat:"fuchenlu",
-     title:"《浮沉录》", titleSuffix:'<span style="font-size:14px;font-weight:400">（锐意开发中）</span>',
+     title:"【UE】《浮沉录》", titleSuffix:'<span style="font-size:14px;font-weight:400">（锐意开发中）</span>',
      date:"2026.06 — 2026.08", role:"UE / 技术美术",
      multi:true,
      thumbBg:"linear-gradient(135deg,#0f1a1a,#1a2d2d,#081212)",
