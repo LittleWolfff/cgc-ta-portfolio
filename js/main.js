@@ -55,6 +55,11 @@
      file:"", poster:"",
      emptyText:"截图整理中，稍后上线",
      desc:"背景：写角色开发管线文档时，要引用 UV 尺寸、烘焙 Padding、面数标准这类参数，但搜索返回的是「多篇文章聚合提炼后的摘要」——读得到内容，却引用不出原文，也拿不到最专业的那层细节。参数必须来自原文才能信，于是想让 AI 能直接读到知乎原文。\n流程：先试纯 API 直连，卡在知乎的 x-zse-96 动态签名上（前端 JS 用 URL + Cookie + 时间戳现算），换 UA、加 Referer、带完整 Cookie 全部 403；又试了真实浏览器方案，启动慢、新会话没登录态被风控拦、短信登录还要过滑块验证。最后发现现成的 zhihu-toolkit CLI，一条命令跑通。中途还踩了个环境坑——本机的 PYTHONHOME 会让 uv 装的隔离工具串用系统 Python 库，一跑就报 SRE module mismatch，得先清空它。\n收获：现在能把知乎原文（含图）直接抓成 markdown，写技术文档时可以引用原文级的参数，不用再靠二手摘要凑；另外留了条兜底路线——Cookie 失效或知乎改版时，浏览器另存 HTML 丢进脚本解析也能用。"},
+    {id:"p1", type:"project", cat:"amuse",
+     title:"《自娱自乐》", date:"2026.01 — 2026.06", role:"Unity / 3D美术 / 技术美术",
+     video:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/projects/project-amuse-ourselves.mp4",
+     thumbBg:"linear-gradient(135deg,#1a0e1f,#2d1a35,#120818)",
+     desc:"背景：Unity 引擎的卡通解密游戏。依旧作为唯一的 3D 美术兼 TA，不过相比以前更有开发经验，更加得心应手\n流程：负责所有 3D 资产建模、贴图与场景搭建；用混元 3D 生成高模，再手动拓扑成低模\n收获：独立开发模块化卡通渲染方案，拆分漫反射、阴影、环境光、边缘光等光照模块，实现 Ramp 卡通明暗、风格化条纹阴影、平滑法线描边、材质 ID 多色分区；自写全局设置系统与 Editor 工具链配合，流程更专业\n{{link:技术文档链接：:https://my.feishu.cn/wiki/ZFk3wSNKOiUtReke0XQcBVKfnZe}}"},
   ];
 
   var CAT_LABEL = {self:"自练内容", amuse:"2026项目《自娱自乐》", char:"角色渲染", grass:"草渲染", water:"水渲染", vfx:"特效", render:"渲染作品", shader:"Shader", tool:"工具/管线", ai:"AI 应用"};
@@ -109,6 +114,20 @@
   }
 
   function cardHTML(w, i){
+    // project — 项目卡（结构与 index.html 里原 .project-card 完全一致）
+    if (w.type === "project"){
+      return '<article class="project-card">'+
+        '<div class="project-thumb" style="background:'+w.thumbBg+'">'+
+          '<video class="project-thumb-video" src="'+w.video+'" controls preload="auto"></video>'+
+        '</div>'+
+        '<div class="project-body">'+
+          '<div class="project-head">'+
+            '<h4><span class="project-date">'+esc(w.date)+'</span> '+esc(w.title)+'</h4>'+
+            '<p class="project-role">'+esc(w.role)+'</p>'+
+          '</div>'+
+          '<p>'+formatDesc(w)+'</p>'+
+        '</div></article>';
+    }
     if (w.type === "video"){
       var hasFile = w.file;
       var html = '<article class="work-card work-card-h">'+
