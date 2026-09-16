@@ -57,7 +57,7 @@
      desc:"背景：写角色开发管线文档时，要引用 UV 尺寸、烘焙 Padding、面数标准这类参数，但搜索返回的是「多篇文章聚合提炼后的摘要」——读得到内容，却引用不出原文，也拿不到最专业的那层细节。参数必须来自原文才能信，于是想让 AI 能直接读到知乎原文。\n流程：先试纯 API 直连，卡在知乎的 x-zse-96 动态签名上（前端 JS 用 URL + Cookie + 时间戳现算），换 UA、加 Referer、带完整 Cookie 全部 403；又试了真实浏览器方案，启动慢、新会话没登录态被风控拦、短信登录还要过滑块验证。最后发现现成的 zhihu-toolkit CLI，一条命令跑通。中途还踩了个环境坑——本机的 PYTHONHOME 会让 uv 装的隔离工具串用系统 Python 库，一跑就报 SRE module mismatch，得先清空它。\n收获：现在能把知乎原文（含图）直接抓成 markdown，写技术文档时可以引用原文级的参数，不用再靠二手摘要凑；另外留了条兜底路线——Cookie 失效或知乎改版时，浏览器另存 HTML 丢进脚本解析也能用。"},
   ];
 
-  var CAT_LABEL = {self:"自练内容", char:"角色渲染", grass:"草渲染", water:"水渲染", vfx:"特效", render:"渲染作品", shader:"Shader", tool:"工具/管线", ai:"AI 应用"};
+  var CAT_LABEL = {self:"自练内容", amuse:"2026项目《自娱自乐》", char:"角色渲染", grass:"草渲染", water:"水渲染", vfx:"特效", render:"渲染作品", shader:"Shader", tool:"工具/管线", ai:"AI 应用"};
 
   /* ---------- 栏首说明（按分类切换，未配置的分类不显示） ---------- */
   var CAT_INTRO = {
