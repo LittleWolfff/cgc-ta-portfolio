@@ -56,10 +56,7 @@
 
   /* ---------- 栏首说明（按分类切换，未配置的分类不显示） ---------- */
   var CAT_INTRO = {
-    ai: {
-      text: "把 AI 当作协作者，而不只是问答工具",
-      tags: ["Claude Code", "DeepSeek-V4", "Qwen-VL-Plus"]
-    }
+    ai: "日常开发以 Claude Code 为主力，底层接 DeepSeek-V4 做长上下文推理，配合 Qwen-VL-Plus 处理图像理解——下面是我用它们做出来的东西。"
   };
   var EMPTY_FALLBACK = '<p class="works-empty">作品还在路上，稍后就到</p>';
 
@@ -147,14 +144,9 @@
   function renderIntro(cat){
     var el = document.getElementById("worksIntro");
     if (!el) return;
-    var cfg = CAT_INTRO[cat];
-    if (!cfg){ el.hidden = true; el.innerHTML = ""; return; }
-    var html = "";
-    if (cfg.text) html += '<p class="intro-text">'+esc(cfg.text)+'</p>';
-    if (cfg.tags && cfg.tags.length){
-      html += '<ul class="intro-tags">'+cfg.tags.map(function(t){ return "<li>"+esc(t)+"</li>"; }).join("")+"</ul>";
-    }
-    el.innerHTML = html;
+    var text = CAT_INTRO[cat];
+    if (!text){ el.hidden = true; el.textContent = ""; return; }
+    el.textContent = text;
     el.hidden = false;
   }
 
