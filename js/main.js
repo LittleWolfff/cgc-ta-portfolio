@@ -90,7 +90,7 @@
   var vmTag = document.getElementById("vmTag");
   var vmDesc = document.getElementById("vmDesc");
 
-  var currentFilter = "self";
+  var currentFilter = "amuse";
   var lbIndex = -1;
 
   /* ---------- 渲染作品卡片 ---------- */
