@@ -90,6 +90,18 @@
         "应用于项目：【Unity】角色渲染——千早爱音"
       ]
     },
+    fuchenlu: {
+      title: "目录",
+      items: [
+        "项目本体：【UE】《浮沉录》（锐意开发中）"
+      ]
+    },
+    dreamaker: {
+      title: "目录",
+      items: [
+        "项目本体：【Unity】《游戏造梦师》"
+      ]
+    },
     ai: {
       title: "我常用的 AI 工具&模型",
       items: [
