@@ -6,9 +6,6 @@
 
   /* ---------- 作品数据 ---------- */
   var WORKS = [
-    {id:"c2", type:"image", cat:"self",
-     title:"【UE】角色渲染——克雷斯蒂娜", src:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/char/ue-char-christina.webp?v=2", contain:true,
-     desc:"背景：学习UE的角色渲染流程。\n流程：从网上获取模型fbx和基础贴图，导入UE进行渲染学习。\n收获：对UE材质节点和UE角色渲染有了更深的了解。", link:""},
     {id:"g1", type:"video", cat:"self",
      title:"【Unity】草渲染——GPU草", tag:"几何着色器 · 曲面细分",
      file:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/grass/unity-grass-render.mp4", poster:"",
@@ -69,6 +66,9 @@
      src:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/projects/fuchenlu.webp",
      icon:"📜", label:"浮沉录",
      desc:"背景：动作冒险游戏。参与 UE 项目，促进 UE 的学习\n流程：目前负责渲染管线搭建、主角的渲染、布料模拟\n收获：对 UE 引擎有了更多的运用和学习，同时增加 UE 团队协作的经验"},
+    {id:"c2", type:"image", cat:"fuchenlu",
+     title:"【UE】角色渲染——克雷斯蒂娜", src:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/char/ue-char-christina.webp?v=2", contain:true,
+     desc:"背景：用于学习 UE 材质节点，并整理出材质函数、总结进个人 UE 插件中，同时也用于测试角色流程。\n流程：从网上获取模型fbx和基础贴图，导入UE进行渲染学习。\n收获：对UE材质节点和UE角色渲染有了更深的了解。", link:""},
     {id:"p3", type:"project", cat:"dreamaker",
      title:"【Unity】《游戏造梦师》", date:"2024.06 — 2025.06", role:"Unity / 3D美术 / 技术美术",
      video:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/projects/project-dream-maker.mp4",
@@ -93,7 +93,8 @@
     fuchenlu: {
       title: "目录",
       items: [
-        "项目本体：【UE】《浮沉录》（锐意开发中）"
+        "项目本体：【UE】《浮沉录》（锐意开发中）",
+        "应用于项目：【UE】角色渲染——克雷斯蒂娜"
       ]
     },
     dreamaker: {
@@ -105,7 +106,6 @@
     self: {
       title: "目录",
       items: [
-        "自练内容：【UE】角色渲染——克雷斯蒂娜",
         "自练内容：【Unity】草渲染——GPU草",
         "自练内容：【Unity】草渲染——面片草",
         "自练内容：【Unity】水渲染——卡通交互水",
