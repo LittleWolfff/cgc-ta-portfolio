@@ -61,7 +61,7 @@
       items: [
         "Visual Studio Code（主力开发环境，Claude Code 等 AI 工具集成在这里）",
         "Claude Code（Anthropic 官方 VS Code 扩展，主力 AI 开发助理）",
-        "DeepSeek-V4 Pro（主力，长上下文）/ V4 Flash（轻量任务）（经 API 接入，作为 Claude Code 的底层模型）",
+        "DeepSeek-V4 Flash（主力模型，经 API 接入，作为 Claude Code 的底层模型）",
         "Qwen-VL-Plus（阿里通义千问视觉模型，用于图像理解与 OCR）"
       ]
     }
