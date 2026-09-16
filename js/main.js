@@ -28,11 +28,6 @@
      file:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/vfx/unity-vfx-explosion.mp4", poster:"",
      size:"约2.4MB · 1080P",
      desc:"背景：想了解 Unity 的 VFX 特效制作，跟着教程做一个完整的爆炸效果。\n流程：用粒子系统搭出火花、烟雾球、烟圈多层结构；烟雾球和烟圈在 Blender 里建模、Krita 画无缝贴图，再用噪声图加 custom 值做 clip 溶解，让烟雾按黑灰白顺序消散；粒子颜色走顶点色传给 shader 实现烟雾变黑，材质用 HDR 让火花和橙环发光。\n收获：了解了特效从 DCC 建模、画贴图到引擎粒子系统和溶解 shader 的完整流程，也学会了用 custom 数据让粒子系统和 shader 联动。\n{{link:技术文档：:https://my.feishu.cn/wiki/ThmAwKxUFieoeukqswdcbMiHnic}}"},
-    {id:"t1", type:"video", cat:"self",
-     title:"【工具】Blender资产规范化工具", tag:"工具 · Python",
-     file:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/tool/blender-asset-tool.mp4", poster:"",
-     size:"约9.9MB · 1080P",
-     desc:"背景：游戏项目里只有我一个 3D 美术，需要处理大量 3D 模型，经常要检查法线对不对、修改器有没有应用、名字有没有规范命名、原点在不在模型底部等等，耗精力且容易忘记检查而出错，于是想到用 CodeBuddy 生成一个规范化的工具。\n流程：边 vibe coding 边测试功能，同时应用于实际的游戏开发场景，不断更新迭代，实现了快速命名、检查 UV 是否拉伸严重、原点归零等操作一键处理、检查法线是否正确、快捷导出模型（内部配置了正确的导出设置）。同时考虑了上手难度，专门设置了顺序步骤，美术只需跟着步骤点击，简单易上手。\n收获：切实感受到自动化工具的好处，也为后续开发一系列 skill 和工具打下了基础。"},
     {id:"a1", type:"image", cat:"ai",
      title:"【AI】UE 资产读取工具", tag:"MCP · UAssetAPI · Python",
      src:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/ai/ue-asset-tool.webp?v=2", portrait:true,
@@ -60,6 +55,11 @@
      file:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/char/unity-anon-char-render.mp4", poster:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/char/poster-anon.webp",
      size:"约33MB · 1080P",
      desc:"背景：在学习了星见雅和其他一些角色的渲染方式后，为了体会自己独立落地的过程，从零开始制作角色。\n流程：Blender建模、蒙皮、K动画，SP画纹理和画遮罩，Unity实现渲染和人物移动。\n收获：网上的教程往往伴随着素材，这次的遮罩等素材自己画，提高了我的动手能力，比如通过琢磨油管教程，成功总结了怎么画面部SDF。通过改渲染逻辑，也让我对角色渲染有了更深的了解，比如为了解决头发自阴影的问题，尝试用遮罩把后发的阴影固定住。\n{{link:面部SDF画法：:https://my.feishu.cn/wiki/Xly1wKjVViIqt3kfLt5c8YlLn8o}}\n{{link:角色技术文档：:https://my.feishu.cn/wiki/Ttziwa474iLSv3k92x2cVDbYnxb}}", link:""},
+    {id:"t1", type:"video", cat:"amuse",
+     title:"【工具】Blender资产规范化工具", tag:"工具 · Python",
+     file:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/tool/blender-asset-tool.mp4", poster:"",
+     size:"约9.9MB · 1080P",
+     desc:"背景：游戏项目里只有我一个 3D 美术，需要处理大量 3D 模型，经常要检查法线对不对、修改器有没有应用、名字有没有规范命名、原点在不在模型底部等等，耗精力且容易忘记检查而出错，于是想到用 CodeBuddy 生成一个规范化的工具。\n流程：边 vibe coding 边测试功能，同时应用于实际的游戏开发场景，不断更新迭代，实现了快速命名、检查 UV 是否拉伸严重、原点归零等操作一键处理、检查法线是否正确、快捷导出模型（内部配置了正确的导出设置）。同时考虑了上手难度，专门设置了顺序步骤，美术只需跟着步骤点击，简单易上手。\n收获：切实感受到自动化工具的好处，也为后续开发一系列 skill 和工具打下了基础。"},
     {id:"p2", type:"project", cat:"fuchenlu",
      title:"【UE】《浮沉录》", titleSuffix:'<span style="font-size:14px;font-weight:400">（锐意开发中）</span>',
      date:"2026.06 — 2026.08", role:"UE / 技术美术",
@@ -87,7 +87,8 @@
       title: "目录",
       items: [
         "项目本体：【Unity】《自娱自乐》",
-        "应用于项目：【Unity】角色渲染——千早爱音"
+        "应用于项目：【Unity】角色渲染——千早爱音",
+        "应用于项目：【工具】Blender资产规范化工具"
       ]
     },
     fuchenlu: {
@@ -109,8 +110,7 @@
         "自练内容：【Unity】草渲染——GPU草",
         "自练内容：【Unity】草渲染——面片草",
         "自练内容：【Unity】水渲染——卡通交互水",
-        "自练内容：【Unity】特效——爆炸",
-        "自练内容：【工具】Blender资产规范化工具"
+        "自练内容：【Unity】特效——爆炸"
       ]
     },
     ai: {
