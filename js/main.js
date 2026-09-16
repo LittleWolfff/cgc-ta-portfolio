@@ -60,6 +60,16 @@
      video:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/projects/project-amuse-ourselves.mp4",
      thumbBg:"linear-gradient(135deg,#1a0e1f,#2d1a35,#120818)",
      desc:"背景：Unity 引擎的卡通解密游戏。依旧作为唯一的 3D 美术兼 TA，不过相比以前更有开发经验，更加得心应手\n流程：负责所有 3D 资产建模、贴图与场景搭建；用混元 3D 生成高模，再手动拓扑成低模\n收获：独立开发模块化卡通渲染方案，拆分漫反射、阴影、环境光、边缘光等光照模块，实现 Ramp 卡通明暗、风格化条纹阴影、平滑法线描边、材质 ID 多色分区；自写全局设置系统与 Editor 工具链配合，流程更专业\n{{link:技术文档链接：:https://my.feishu.cn/wiki/ZFk3wSNKOiUtReke0XQcBVKfnZe}}"},
+    {id:"p2", type:"project", cat:"fuchenlu",
+     title:"《浮沉录》", titleSuffix:'<span style="font-size:14px;font-weight:400">（锐意开发中）</span>',
+     date:"2026.06 — 2026.08", role:"UE / 技术美术",
+     multi:true,
+     thumbBg:"linear-gradient(135deg,#0f1a1a,#1a2d2d,#081212)",
+     fullImgs:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/projects/fuchenlu-full.webp|https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/projects/fuchenlu-2.webp",
+     thumbs:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/projects/fuchenlu.webp|https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/projects/fuchenlu-2-thumb.webp",
+     src:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/projects/fuchenlu.webp",
+     icon:"📜", label:"浮沉录",
+     desc:"背景：动作冒险游戏。参与 UE 项目，促进 UE 的学习\n流程：目前负责渲染管线搭建、主角的渲染、布料模拟\n收获：对 UE 引擎有了更多的运用和学习，同时增加 UE 团队协作的经验"},
   ];
 
   var CAT_LABEL = {self:"自练内容", amuse:"2026项目《自娱自乐》", fuchenlu:"2026项目《浮沉录》", char:"角色渲染", grass:"草渲染", water:"水渲染", vfx:"特效", render:"渲染作品", shader:"Shader", tool:"工具/管线", ai:"AI 应用"};
@@ -116,13 +126,25 @@
   function cardHTML(w, i){
     // project — 项目卡（结构与 index.html 里原 .project-card 完全一致）
     if (w.type === "project"){
-      return '<article class="project-card">'+
-        '<div class="project-thumb" style="background:'+w.thumbBg+'">'+
+      var thumb;
+      if (w.multi){
+        // 多图轮播缩略图（原 .project-thumb.multi）
+        thumb = '<div class="project-thumb multi" style="background:'+w.thumbBg+'" data-full-imgs="'+w.fullImgs+'" data-thumbs="'+w.thumbs+'">'+
+          '<img class="project-thumb-img" src="'+w.src+'" alt="'+esc(w.label)+'">'+
+          '<span class="project-thumb-icon">'+w.icon+'</span>'+
+          '<span class="project-thumb-label">'+esc(w.label)+'</span>'+
+          '<span class="thumb-nav thumb-prev">‹</span>'+
+          '<span class="thumb-nav thumb-next">›</span>'+
+        '</div>';
+      } else {
+        thumb = '<div class="project-thumb" style="background:'+w.thumbBg+'">'+
           '<video class="project-thumb-video" src="'+w.video+'" controls preload="auto"></video>'+
-        '</div>'+
+        '</div>';
+      }
+      return '<article class="project-card">'+thumb+
         '<div class="project-body">'+
           '<div class="project-head">'+
-            '<h4><span class="project-date">'+esc(w.date)+'</span> '+esc(w.title)+'</h4>'+
+            '<h4><span class="project-date">'+esc(w.date)+'</span> '+esc(w.title)+(w.titleSuffix||"")+'</h4>'+
             '<p class="project-role">'+esc(w.role)+'</p>'+
           '</div>'+
           '<p>'+formatDesc(w)+'</p>'+
