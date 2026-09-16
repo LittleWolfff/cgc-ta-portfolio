@@ -72,7 +72,7 @@
      desc:"背景：动作冒险游戏。参与 UE 项目，促进 UE 的学习\n流程：目前负责渲染管线搭建、主角的渲染、布料模拟\n收获：对 UE 引擎有了更多的运用和学习，同时增加 UE 团队协作的经验"},
   ];
 
-  var CAT_LABEL = {self:"自练内容", amuse:"2026项目《自娱自乐》", fuchenlu:"2026项目《浮沉录》", char:"角色渲染", grass:"草渲染", water:"水渲染", vfx:"特效", render:"渲染作品", shader:"Shader", tool:"工具/管线", ai:"AI 应用"};
+  var CAT_LABEL = {self:"自练内容", amuse:"2026项目《自娱自乐》", fuchenlu:"2026项目《浮沉录》", dreamaker:"2025项目《游戏造梦师》", char:"角色渲染", grass:"草渲染", water:"水渲染", vfx:"特效", render:"渲染作品", shader:"Shader", tool:"工具/管线", ai:"AI 应用"};
 
   /* ---------- 栏首说明（按分类切换，未配置的分类不显示） ---------- */
   var CAT_INTRO = {
