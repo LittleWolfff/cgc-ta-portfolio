@@ -56,7 +56,15 @@
 
   /* ---------- 栏首说明（按分类切换，未配置的分类不显示） ---------- */
   var CAT_INTRO = {
-    ai: "日常开发以 Claude Code 为主力，底层接 DeepSeek-V4 做长上下文推理，配合 Qwen-VL-Plus 处理图像理解——下面是我用它们做出来的东西。"
+    ai: {
+      title: "我常用的 AI 工具&模型",
+      items: [
+        "Visual Studio Code（主力开发环境，Claude Code 等 AI 工具集成在这里）",
+        "Claude Code（Anthropic 官方 VS Code 扩展，主力 AI 开发助理）",
+        "DeepSeek-V4 Pro（主力，长上下文）/ V4 Flash（轻量任务）（经 API 接入，作为 Claude Code 的底层模型）",
+        "Qwen-VL-Plus（阿里通义千问视觉模型，用于图像理解与 OCR）"
+      ]
+    }
   };
   var EMPTY_FALLBACK = '<p class="works-empty">作品还在路上，稍后就到</p>';
 
@@ -144,9 +152,14 @@
   function renderIntro(cat){
     var el = document.getElementById("worksIntro");
     if (!el) return;
-    var text = CAT_INTRO[cat];
-    if (!text){ el.hidden = true; el.textContent = ""; return; }
-    el.textContent = text;
+    var cfg = CAT_INTRO[cat];
+    if (!cfg){ el.hidden = true; el.innerHTML = ""; return; }
+    var html = "";
+    if (cfg.title) html += '<p class="intro-title">'+esc(cfg.title)+'</p>';
+    if (cfg.items && cfg.items.length){
+      html += '<ul class="intro-list">'+cfg.items.map(function(t){ return "<li>"+esc(t)+"</li>"; }).join("")+"</ul>";
+    }
+    el.innerHTML = html;
     el.hidden = false;
   }
 

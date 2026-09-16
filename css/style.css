@@ -228,8 +228,12 @@ ul{list-style:none}
 .work-item p{color:var(--muted);font-size:15px;max-width:680px}
 
 /* ---------- 栏首说明 ---------- */
-.section-intro{max-width:var(--maxw);margin:0 auto 26px;color:var(--muted);font-size:15px;line-height:1.85}
+.section-intro{max-width:var(--maxw);margin:0 auto 28px}
 .section-intro[hidden]{display:none}
+.intro-title{color:var(--text);font-size:15px;font-weight:600;margin:0 0 12px;letter-spacing:.3px}
+.intro-list{list-style:none;padding:0;margin:0}
+.intro-list li{position:relative;padding-left:16px;color:var(--muted);font-size:14px;line-height:1.95}
+.intro-list li::before{content:"·";position:absolute;left:3px;color:var(--accent);font-weight:700}
 
 /* ---------- 作品 ---------- */
 .filters{display:flex;justify-content:center;gap:12px;margin-bottom:46px;flex-wrap:wrap}
