@@ -49,7 +49,7 @@
     {id:"a3", type:"image", cat:"ai",
      title:"【AI】飞书知识库共享", tag:"MCP · 飞书 API · pandoc",
      src:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/ai/feishu-kb.webp", portrait:true,
-     desc:"背景：想把本地攒的 Markdown 笔记搬运到飞书知识库中统一管理，如果人工一篇篇搬运会非常费力，于是研究连通了飞书知识库的 MCP，让 AI 帮助我传输文件的同时，还能帮我检索知识和写一些飞书文档，方便团队协作。\n流程：pandoc 转 docx（用 Lua filter 把图片宽度统一成 680px 适配飞书正文区），再走开放平台 API 六步导入——分片上传 → import_tasks → 轮询状态 → move_docs_to_wiki；反向还写了 wiki → 本地 md 的增量同步。踩了不少坑——medias API 报 1061004 权限不足改走 files 通道、import_tasks 不支持挂载 wiki 要先导云空间再搬、MCP 改不了文档标题只能自己写脚本直调 API。\n收获：29.6MB、含 79 张图的笔记成功导入，产出 0 表格 / 80 图片块 / 42 标题的干净排版（从 v1 迭代到 v6）；知识库 30+ 文档全量缓存，AI 助手能直接检索。"},
+     desc:"背景：想把本地攒的 Markdown 笔记搬运到飞书知识库中统一管理，如果人工一篇篇搬运会非常费力，于是研究连通了飞书知识库的 MCP，让 AI 帮助我传输文件的同时，还能帮我检索知识和写一些飞书文档，方便团队协作。\n流程：pandoc 转 docx（用 Lua filter 把图片宽度统一成 680px 适配飞书正文区），再走开放平台 API 六步导入——分片上传 → import_tasks → 轮询状态 → move_docs_to_wiki；反向还写了 wiki → 本地 md 的增量同步。踩了不少坑——medias API 报 1061004 权限不足改走 files 通道、import_tasks 不支持挂载 wiki 要先导云空间再搬、MCP 改不了文档标题只能自己写脚本直调 API。\n收获：把「本地笔记 → 飞书知识库」从纯手工搬运变成了自动化，带大量插图的笔记也能一次性导入而且排版干净（图片被飞书拆成表格的问题反复调了很多轮才解决）；现在知识库里的文档都能被 AI 直接检索和编辑，查找和整理基本不用再手动。"},
   ];
 
   var CAT_LABEL = {char:"角色渲染", grass:"草渲染", water:"水渲染", vfx:"特效", render:"渲染作品", shader:"Shader", tool:"工具/管线", ai:"AI 应用"};
