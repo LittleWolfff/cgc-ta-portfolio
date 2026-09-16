@@ -6,58 +6,58 @@
 
   /* ---------- 作品数据 ---------- */
   var WORKS = [
-    {id:"c1", type:"video", cat:"char",
+    {id:"c1", type:"video", cat:"self",
      title:"【Unity】角色渲染——千早爱音", tag:"NPR · 卡通",
      file:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/char/unity-anon-char-render.mp4", poster:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/char/poster-anon.webp",
      size:"约33MB · 1080P",
      desc:"背景：在学习了星见雅和其他一些角色的渲染方式后，为了体会自己独立落地的过程，从零开始制作角色。\n流程：Blender建模、蒙皮、K动画，SP画纹理和画遮罩，Unity实现渲染和人物移动。\n收获：网上的教程往往伴随着素材，这次的遮罩等素材自己画，提高了我的动手能力，比如通过琢磨油管教程，成功总结了怎么画面部SDF。通过改渲染逻辑，也让我对角色渲染有了更深的了解，比如为了解决头发自阴影的问题，尝试用遮罩把后发的阴影固定住。\n{{link:面部SDF画法：:https://my.feishu.cn/wiki/Xly1wKjVViIqt3kfLt5c8YlLn8o}}\n{{link:角色技术文档：:https://my.feishu.cn/wiki/Ttziwa474iLSv3k92x2cVDbYnxb}}", link:""},
-    {id:"c2", type:"image", cat:"char",
+    {id:"c2", type:"image", cat:"self",
      title:"【UE】角色渲染——克雷斯蒂娜", src:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/char/ue-char-christina.webp?v=2", contain:true,
      desc:"背景：学习UE的角色渲染流程。\n流程：从网上获取模型fbx和基础贴图，导入UE进行渲染学习。\n收获：对UE材质节点和UE角色渲染有了更深的了解。", link:""},
-    {id:"g1", type:"video", cat:"grass",
+    {id:"g1", type:"video", cat:"self",
      title:"【Unity】草渲染——GPU草", tag:"几何着色器 · 曲面细分",
      file:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/grass/unity-grass-render.mp4", poster:"",
      size:"约24MB · 1080P",
      desc:"背景：想了解 GPU 草渲染，学习用几何着色器和曲面细分从顶点实时生成草叶。\n流程：曲面细分加密地面顶点，几何着色器从每个顶点长出一片草（7 个顶点拼成叶片），用随机函数控制每片草的高度、宽度、弯曲；风场图驱动摆动，再写脚本把角色位置传给 shader，实现草被角色推开压弯的交互。\n收获：了解了 GPU 渲染管线里曲面细分和几何着色器这两个阶段，以及从顶点实时生成几何体的思路。\n{{link:技术文档：:https://my.feishu.cn/wiki/FVDMwFYBziSnvRkPTRrctVjun1b}}"},
-    {id:"g2", type:"image", cat:"grass",
+    {id:"g2", type:"image", cat:"self",
      title:"【Unity】草渲染——面片草", src:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/grass/grass-quad.png",
      desc:"背景：了解草渲染的更多方案是如何实现的。\n流程：顶点色红通道当摆动权重（根部固定、顶部摆），法线统一朝上让明暗更平滑，再拿噪声图采样做风吹的顶点动画。LOD 没用减面，而是直接切 shader——远处草砍掉动画和阴影，只留颜色。\n收获：了解了面片草的大致流程。\n{{link}}",
      link:"https://zhuanlan.zhihu.com/p/1982165167371473318"},
-    {id:"w1", type:"video", cat:"water",
+    {id:"w1", type:"video", cat:"self",
      title:"【Unity】水渲染——卡通交互水", tag:"Shader · 交互",
      file:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/water/unity-water-render.mp4", poster:"",
      size:"约35MB · 1080P",
      desc:"背景：想了解卡通风格的水渲染，以及水面交互的做法。\n流程：用深度图做深浅水渐变，岸边用噪声图和深度判断出泡沫；折射用 GrabPass 抓屏幕、法线贴图偏移采样；交互拿一个正交相机跟随角色，把角色渲染到 RenderTexture，水面 shader 采样它，在角色周围产生涟漪。\n收获：了解了卡通水的基本做法，以及用 RenderTexture 和正交相机做水面交互的思路。\n{{link:技术文档：:https://my.feishu.cn/wiki/Z8UqwdXKKib39ok0Ps8cpRvjnEh}}"},
-    {id:"v1", type:"video", cat:"vfx",
+    {id:"v1", type:"video", cat:"self",
      title:"【Unity】特效——爆炸", tag:"VFX · Shader",
      file:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/vfx/unity-vfx-explosion.mp4", poster:"",
      size:"约2.4MB · 1080P",
      desc:"背景：想了解 Unity 的 VFX 特效制作，跟着教程做一个完整的爆炸效果。\n流程：用粒子系统搭出火花、烟雾球、烟圈多层结构；烟雾球和烟圈在 Blender 里建模、Krita 画无缝贴图，再用噪声图加 custom 值做 clip 溶解，让烟雾按黑灰白顺序消散；粒子颜色走顶点色传给 shader 实现烟雾变黑，材质用 HDR 让火花和橙环发光。\n收获：了解了特效从 DCC 建模、画贴图到引擎粒子系统和溶解 shader 的完整流程，也学会了用 custom 数据让粒子系统和 shader 联动。\n{{link:技术文档：:https://my.feishu.cn/wiki/ThmAwKxUFieoeukqswdcbMiHnic}}"},
-    {id:"t1", type:"video", cat:"tool",
+    {id:"t1", type:"video", cat:"self",
      title:"Blender 资产规范化工具", tag:"工具 · Python",
      file:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/tool/blender-asset-tool.mp4", poster:"",
      size:"约9.9MB · 1080P",
      desc:"背景：游戏项目里只有我一个 3D 美术，需要处理大量 3D 模型，经常要检查法线对不对、修改器有没有应用、名字有没有规范命名、原点在不在模型底部等等，耗精力且容易忘记检查而出错，于是想到用 CodeBuddy 生成一个规范化的工具。\n流程：边 vibe coding 边测试功能，同时应用于实际的游戏开发场景，不断更新迭代，实现了快速命名、检查 UV 是否拉伸严重、原点归零等操作一键处理、检查法线是否正确、快捷导出模型（内部配置了正确的导出设置）。同时考虑了上手难度，专门设置了顺序步骤，美术只需跟着步骤点击，简单易上手。\n收获：切实感受到自动化工具的好处，也为后续开发一系列 skill 和工具打下了基础。"},
-    {id:"a1", type:"image", cat:"ai",
+    {id:"a1", type:"image", cat:"self",
      title:"【AI】UE 资产读取工具", tag:"MCP · UAssetAPI · Python",
      src:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/ai/ue-asset-tool.webp?v=2", portrait:true,
      desc:"背景：UE 材质节点有时会出 bug，自己排查容易卡住，于是做了这个工具让 AI 能读到材质资产、帮忙分析节点逻辑——问题很快就定位到了；顺带还能让它讲解我还没看懂的节点实现。\n流程：基于 UAssetAPI 解析 .uasset 二进制文件，封装成 MCP Server 供 Claude Code 调用，让它能读到材质的参数、蓝图的父类、变量名与函数图。踩了不少坑——MCP 配置只认项目根目录的 .mcp.json、依赖装到 mcp 2.0 会直接崩、切换工程后必须重启 CC、Git Bash 会把 /Game/... 路径改写成 C:/Program Files/Git/Game/... 导致找不到资产。\n收获：现在做 UE 材质和蓝图时，卡住的地方可以让 AI 一起看逻辑，不用自己硬啃；已索引两个 UE 工程，能读取 5 个蓝图的父类、变量名、函数图名与接口函数签名，以及材质资产的 domain / blend_mode，产出 dump_blueprint.py 等可复用脚本。"},
-    {id:"a2", type:"image", cat:"ai",
+    {id:"a2", type:"image", cat:"self",
      title:"【AI】视频转文字流水线", tag:"ASR · LLM 纠错 · Python",
      src:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/ai/video-to-text.webp?v=2", portrait:true,
      desc:"背景：学一个新领域时，同一个纯理论课题在 B 站往往有一堆教程，一个个从头看完效率太低，有时看完了才发现不是自己想要的。于是想把视频转成文字，再让 AI 先帮我梳理这个领域的知识框架，快速锁定精华，挑值得的教程回看。\n流程：下载 → ASR 识别 → LLM 术语级纠错，把每期视频转成文章后汇总喂给 AI 梳理。中间踩了一堆坑——6GB 显存要分片处理、funasr 依赖的 editdistance 没有预编译包得自写纯 Python 垫片顶替、Windows glob 大小写不敏感导致重复处理需用 set() 去重、下载被 412 反爬从 yt-dlp 换 you-get。\n收获：现在学新领域时，能先把整套教程转成文字让 AI 梳理框架、锁定精华，再挑需要的视频回看，不用一个个从头啃；识别准确率也从几乎乱码提升到可直接阅读的程度。"},
-    {id:"a3", type:"image", cat:"ai",
+    {id:"a3", type:"image", cat:"self",
      title:"【AI】飞书知识库共享", tag:"MCP · 飞书 API · pandoc",
      src:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/ai/feishu-kb.webp", portrait:true,
      desc:"背景：想把本地攒的 Markdown 笔记搬运到飞书知识库中统一管理，如果人工一篇篇搬运会非常费力，于是研究连通了飞书知识库的 MCP，让 AI 帮助我传输文件的同时，还能帮我检索知识和写一些飞书文档，方便团队协作。\n流程：pandoc 转 docx（用 Lua filter 把图片宽度统一成 680px 适配飞书正文区），再走开放平台 API 六步导入——分片上传 → import_tasks → 轮询状态 → move_docs_to_wiki；反向还写了 wiki → 本地 md 的增量同步；接上 MCP 后，AI 能直接在知识库里写新文档。踩了不少坑——medias API 报 1061004 权限不足改走 files 通道、import_tasks 不支持挂载 wiki 要先导云空间再搬、MCP 改不了文档标题只能自己写脚本直调 API。\n收获：现在 AI 能直接在飞书知识库里检索和写文档，团队要用的资料可以让它整理成文、就地协作；同时也把「本地笔记 → 飞书知识库」的搬运做成了自动化——带大量插图的笔记能一次性导入且排版干净。"},
-    {id:"a4", type:"video", cat:"ai",
+    {id:"a4", type:"video", cat:"self",
      title:"【AI】知乎原文阅读工具", tag:"CLI 工具 · Python",
      file:"", poster:"",
      emptyText:"截图整理中，稍后上线",
      desc:"背景：写角色开发管线文档时，要引用 UV 尺寸、烘焙 Padding、面数标准这类参数，但搜索返回的是「多篇文章聚合提炼后的摘要」——读得到内容，却引用不出原文，也拿不到最专业的那层细节。参数必须来自原文才能信，于是想让 AI 能直接读到知乎原文。\n流程：先试纯 API 直连，卡在知乎的 x-zse-96 动态签名上（前端 JS 用 URL + Cookie + 时间戳现算），换 UA、加 Referer、带完整 Cookie 全部 403；又试了真实浏览器方案，启动慢、新会话没登录态被风控拦、短信登录还要过滑块验证。最后发现现成的 zhihu-toolkit CLI，一条命令跑通。中途还踩了个环境坑——本机的 PYTHONHOME 会让 uv 装的隔离工具串用系统 Python 库，一跑就报 SRE module mismatch，得先清空它。\n收获：现在能把知乎原文（含图）直接抓成 markdown，写技术文档时可以引用原文级的参数，不用再靠二手摘要凑；另外留了条兜底路线——Cookie 失效或知乎改版时，浏览器另存 HTML 丢进脚本解析也能用。"},
   ];
 
-  var CAT_LABEL = {char:"角色渲染", grass:"草渲染", water:"水渲染", vfx:"特效", render:"渲染作品", shader:"Shader", tool:"工具/管线", ai:"AI 应用"};
+  var CAT_LABEL = {self:"自练内容", char:"角色渲染", grass:"草渲染", water:"水渲染", vfx:"特效", render:"渲染作品", shader:"Shader", tool:"工具/管线", ai:"AI 应用"};
 
   /* ---------- 栏首说明（按分类切换，未配置的分类不显示） ---------- */
   var CAT_INTRO = {
@@ -85,7 +85,7 @@
   var vmTag = document.getElementById("vmTag");
   var vmDesc = document.getElementById("vmDesc");
 
-  var currentFilter = "char";
+  var currentFilter = "self";
   var lbIndex = -1;
 
   /* ---------- 渲染作品卡片 ---------- */
