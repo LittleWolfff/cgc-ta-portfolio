@@ -45,7 +45,7 @@
      desc:"背景：UE 材质节点有时会出 bug，自己排查容易卡住，于是做了这个工具让 AI 能读到材质资产、帮忙分析节点逻辑——问题很快就定位到了；顺带还能让它讲解我还没看懂的节点实现。\n流程：基于 UAssetAPI 解析 .uasset 二进制文件，封装成 MCP Server 供 Claude Code 调用，让它能读到材质的参数、蓝图的父类、变量名与函数图。踩了不少坑——MCP 配置只认项目根目录的 .mcp.json、依赖装到 mcp 2.0 会直接崩、切换工程后必须重启 CC、Git Bash 会把 /Game/... 路径改写成 C:/Program Files/Git/Game/... 导致找不到资产。\n收获：现在做 UE 材质和蓝图时，卡住的地方可以让 AI 一起看逻辑，不用自己硬啃；已索引两个 UE 工程，能读取 5 个蓝图的父类、变量名、函数图名与接口函数签名，以及材质资产的 domain / blend_mode，产出 dump_blueprint.py 等可复用脚本。"},
     {id:"a2", type:"image", cat:"ai",
      title:"【AI】视频转文字流水线", tag:"ASR · LLM 纠错 · Python",
-     src:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/ai/video-to-text.webp?v=2", contain:true,
+     src:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/ai/video-to-text.webp?v=2", portrait:true,
      desc:"背景：学一个新领域时，同一个纯理论课题在 B 站往往有一堆教程，一个个从头看完效率太低，有时看完了才发现不是自己想要的。于是想把视频转成文字，再让 AI 先帮我梳理这个领域的知识框架，快速锁定精华，挑值得的教程回看。\n流程：下载 → ASR 识别 → LLM 术语级纠错，把每期视频转成文章后汇总喂给 AI 梳理。中间踩了一堆坑——6GB 显存要分片处理、funasr 依赖的 editdistance 没有预编译包得自写纯 Python 垫片顶替、Windows glob 大小写不敏感导致重复处理需用 set() 去重、下载被 412 反爬从 yt-dlp 换 you-get。\n收获：现在学新领域时，能先把整套教程转成文字让 AI 梳理框架、锁定精华，再挑需要的视频回看，不用一个个从头啃；识别准确率也从几乎乱码提升到可直接阅读的程度。"},
   ];
 
@@ -110,10 +110,14 @@
         '<div class="work-info"><h3 class="work-title">'+esc(w.title)+'<span class="tag">'+esc(w.tag)+'</span></h3>'+
         '<p class="work-sub">'+esc(w.desc)+'</p></div></article>';
     }
-    // image — 跟视频一样的横排大图卡片
+    // image — 横排大图卡片；portrait 竖图改为贴合图片自身高度，不留左右黑边
+    var wrapStyle = w.portrait ? 'background:#000;width:auto' : 'background:#000';
+    var imgStyle = w.portrait
+      ? 'display:block;max-height:480px;width:auto;cursor:pointer'
+      : 'width:100%;aspect-ratio:16/9;'+(w.contain ? 'object-fit:contain;' : 'object-fit:cover;object-position:top;')+'display:block;cursor:pointer';
     return '<article class="work-card work-card-h" data-open="image">'+
       '<span class="work-cat">'+CAT_LABEL[w.cat]+'</span>'+
-      '<div class="work-video-wrap" style="background:#000"><img loading="lazy" src="'+w.src+'" alt="'+esc(w.title)+'" style="width:100%;aspect-ratio:16/9;'+(w.contain ? 'object-fit:contain;' : 'object-fit:cover;object-position:top;')+'display:block;cursor:pointer"></div>'+
+      '<div class="work-video-wrap" style="'+wrapStyle+'"><img loading="lazy" src="'+w.src+'" alt="'+esc(w.title)+'" style="'+imgStyle+'"></div>'+
       '<div class="work-info"><h3 class="work-title">'+esc(w.title)+'</h3>'+
       (w.desc ? '<p class="work-desc">'+formatDesc(w)+'</p>' : '<p class="work-desc">点击图片查看大图</p>')+
       '</div></article>';
