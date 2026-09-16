@@ -70,6 +70,13 @@
      src:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/projects/fuchenlu.webp",
      icon:"📜", label:"浮沉录",
      desc:"背景：动作冒险游戏。参与 UE 项目，促进 UE 的学习\n流程：目前负责渲染管线搭建、主角的渲染、布料模拟\n收获：对 UE 引擎有了更多的运用和学习，同时增加 UE 团队协作的经验"},
+    {id:"p3", type:"project", cat:"dreamaker",
+     title:"《游戏造梦师》", date:"2024.06 — 2025.06", role:"Unity / 3D美术 / 技术美术",
+     video:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/projects/project-dream-maker.mp4",
+     poster:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/projects/poster-dream-maker.webp",
+     trap:true,
+     thumbBg:"linear-gradient(135deg,#2a1f0e,#3d2b14,#1a0f00)",
+     desc:"背景：模拟经营类游戏。刚接触游戏开发，作为唯一的 3D 美术，从零摸索 3D 模型导入、SP 绘制纹理、Unity 渲染等过程\n流程：负责所有的 3D 模型建模和场景搭建，以及所有的纹理绘制、shader 编写\n收获：积累了 3D 游戏开发的经验，总结过不少坑，比如模型导入 Unity 之前要先检查面朝向是否正确；不断接触 shader，培养了对 TA 方向的兴趣，确定了 TA 方向并持续学习"},
   ];
 
   var CAT_LABEL = {self:"自练内容", amuse:"2026项目《自娱自乐》", fuchenlu:"2026项目《浮沉录》", dreamaker:"2025项目《游戏造梦师》", char:"角色渲染", grass:"草渲染", water:"水渲染", vfx:"特效", render:"渲染作品", shader:"Shader", tool:"工具/管线", ai:"AI 应用"};
@@ -138,7 +145,8 @@
         '</div>';
       } else {
         thumb = '<div class="project-thumb" style="background:'+w.thumbBg+'">'+
-          '<video class="project-thumb-video" src="'+w.video+'" controls preload="auto"></video>'+
+          '<video class="project-thumb-video" src="'+w.video+'" controls preload="auto"'+(w.poster?' poster="'+w.poster+'"':'')+'></video>'+
+          (w.trap?'<div class="fullscreen-trap" title="网页全屏"></div>':'')+
         '</div>';
       }
       return '<article class="project-card">'+thumb+
