@@ -6,11 +6,6 @@
 
   /* ---------- 作品数据 ---------- */
   var WORKS = [
-    {id:"c1", type:"video", cat:"self",
-     title:"【Unity】角色渲染——千早爱音", tag:"NPR · 卡通",
-     file:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/char/unity-anon-char-render.mp4", poster:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/char/poster-anon.webp",
-     size:"约33MB · 1080P",
-     desc:"背景：在学习了星见雅和其他一些角色的渲染方式后，为了体会自己独立落地的过程，从零开始制作角色。\n流程：Blender建模、蒙皮、K动画，SP画纹理和画遮罩，Unity实现渲染和人物移动。\n收获：网上的教程往往伴随着素材，这次的遮罩等素材自己画，提高了我的动手能力，比如通过琢磨油管教程，成功总结了怎么画面部SDF。通过改渲染逻辑，也让我对角色渲染有了更深的了解，比如为了解决头发自阴影的问题，尝试用遮罩把后发的阴影固定住。\n{{link:面部SDF画法：:https://my.feishu.cn/wiki/Xly1wKjVViIqt3kfLt5c8YlLn8o}}\n{{link:角色技术文档：:https://my.feishu.cn/wiki/Ttziwa474iLSv3k92x2cVDbYnxb}}", link:""},
     {id:"c2", type:"image", cat:"self",
      title:"【UE】角色渲染——克雷斯蒂娜", src:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/char/ue-char-christina.webp?v=2", contain:true,
      desc:"背景：学习UE的角色渲染流程。\n流程：从网上获取模型fbx和基础贴图，导入UE进行渲染学习。\n收获：对UE材质节点和UE角色渲染有了更深的了解。", link:""},
@@ -60,6 +55,11 @@
      video:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/projects/project-amuse-ourselves.mp4",
      thumbBg:"linear-gradient(135deg,#1a0e1f,#2d1a35,#120818)",
      desc:"背景：Unity 引擎的卡通解密游戏。依旧作为唯一的 3D 美术兼 TA，不过相比以前更有开发经验，更加得心应手\n流程：负责所有 3D 资产建模、贴图与场景搭建；用混元 3D 生成高模，再手动拓扑成低模\n收获：独立开发模块化卡通渲染方案，拆分漫反射、阴影、环境光、边缘光等光照模块，实现 Ramp 卡通明暗、风格化条纹阴影、平滑法线描边、材质 ID 多色分区；自写全局设置系统与 Editor 工具链配合，流程更专业\n{{link:技术文档链接：:https://my.feishu.cn/wiki/ZFk3wSNKOiUtReke0XQcBVKfnZe}}"},
+    {id:"c1", type:"video", cat:"amuse",
+     title:"【Unity】角色渲染——千早爱音", tag:"NPR · 卡通",
+     file:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/char/unity-anon-char-render.mp4", poster:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/char/poster-anon.webp",
+     size:"约33MB · 1080P",
+     desc:"背景：在学习了星见雅和其他一些角色的渲染方式后，为了体会自己独立落地的过程，从零开始制作角色。\n流程：Blender建模、蒙皮、K动画，SP画纹理和画遮罩，Unity实现渲染和人物移动。\n收获：网上的教程往往伴随着素材，这次的遮罩等素材自己画，提高了我的动手能力，比如通过琢磨油管教程，成功总结了怎么画面部SDF。通过改渲染逻辑，也让我对角色渲染有了更深的了解，比如为了解决头发自阴影的问题，尝试用遮罩把后发的阴影固定住。\n{{link:面部SDF画法：:https://my.feishu.cn/wiki/Xly1wKjVViIqt3kfLt5c8YlLn8o}}\n{{link:角色技术文档：:https://my.feishu.cn/wiki/Ttziwa474iLSv3k92x2cVDbYnxb}}", link:""},
     {id:"p2", type:"project", cat:"fuchenlu",
      title:"【UE】《浮沉录》", titleSuffix:'<span style="font-size:14px;font-weight:400">（锐意开发中）</span>',
      date:"2026.06 — 2026.08", role:"UE / 技术美术",
