@@ -232,6 +232,7 @@ ul{list-style:none}
 .section-intro[hidden]{display:none}
 .intro-title{color:var(--text);font-size:15px;font-weight:600;margin:0 0 12px;letter-spacing:.3px}
 .intro-list{list-style:none;padding:0;margin:0}
+.intro-list + .intro-title{margin-top:22px}
 .intro-list li{position:relative;padding-left:16px;color:var(--muted);font-size:14px;line-height:1.95}
 .intro-list li::before{content:"·";position:absolute;left:3px;color:var(--accent);font-weight:700}
 

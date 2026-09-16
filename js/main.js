@@ -114,12 +114,25 @@
       ]
     },
     ai: {
-      title: "我常用的 AI 工具&模型",
-      items: [
-        "Visual Studio Code：主力开发环境，Claude Code 等 AI 工具集成在这里",
-        "Claude Code：先部署 CLI，再通过 VS Code 扩展集成进编辑器，主力 AI 开发助理",
-        "DeepSeek-V4 Flash：主力模型，经 API 接入，作为 Claude Code 的底层模型，累计消费 500+ CNY",
-        "Qwen-VL-Plus：阿里通义千问视觉模型，用于图像理解与 OCR"
+      blocks: [
+        {
+          title: "目录",
+          items: [
+            "AI应用：【AI】UE 资产读取工具",
+            "AI应用：【AI】视频转文字流水线",
+            "AI应用：【AI】飞书知识库共享",
+            "AI应用：【AI】知乎原文阅读工具"
+          ]
+        },
+        {
+          title: "我常用的 AI 工具&模型",
+          items: [
+            "Visual Studio Code：主力开发环境，Claude Code 等 AI 工具集成在这里",
+            "Claude Code：先部署 CLI，再通过 VS Code 扩展集成进编辑器，主力 AI 开发助理",
+            "DeepSeek-V4 Flash：主力模型，经 API 接入，作为 Claude Code 的底层模型，累计消费 500+ CNY",
+            "Qwen-VL-Plus：阿里通义千问视觉模型，用于图像理解与 OCR"
+          ]
+        }
       ]
     }
   };
@@ -238,11 +251,15 @@
     if (!el) return;
     var cfg = CAT_INTRO[cat];
     if (!cfg){ el.hidden = true; el.innerHTML = ""; return; }
+    // 兼容单块 {title,items} 与多块 {blocks:[...]}
+    var blocks = cfg.blocks || [cfg];
     var html = "";
-    if (cfg.title) html += '<p class="intro-title">'+esc(cfg.title)+'</p>';
-    if (cfg.items && cfg.items.length){
-      html += '<ul class="intro-list">'+cfg.items.map(function(t){ return "<li>"+esc(t)+"</li>"; }).join("")+"</ul>";
-    }
+    blocks.forEach(function(b){
+      if (b.title) html += '<p class="intro-title">'+esc(b.title)+'</p>';
+      if (b.items && b.items.length){
+        html += '<ul class="intro-list">'+b.items.map(function(t){ return "<li>"+esc(t)+"</li>"; }).join("")+"</ul>";
+      }
+    });
     el.innerHTML = html;
     el.hidden = false;
   }
