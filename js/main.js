@@ -38,9 +38,19 @@
      file:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/tool/blender-asset-tool.mp4", poster:"",
      size:"约9.9MB · 1080P",
      desc:"背景：游戏项目里只有我一个 3D 美术，需要处理大量 3D 模型，经常要检查法线对不对、修改器有没有应用、名字有没有规范命名、原点在不在模型底部等等，耗精力且容易忘记检查而出错，于是想到用 CodeBuddy 生成一个规范化的工具。\n流程：边 vibe coding 边测试功能，同时应用于实际的游戏开发场景，不断更新迭代，实现了快速命名、检查 UV 是否拉伸严重、原点归零等操作一键处理、检查法线是否正确、快捷导出模型（内部配置了正确的导出设置）。同时考虑了上手难度，专门设置了顺序步骤，美术只需跟着步骤点击，简单易上手。\n收获：切实感受到自动化工具的好处，也为后续开发一系列 skill 和工具打下了基础。"},
+    {id:"a1", type:"video", cat:"ai",
+     title:"【AI】UE 资产读取工具", tag:"MCP · UAssetAPI · Python",
+     file:"", poster:"",
+     emptyText:"演示录制中，稍后上线",
+     desc:"背景：想让 AI 不打开 UE 编辑器就能读懂工程里的资产，方便快速分析、学习 UE 项目结构。\n流程：基于 UAssetAPI 解析 .uasset 二进制文件，封装成 MCP Server 供 Claude Code 调用。踩了不少坑——MCP 配置只认项目根目录的 .mcp.json、依赖装到 mcp 2.0 会直接崩、切换工程后必须重启 CC、Git Bash 会把 /Game/... 路径改写成 C:/Program Files/Git/Game/... 导致找不到资产。\n收获：已索引两个 UE 工程，能读取 5 个蓝图的父类、变量名、函数图名与接口函数签名，以及材质资产的 domain / blend_mode；产出 dump_blueprint.py 等可复用脚本。"},
+    {id:"a2", type:"video", cat:"ai",
+     title:"【AI】视频转文字流水线", tag:"ASR · LLM 纠错 · Python",
+     file:"", poster:"",
+     emptyText:"演示录制中，稍后上线",
+     desc:"背景：为了提升信息获取效率，想把 B 站教学视频批量转成可检索的文字资料。\n流程：下载 → ASR 识别 → LLM 术语级纠错。中间踩了一堆坑——6GB 显存要分片处理、funasr 依赖的 editdistance 没有预编译包得自写纯 Python 垫片顶替、Windows glob 大小写不敏感导致重复处理需用 set() 去重、下载被 412 反爬从 yt-dlp 换 you-get。\n收获：识别准确率从几乎乱码提升到可直接阅读的程度，批量的教学视频能沉淀成文本资料，方便检索和复习。"},
   ];
 
-  var CAT_LABEL = {char:"角色渲染", grass:"草渲染", water:"水渲染", vfx:"特效", render:"渲染作品", shader:"Shader", tool:"工具/管线"};
+  var CAT_LABEL = {char:"角色渲染", grass:"草渲染", water:"水渲染", vfx:"特效", render:"渲染作品", shader:"Shader", tool:"工具/管线", ai:"AI 应用"};
   var EMPTY_FALLBACK = '<p class="works-empty">作品还在路上，稍后就到</p>';
 
   /* ---------- DOM ---------- */
@@ -86,7 +96,7 @@
       if (hasFile){
         html += '<div class="work-video-wrap"><video src="'+w.file+'" controls preload="auto" poster="'+w.poster+'"></video><div class="fullscreen-trap" title="网页全屏"></div></div>';
       } else {
-        html += '<div class="work-thumb-empty">视频制作中，稍后上线</div>';
+        html += '<div class="work-thumb-empty">'+esc(w.emptyText || "视频制作中，稍后上线")+'</div>';
       }
       html += '<div class="work-info"><h3 class="work-title">'+esc(w.title)+'</h3>';
       if (w.desc) html += '<p class="work-desc">'+formatDesc(w)+'</p>';
