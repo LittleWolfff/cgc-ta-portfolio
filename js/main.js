@@ -68,7 +68,7 @@
      desc:"背景：用于学习 UE 材质节点，并整理出材质函数、总结进个人 UE 插件中，同时也用于测试角色流程。\n流程：从网上获取模型fbx和基础贴图，导入UE进行渲染学习。\n收获：对UE材质节点和UE角色渲染有了更深的了解。", link:""},
     {id:"c3", type:"image", cat:"fuchenlu",
      title:"【UE】管线——角色管线", tag:"管线规范 · UE",
-     src:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/pipeline/ue-pipeline.webp?v=2", portrait:true,
+     src:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/pipeline/ue-pipeline.webp?v=4", contain:true,
      desc:"背景：项目里要做主角、敌人等多个角色，但作为学生团队，产能有点跟不上。想拿主角当试验田，先搭一套角色管线跑通，后续用它加快其他角色的产出；同时也针对我们产能紧缺的实际情况，设计一套更贴合自己的方案。\n流程：把角色生产拆成 6 个阶段——原画 → 建模 → 贴图 → 动画 → 布料 → 渲染，逐个打通；针对敌人量大、产能跟不上，用布料换装的方式做变体——共用角色本体、换布料出不同形象，用有限产能堆出足够的敌人数量，同时减少重复感。\n收获：对角色的生产有了更清晰的认识。"},
     {id:"p3", type:"project", cat:"dreamaker",
      title:"【Unity】《游戏造梦师》", date:"2024.06 — 2025.06", role:"Unity / 3D美术 / 技术美术",
