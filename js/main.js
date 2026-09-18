@@ -62,7 +62,7 @@
      thumbBg:"linear-gradient(135deg,#0f1a1a,#1a2d2d,#081212)",
      src:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/projects/fuchenlu.webp",
      icon:"📜", label:"浮沉录",
-     desc:"背景：动作冒险游戏。参与 UE 项目，促进 UE 的学习\n流程：目前负责渲染管线搭建、主角的渲染、布料模拟\n收获：对 UE 引擎有了更多的运用和学习，同时增加 UE 团队协作的经验"},
+     desc:"背景：动作冒险游戏。参与 UE 项目，促进 UE 的学习。团队规模：30 人+\n流程：目前负责渲染管线搭建、主角的渲染、布料模拟\n收获：对 UE 引擎有了更多的运用和学习，同时增加 UE 团队协作的经验"},
     {id:"c2", type:"image", cat:"fuchenlu",
      title:"【UE】角色渲染——克雷斯蒂娜", src:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/char/ue-char-christina.webp?v=2", contain:true,
      desc:"背景：用于学习 UE 材质节点，并整理出材质函数、总结进个人 UE 插件中，同时也用于测试角色流程。\n流程：从网上获取模型fbx和基础贴图，导入UE进行渲染学习。\n收获：对UE材质节点和UE角色渲染有了更深的了解。", link:""},
