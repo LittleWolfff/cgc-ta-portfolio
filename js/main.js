@@ -75,6 +75,10 @@
      file:"", poster:"",
      emptyText:"演示视频整理中，稍后上线",
      desc:"背景：主策希望主角外套的下摆能够飘动，于是开始开发布料系统。\n{{link:技术文档：:https://my.feishu.cn/wiki/DHs9wDraDiLY8BkZqe8cKe8in8f}}（摘自通用角色管线的布料部分）\n流程：从网上搜集教程加上啃 UE 官方文档，从零搭建布料系统，中间踩了不少坑——布料模拟没效果，后来让美术调整了布料与素体间的空隙才明显起来；布料各种穿模，才发现是物理资产没设置好，专门补学了物理资产的搭建方法；实机跑起来帧率很低，换成代理模型方案、并减少动力学碰撞素体的面数后，帧率大幅提升。\n收获：通过搭建布料系统，让我对 UE 引擎更加地熟悉，同时也对布料相关技术有了更深的了解。"},
+    {id:"c5", type:"image", cat:"fuchenlu",
+     title:"【工具】布料参数读取工具", tag:"Chaos Cloth · Dataflow · MCP",
+     src:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/tool/cloth-param-reader.webp", contain:true,
+     desc:"背景：不同布料（比如西装和披风）质感不一样，对应的布料参数差别也很大——想用一套参数模板套所有布料并不现实。\n流程：连通了 Dataflow 的 MCP，再写了个小工具，可以直接读取某个 CA 里改动过的参数并留档；之后遇到质感相近的布料，就能快速翻出参考。\n收获：布料参数能方便地留档，慢慢攒成自己的「布料种子库」；另外 AI 能读到 Dataflow 的逻辑和节点参数，给出的参考建议实测确实有效，也让我对各个参数的作用理解更深了。"},
     {id:"p3", type:"project", cat:"dreamaker",
      title:"【Unity】《游戏造梦师》", date:"2024.06 — 2025.06", role:"Unity / 3D美术 / 技术美术",
      video:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/projects/project-dream-maker.mp4",
@@ -102,7 +106,8 @@
         "项目本体：【UE】《浮沉录》（锐意开发中）",
         "应用于项目：【UE】管线——角色管线",
         "应用于项目：【UE】角色渲染——克雷斯蒂娜",
-        "应用于项目：【UE】工作流——布料模拟"
+        "应用于项目：【UE】工作流——布料模拟",
+        "应用于项目：【工具】布料参数读取工具"
       ]
     },
     dreamaker: {
