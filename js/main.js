@@ -59,10 +59,7 @@
     {id:"p2", type:"project", cat:"fuchenlu",
      title:"【UE】《浮沉录》", titleSuffix:'<span style="font-size:14px;font-weight:400">（锐意开发中）</span>',
      date:"2026.06 — 2026.08", role:"UE / 技术美术",
-     multi:true,
      thumbBg:"linear-gradient(135deg,#0f1a1a,#1a2d2d,#081212)",
-     fullImgs:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/projects/fuchenlu-full.webp|https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/projects/fuchenlu-2.webp",
-     thumbs:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/projects/fuchenlu.webp|https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/projects/fuchenlu-2-thumb.webp",
      src:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/projects/fuchenlu.webp",
      icon:"📜", label:"浮沉录",
      desc:"背景：动作冒险游戏。参与 UE 项目，促进 UE 的学习\n流程：目前负责渲染管线搭建、主角的渲染、布料模拟\n收获：对 UE 引擎有了更多的运用和学习，同时增加 UE 团队协作的经验"},
@@ -189,6 +186,13 @@
           '<span class="project-thumb-label">'+esc(w.label)+'</span>'+
           '<span class="thumb-nav thumb-prev">‹</span>'+
           '<span class="thumb-nav thumb-next">›</span>'+
+        '</div>';
+      } else if (w.src){
+        // 单图缩略（图片版 .project-thumb；给 w.multi 留口子，去掉 multi 即可切回单图）
+        thumb = '<div class="project-thumb" style="background:'+w.thumbBg+'">'+
+          '<img class="project-thumb-img" src="'+w.src+'" alt="'+esc(w.label)+'">'+
+          '<span class="project-thumb-icon">'+w.icon+'</span>'+
+          '<span class="project-thumb-label">'+esc(w.label)+'</span>'+
         '</div>';
       } else {
         thumb = '<div class="project-thumb" style="background:'+w.thumbBg+'">'+
