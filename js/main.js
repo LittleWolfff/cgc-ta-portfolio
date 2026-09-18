@@ -70,6 +70,11 @@
     {id:"c2", type:"image", cat:"fuchenlu",
      title:"【UE】角色渲染——克雷斯蒂娜", src:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/char/ue-char-christina.webp?v=2", contain:true,
      desc:"背景：用于预研 UE 的角色渲染，学习 UE 材质节点，并整理出材质函数，总结进个人 UE 插件中。\n流程：从网上获取模型fbx和基础贴图，导入UE进行渲染学习。\n收获：对UE材质节点和UE角色渲染有了更深的了解。", link:""},
+    {id:"c4", type:"video", cat:"fuchenlu",
+     title:"【UE】工作流——布料模拟", tag:"布料 · UE",
+     file:"", poster:"",
+     emptyText:"演示视频整理中，稍后上线",
+     desc:""},
     {id:"p3", type:"project", cat:"dreamaker",
      title:"【Unity】《游戏造梦师》", date:"2024.06 — 2025.06", role:"Unity / 3D美术 / 技术美术",
      video:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/projects/project-dream-maker.mp4",
@@ -96,7 +101,8 @@
       items: [
         "项目本体：【UE】《浮沉录》（锐意开发中）",
         "应用于项目：【UE】管线——角色管线",
-        "应用于项目：【UE】角色渲染——克雷斯蒂娜"
+        "应用于项目：【UE】角色渲染——克雷斯蒂娜",
+        "应用于项目：【UE】工作流——布料模拟"
       ]
     },
     dreamaker: {
