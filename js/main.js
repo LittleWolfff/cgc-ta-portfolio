@@ -72,7 +72,7 @@
     {id:"c3", type:"image", cat:"fuchenlu",
      title:"【UE】管线——角色管线", tag:"管线规范 · UE",
      src:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/pipeline/ue-pipeline.webp", portrait:true,
-     desc:"背景：角色从原画到进引擎要经过好几个环节，每个人的做法都不一样，返工和扯皮没少过。想把这条链路梳理成一套能照着走的规范，让协作有据可依。\n流程：把流程拆成 6 个阶段——原画 → 建模 → 贴图 → 动画 → 布料 → 渲染，每个阶段明确输入输出、命名规范、检查项和交接标准；踩过的坑也一并沉淀成速记。\n收获：现在拿到一个新角色，能按阶段推进、按标准验收，出问题也能快速定位是哪个环节的锅。"},
+     desc:"背景：项目里要做主角、敌人等多个角色，但作为学生团队，产能有点跟不上。想拿主角当试验田，先搭一套角色管线跑通，后续用它加快其他角色的产出；同时也针对我们产能紧缺的实际情况，设计一套更贴合自己的方案。\n流程：把流程拆成 6 个阶段——原画 → 建模 → 贴图 → 动画 → 布料 → 渲染，每个阶段明确输入输出、命名规范、检查项和交接标准；踩过的坑也一并沉淀成速记。\n收获：现在拿到一个新角色，能按阶段推进、按标准验收，出问题也能快速定位是哪个环节的锅。"},
     {id:"p3", type:"project", cat:"dreamaker",
      title:"【Unity】《游戏造梦师》", date:"2024.06 — 2025.06", role:"Unity / 3D美术 / 技术美术",
      video:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/projects/project-dream-maker.mp4",
