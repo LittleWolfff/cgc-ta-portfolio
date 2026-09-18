@@ -69,7 +69,7 @@
     {id:"c3", type:"image", cat:"fuchenlu",
      title:"【UE】管线——角色管线", tag:"管线规范 · UE",
      src:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/pipeline/ue-pipeline.webp?v=4", contain:true,
-     desc:"背景：项目里要做主角、敌人等多个角色，但作为学生团队，产能有点跟不上。想拿主角当试验田，先搭一套角色管线跑通，后续用它加快其他角色的产出；同时也针对我们产能紧缺的实际情况，设计一套更贴合自己的方案。\n流程：通用管线 —— {{link:飞书文档：:https://my.feishu.cn/wiki/TUwQwfUvSicvu0kMjQQcro39ndb}}。通过收集网上资料了解业内专业的角色管线流程，并补充进自己的实践流程（比如布料流程）；理论部分占比更大，只作为实际项目搭建角色管线的参考，后续会根据实际项目继续优化。\n收获：对角色的生产有了更清晰的认识。"},
+     desc:"背景：项目里要做主角、敌人等多个角色，但作为学生团队，产能有点跟不上。想拿主角当试验田，先搭一套角色管线跑通，后续用它加快其他角色的产出；同时也针对我们产能紧缺的实际情况，设计一套更贴合自己的方案。\n流程：{{link:通用角色管线：:https://my.feishu.cn/wiki/TUwQwfUvSicvu0kMjQQcro39ndb}}。通过收集网上资料了解业内专业的角色管线流程，并补充进自己的实践流程（比如布料流程）；理论部分占比更大，只作为实际项目搭建角色管线的参考，后续会根据实际项目继续优化。\n收获：对角色的生产有了更清晰的认识。"},
     {id:"p3", type:"project", cat:"dreamaker",
      title:"【Unity】《游戏造梦师》", date:"2024.06 — 2025.06", role:"Unity / 3D美术 / 技术美术",
      video:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/projects/project-dream-maker.mp4",
