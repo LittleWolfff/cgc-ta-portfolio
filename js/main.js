@@ -69,6 +69,10 @@
     {id:"c2", type:"image", cat:"fuchenlu",
      title:"【UE】角色渲染——克雷斯蒂娜", src:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/char/ue-char-christina.webp?v=2", contain:true,
      desc:"背景：用于学习 UE 材质节点，并整理出材质函数、总结进个人 UE 插件中，同时也用于测试角色流程。\n流程：从网上获取模型fbx和基础贴图，导入UE进行渲染学习。\n收获：对UE材质节点和UE角色渲染有了更深的了解。", link:""},
+    {id:"c3", type:"image", cat:"fuchenlu",
+     title:"【UE】管线——角色管线", tag:"管线规范 · UE",
+     src:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/pipeline/ue-pipeline.webp", portrait:true,
+     desc:"背景：角色从原画到进引擎要经过好几个环节，每个人的做法都不一样，返工和扯皮没少过。想把这条链路梳理成一套能照着走的规范，让协作有据可依。\n流程：把流程拆成 6 个阶段——原画 → 建模 → 贴图 → 动画 → 布料 → 渲染，每个阶段明确输入输出、命名规范、检查项和交接标准；踩过的坑也一并沉淀成速记。\n收获：现在拿到一个新角色，能按阶段推进、按标准验收，出问题也能快速定位是哪个环节的锅。"},
     {id:"p3", type:"project", cat:"dreamaker",
      title:"【Unity】《游戏造梦师》", date:"2024.06 — 2025.06", role:"Unity / 3D美术 / 技术美术",
      video:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/projects/project-dream-maker.mp4",
@@ -94,7 +98,8 @@
       title: "目录",
       items: [
         "项目本体：【UE】《浮沉录》（锐意开发中）",
-        "应用于项目：【UE】角色渲染——克雷斯蒂娜"
+        "应用于项目：【UE】角色渲染——克雷斯蒂娜",
+        "应用于项目：【UE】管线——角色管线"
       ]
     },
     dreamaker: {
