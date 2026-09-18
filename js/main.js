@@ -76,7 +76,7 @@
      poster:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/projects/poster-dream-maker.webp",
      trap:true,
      thumbBg:"linear-gradient(135deg,#2a1f0e,#3d2b14,#1a0f00)",
-     desc:"背景：模拟经营类游戏。刚接触游戏开发，作为唯一的 3D 美术，从零摸索 3D 模型导入、SP 绘制纹理、Unity 渲染等过程\n流程：负责所有的 3D 模型建模和场景搭建，以及所有的纹理绘制、shader 编写\n收获：积累了 3D 游戏开发的经验，总结过不少坑，比如模型导入 Unity 之前要先检查面朝向是否正确；不断接触 shader，培养了对 TA 方向的兴趣，确定了 TA 方向并持续学习"},
+     desc:"背景：模拟经营类游戏。刚接触游戏开发，作为唯一的 3D 美术，从零摸索 3D 模型导入、SP 绘制纹理、Unity 渲染等过程。团队规模：10 人+\n流程：负责所有的 3D 模型建模和场景搭建，以及所有的纹理绘制、shader 编写\n收获：积累了 3D 游戏开发的经验，总结过不少坑，比如模型导入 Unity 之前要先检查面朝向是否正确；不断接触 shader，培养了对 TA 方向的兴趣，确定了 TA 方向并持续学习"},
   ];
 
   var CAT_LABEL = {self:"自练内容", amuse:"2026项目《自娱自乐》", fuchenlu:"2026项目《浮沉录》", dreamaker:"2025项目《游戏造梦师》", char:"角色渲染", grass:"草渲染", water:"水渲染", vfx:"特效", render:"渲染作品", shader:"Shader", tool:"工具/管线", ai:"AI 应用"};
