@@ -69,7 +69,7 @@
      desc:"背景：项目里要做主角、敌人等多个角色，但作为学生团队，产能有点跟不上。想拿主角当试验田，先搭一套角色管线跑通，后续用它加快其他角色的产出；同时也针对我们产能紧缺的实际情况，设计一套更贴合自己的方案。\n{{link:通用角色管线：:https://my.feishu.cn/wiki/TUwQwfUvSicvu0kMjQQcro39ndb}}。通过收集网上资料了解业内专业的角色管线流程，并补充进自己的实践流程（比如布料流程）；理论部分占比更大，只作为实际项目搭建角色管线的参考，不公开给成员，后续会根据实际项目继续优化。\n{{link:浮沉录角色管线：:https://my.feishu.cn/wiki/JTxswFKhaiJiaxk1DedcPeeGnhc}}。更适配浮沉录项目和需求的管线——公开给成员查看，再找特定成员单独提需求和跟进。\n收获：对角色的生产有了更清晰的认识。"},
     {id:"c2", type:"image", cat:"fuchenlu",
      title:"【UE】角色渲染——克雷斯蒂娜", src:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/char/ue-char-christina.webp?v=2", contain:true,
-     desc:"背景：用于学习 UE 材质节点，并整理出材质函数、总结进个人 UE 插件中，同时也用于测试角色流程。\n流程：从网上获取模型fbx和基础贴图，导入UE进行渲染学习。\n收获：对UE材质节点和UE角色渲染有了更深的了解。", link:""},
+     desc:"背景：用于预研 UE 的角色渲染，学习 UE 材质节点，并整理出材质函数，总结进个人 UE 插件中。\n流程：从网上获取模型fbx和基础贴图，导入UE进行渲染学习。\n收获：对UE材质节点和UE角色渲染有了更深的了解。", link:""},
     {id:"p3", type:"project", cat:"dreamaker",
      title:"【Unity】《游戏造梦师》", date:"2024.06 — 2025.06", role:"Unity / 3D美术 / 技术美术",
      video:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/projects/project-dream-maker.mp4",
