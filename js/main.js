@@ -74,7 +74,7 @@
      title:"【UE】工作流——布料模拟", tag:"布料 · UE",
      file:"", poster:"",
      emptyText:"演示视频整理中，稍后上线",
-     desc:"背景：主策希望主角外套的下摆能够飘动，于是开始开发布料系统。"},
+     desc:"背景：主策希望主角外套的下摆能够飘动，于是开始开发布料系统。\n{{link:技术文档：:https://my.feishu.cn/wiki/DHs9wDraDiLY8BkZqe8cKe8in8f}}（摘自通用角色管线的布料部分）"},
     {id:"p3", type:"project", cat:"dreamaker",
      title:"【Unity】《游戏造梦师》", date:"2024.06 — 2025.06", role:"Unity / 3D美术 / 技术美术",
      video:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/projects/project-dream-maker.mp4",
