@@ -74,7 +74,7 @@
      title:"【UE】布料模拟系统", tag:"布料 · UE",
      file:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/cloth/cloth-demo.mp4", poster:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/cloth/cloth-poster.webp",
      size:"约0.6MB · 966x748",
-     desc:"背景：主策希望主角外套的下摆能够飘动，于是开始开发布料系统。\n{{link:技术文档：:https://my.feishu.cn/wiki/DHs9wDraDiLY8BkZqe8cKe8in8f}}（摘自通用角色管线的布料部分）\n流程：从网上搜集教程加上啃 UE 官方文档，从零搭建布料系统，中间踩了不少坑——布料模拟没效果，后来让美术调整了布料与素体间的空隙才明显起来；布料各种穿模，才发现是物理资产没设置好，专门补学了物理资产的搭建方法；实机跑起来帧率很低，换成代理模型方案、并减少动力学碰撞素体的面数后，帧率大幅提升。\n收获：通过搭建布料系统，让我对 UE 引擎更加地熟悉，同时也对布料相关技术有了更深的了解。"},
+     desc:"背景：主策希望主角外套的下摆能够飘动，于是开始研究布料系统。\n{{link:技术文档：:https://my.feishu.cn/wiki/DHs9wDraDiLY8BkZqe8cKe8in8f}}（摘自通用角色管线的布料部分）\n流程：从网上搜集教程加上啃 UE 官方文档，从零搭建布料系统，中间踩了不少坑——布料模拟没效果，后来让美术调整了布料与素体间的空隙才明显起来；布料各种穿模，才发现是物理资产没设置好，专门补学了物理资产的搭建方法；实机跑起来帧率很低，换成代理模型方案、并减少动力学碰撞素体的面数后，帧率大幅提升。\n收获：通过搭建布料系统，让我对 UE 引擎更加地熟悉，同时也对布料相关技术有了更深的了解。"},
     {id:"c5", type:"image", cat:"fuchenlu",
      title:"【工具】布料参数读取工具", tag:"Chaos Cloth · Dataflow · MCP",
      src:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/tool/cloth-param-reader.webp", contain:true,
