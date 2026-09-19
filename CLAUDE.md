@@ -11,6 +11,23 @@
 | 部署方式 | GitHub Pages（master 分支），push 即更新 |
 | 视频托管 | 腾讯云 COS（视频走 COS，代码/图片走 GitHub Pages） |
 
+### ⚠️ 资源版本号（改了 js/css 必须同步改）
+
+`index.html` 里这样引入：
+```html
+<link rel="stylesheet" href="css/style.css?v=20260919">
+<script src="js/main.js?v=20260919"></script>
+```
+
+**改完 `js/main.js` 或 `css/style.css`，必须把 `?v=` 后面的号改成当天日期**（如 `?v=20260920`）。
+
+**为什么**：GitHub Pages 对 `index.html` 更新及时，但 `main.js` 会被浏览器**长期缓存**。
+2026-09-19 踩过一次大坑——公网点「自练内容」显示「作品还在路上」而本地正常：
+新 `index.html`（有 self 按钮）+ 旧 `main.js`（没有 self 数据）= 按钮在、数据没了。
+加版本号后，浏览器会当成新 URL 强制重新加载。
+
+**排查口诀**：**公网异常但本地正常 → 先怀疑浏览器缓存，用无痕窗口验证。**
+
 ### COS 视频托管 SOP ⚠️（为什么 + 怎么做，新对话照着走）
 
 **为什么用 COS**：GitHub Pages 服务器在海外，视频文件大，国内访问卡（换流量/WiFi 都没用，物理距离决定）。代码和图片小，继续走 GitHub Pages；只有大视频走 COS。
