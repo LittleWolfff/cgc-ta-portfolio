@@ -44,9 +44,10 @@ agent-browser snapshot 2>&1 | grep -ciE "无权限|无法访问|需要权限|拒
 **判定标准**：标题对 + 登录按钮≥1 + 正文段>0 + 权限提示=0 → 游客可读，通过。
 **出现「跳登录」「无权限」** → 去飞书该文档的「分享」里开「互联网上获得链接的人可阅读」。
 
-飞书链接清单（网站当前引用 11 个）：
-- 作品卡：草/水/特效技术文档、千早爱音角色文档、面部SDF画法、UE角色流程文档
-- 项目经历：打光笔记（上/下）、浮沉录渲染管线、浮沉录布料、自娱自乐美术技术文档
+飞书链接清单（网站当前引用 9 个，2026-09-19 更新）：
+- 自练内容：GPU草技术文档、卡通水技术文档、爆炸特效技术文档、千早爱音角色文档、面部SDF画法
+- 《自娱自乐》：美术技术文档
+- 《浮沉录》：通用角色管线、浮沉录角色管线、布料技术文档
 
 ### 2.2 站内链接
 
@@ -54,7 +55,7 @@ agent-browser snapshot 2>&1 | grep -ciE "无权限|无法访问|需要权限|拒
 agent-browser open "https://littlewolfff.github.io/cgc-ta-portfolio/"
 agent-browser snapshot -i -u | grep -oE "https://[^#]+#[a-z]+"
 ```
-**验证方法**：8 个锚点齐全：`#top #about #works #projects #experience #skills #games #contact`。逐个点击能跳到对应 section。
+**验证方法**：6 个锚点齐全：`#top #about #works #experience #skills #games #contact`（2026-09-19 起「项目经历」栏已移除，并入作品展示）。逐个点击能跳到对应 section。
 
 ### 2.3 COS 资源（重点：不能「点一下就跳转下载」）
 
@@ -80,9 +81,9 @@ grep -ohE "https://cgc-portfolio[^\"'\\) ]+" index.html js/main.js | sort -u \
 
 ## 三、内容展示检查
 
-- [ ] 7 大模块齐全：关于个人 / 作品展示 / 项目经历 / 工作经历 / 专业技能 / 游戏经历 / 联系方式
+- [ ] 6 大模块齐全：关于个人 / 作品展示 / 工作经历 / 专业技能 / 游戏经历 / 联系方式（项目经历已并入作品展示）
   ```bash
-  agent-browser snapshot | grep -oE "(关于个人|作品展示|项目经历|工作经历|专业技能|游戏经历|联系方式)" | sort -u
+  agent-browser snapshot | grep -oE "(关于个人|作品展示|工作经历|专业技能|游戏经历|联系方式)" | sort -u
   ```
 - [ ] Hero 有「名字 · 27届」+ 一句话介绍
 - [ ] 作品卡 hover / 点击正常，视频有 poster 封面
