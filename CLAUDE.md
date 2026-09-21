@@ -462,16 +462,27 @@ COSCMD="D:/C_Software/Python/App/Python/Scripts/coscmd.exe"
 
 ## 部署流程
 
-> ⚡ 2026-09-15 阿聪授权：改完网站，小辞直接 commit + push，不用再问。
+> 🔴 **2026-09-21 阿聪定的节奏：先在本地 html 快速验证，攒一波再推公网。**
+> 原因：push 一次要等 1-2 分钟 GitHub Pages 部署，改一点推一点纯属浪费时间。
+
+**推荐节奏**（小辞默认按这个走）：
+
+| 步骤 | 谁做 | 做什么 |
+|------|------|--------|
+| 1 | 小辞 | 改 `index.html` / `css` / `js`（⚠️ 改 css/js 必须升 `index.html` 里的 `?v=日期` 版本号） |
+| 2 | 小辞 | `git commit`（本地留记录，**不 push**） |
+| 3 | 阿聪 | **双击 `portfolio-site/index.html`** 快速看效果（改了几版就看几版，不用等部署） |
+| 4 | — | 不满意 → 回步骤 1 继续改 |
+| 5 | 阿聪说「推」或攒够一批 | `git push` → 1-2 分钟后公网生效 |
 
 ```bash
-cd portfolio-site
-# 改完文件后...
-git add -A && git commit -m "描述改了什么" && git push
-# 等 1 分钟，刷新网站链接就看到更新
+cd "D:/Conley/ClaudeCodeWorkspace/W_项目/260810_求职/1、网站搭建/portfolio-site"
+git add -A && git commit -m "描述改了什么"   # 每改必 commit（本地）
+git push                                    # ⚠️ 等阿聪说推，或攒够一批再推
 ```
 
-⚠️ 注意：这是**持续授权**，覆盖「推送属于对外发布动作、需先确认」的默认行为。阿聪若要撤销会直接说。
+⚠️ **例外：投递前必须推**——HR 看的是公网，本地改了没推等于没改。
+⚠️ 本地验证的缓存：改完按 `Ctrl+Shift+R` 硬刷；改 css/js 要升版本号，否则本地看到的还是旧样式。
 
 ## 环境坑点 ⚠️
 
