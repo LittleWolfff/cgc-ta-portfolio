@@ -10,7 +10,7 @@
 ## 一、Git 推送确认（最先做）
 
 ```bash
-cd "D:/Conley/ClaudeCodeWorkspace/W_项目/260810_求职/portfolio-site"
+cd "D:/Conley/ClaudeCodeWorkspace/W_项目/260810_求职/1、网站搭建/portfolio-site"
 git status -s          # 必须干净（无未提交/未推送）
 git log --oneline -3   # 最近提交存在
 git push origin master # 推送到 GitHub
@@ -55,7 +55,7 @@ agent-browser snapshot 2>&1 | grep -ciE "无权限|无法访问|需要权限|拒
 agent-browser open "https://littlewolfff.github.io/cgc-ta-portfolio/"
 agent-browser snapshot -i -u | grep -oE "https://[^#]+#[a-z]+"
 ```
-**验证方法**：6 个锚点齐全：`#top #about #works #experience #skills #games #contact`（2026-09-19 起「项目经历」栏已移除，并入作品展示）。逐个点击能跳到对应 section。
+**验证方法**：7 个锚点齐全：`#top #about #works #experience #skills #games #contact`（2026-09-19 起「项目经历」栏已移除，并入作品展示）。逐个点击能跳到对应 section。
 
 ### 2.3 COS 资源（重点：不能「点一下就跳转下载」）
 
