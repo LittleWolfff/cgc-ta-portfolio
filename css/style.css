@@ -376,7 +376,7 @@ ul{list-style:none}
 .game-group-title::before{content:"";width:5px;height:20px;background:var(--gc,#c0504d);border-radius:3px}
 .game-group-num{color:var(--accent);font-size:15px;font-weight:600;margin-right:4px}
 .game-row{
-  display:flex;align-items:center;gap:16px;
+  display:flex;align-items:center;gap:12px;
   padding:10px 0;border-bottom:1px solid var(--line);
 }
 .game-row:last-child{border-bottom:none}
@@ -384,7 +384,9 @@ ul{list-style:none}
 .game-cover:hover{opacity:.85}
 /* 手机图标：正方形画布，手游分区专用 */
 .game-cover-icon{width:96px;height:96px;object-fit:cover;border-radius:12px}
-.game-name{color:var(--text);font-weight:600;font-size:15px;white-space:nowrap;flex-shrink:0;min-width:110px}
+/* 游戏名列固定 120px（刚好容纳最长的「中土世界战争之影」8 字）——必须用固定宽度而非 min-width：
+   min-width 下，名字超过 110px 的游戏会把右边的「游戏时长/游戏经历」整块顶右，导致各行对不齐 */
+.game-name{color:var(--text);font-weight:600;font-size:15px;white-space:nowrap;flex:0 0 120px}
 /* 游戏经历：两列网格（标签列 + 值列）→ 两行标签宽度自动对齐，值换行后仍悬挂对齐在值列 */
 .game-desc{
   color:var(--muted);font-size:14px;line-height:1.7;margin:0;flex:1;
