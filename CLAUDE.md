@@ -533,6 +533,7 @@ git push                                    # ⚠️ 等阿聪说推，或攒够
 
 | 问题 | 原因 | 解法 |
 |------|------|------|
+| `git push` 报 `Connection reset` / `Failed to connect to github.com port 443` | **系统代理开着但 git 没配代理**，git 直连被墙（2026-10-26 踩） | 用一次性参数推，不改全局配置：`git -c http.proxy=http://127.0.0.1:7890 -c https.proxy=http://127.0.0.1:7890 push`。先确认 Clash 在跑（`Get-NetTCPConnection -State Listen \| Where-Object {$_.LocalPort -eq 7890}`） |
 | `python` 命令被 Claude Code 沙箱拦截 | Windows Apps 路径 `/c/Users/.../WindowsApps/python.exe` 被限制 | 用绝对路径 `D:\C_Software\Python\App\Python\python.exe` |
 | `pip install python-docx` 失败 | Claude Code Bash 环境限制 | 用 Windows 自带的 `win32com.client`（Word COM）操作 docx，无需 pip |
 | Word COM 文件路径有中文时 `Documents.Open()` 失败 | COM 的编码问题 | 先 `cp` 到无中文临时路径再操作；或用 Python 直接传绝对路径（本次成功） |
