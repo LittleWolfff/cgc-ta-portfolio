@@ -62,7 +62,7 @@
      desc:"背景：游戏项目里只有我一个 3D 美术，需要处理大量 3D 模型，经常要检查法线对不对、修改器有没有应用、名字有没有规范命名、原点在不在模型底部等等，耗精力且容易忘记检查而出错，于是想到用 CodeBuddy 生成一个规范化的工具。\n流程：边 vibe coding 边测试功能，同时应用于实际的游戏开发场景，不断更新迭代，实现了快速命名、检查 UV 是否拉伸严重、原点归零等操作一键处理、检查法线是否正确、快捷导出模型（内部配置了正确的导出设置）。同时考虑了上手难度，专门设置了顺序步骤，美术只需跟着步骤点击，简单易上手。\n收获：切实感受到自动化工具的好处，也为后续开发一系列 skill 和工具打下了基础。"},
     {id:"p2", type:"project", cat:"fuchenlu",
      title:"【UE】《浮沉录》", titleSuffix:'<span style="font-size:14px;font-weight:400">（锐意开发中）</span>',
-     date:"2026.06 — 2026.08", role:"UE / 技术美术",
+     date:"2026.06 — 至今", role:"UE / 技术美术",
      thumbBg:"linear-gradient(135deg,#0f1a1a,#1a2d2d,#081212)",
      src:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/projects/fuchenlu.webp",
      icon:"📜", label:"浮沉录",
