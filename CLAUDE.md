@@ -113,7 +113,7 @@ resume.pdf    ← 简历（原名「简历.pdf」，传 COS 改英文名避免 U
 
 1. **压缩**（网站视频统一压到 CRF 23，画质够 + 文件小）：
    ```bash
-   FFMPEG="D:/Conley/ClaudeCodeWorkspace/C_工具/视频压缩/小丸工具箱/App/tools/ffmpeg.exe"
+   FFMPEG="D:/Conley/ClaudeCodeWorkspace/C_工具/0_不常用工具/视频压缩/小丸工具箱/App/tools/ffmpeg.exe"
    "$FFMPEG" -i 原视频.mp4 -c:v libx264 -crf 23 -preset slow -c:a aac -b:a 128k 输出.mp4 -y
    ```
    ⚠️ 坑：个别视频（如自娱自乐，PR 高码率导出的）用 CRF 23 反而变大，得降到 CRF 26 重压。
@@ -236,7 +236,7 @@ portfolio-site/
 否则宽度一样但高度对不上，看着还是不齐。裁剪命令：
 
 ```bash
-FFMPEG="D:/Conley/ClaudeCodeWorkspace/C_工具/视频压缩/小丸工具箱/App/tools/ffmpeg.exe"
+FFMPEG="D:/Conley/ClaudeCodeWorkspace/C_工具/0_不常用工具/视频压缩/小丸工具箱/App/tools/ffmpeg.exe"
 # crop=宽:高:起始x:起始y —— 只取左边就写 0:0
 "$FFMPEG" -i 原图.png -vf "crop=278:201:0:0" -c:v libwebp -quality 92 输出.webp -y
 ```
@@ -312,7 +312,7 @@ PR 导出的视频放进 `作品展示镜像/{分类}/`，然后命令行压缩�
 
 ```bash
 # 工具路径
-FFMPEG="D:/Conley/ClaudeCodeWorkspace/C_工具/视频压缩/小丸工具箱/App/tools/ffmpeg.exe"
+FFMPEG="D:/Conley/ClaudeCodeWorkspace/C_工具/0_不常用工具/视频压缩/小丸工具箱/App/tools/ffmpeg.exe"
 
 # 压缩命令（CRF 18 视觉无损，推荐默认）
 "$FFMPEG" -i 原视频.mp4 -c:v libx264 -crf 18 -preset slower -c:a aac -b:a 256k 输出_crf18.mp4 -y
@@ -464,7 +464,7 @@ B站「仅自己可见」无法生成分享链接，不能嵌入网站。结论�
 
 **处理**（Steam 横版封面 → 140px 小图 + 大图；手游图标 → 96×96 方形）：
 ```bash
-FFMPEG="D:/Conley/ClaudeCodeWorkspace/C_工具/视频压缩/小丸工具箱/App/tools/ffmpeg.exe"
+FFMPEG="D:/Conley/ClaudeCodeWorkspace/C_工具/0_不常用工具/视频压缩/小丸工具箱/App/tools/ffmpeg.exe"
 # 横版封面：140px宽小图 + 原图大图
 "$FFMPEG" -i 图.jpg -vf "scale=140:-1" -quality 85 名.webp -y
 "$FFMPEG" -i 图.jpg -quality 90 名-full.webp -y

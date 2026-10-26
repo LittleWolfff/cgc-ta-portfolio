@@ -25,6 +25,10 @@
      file:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/vfx/unity-vfx-explosion.mp4", poster:"",
      size:"约2.4MB · 1080P",
      desc:"背景：想了解 Unity 的 VFX 特效制作，跟着教程做一个完整的爆炸效果。\n流程：用粒子系统搭出火花、烟雾球、烟圈多层结构；烟雾球和烟圈在 Blender 里建模、Krita 画无缝贴图，再用噪声图加 custom 值做 clip 溶解，让烟雾按黑灰白顺序消散；粒子颜色走顶点色传给 shader 实现烟雾变黑，材质用 HDR 让火花和橙环发光。\n收获：了解了特效从 DCC 建模、画贴图到引擎粒子系统和溶解 shader 的完整流程，也学会了用 custom 数据让粒子系统和 shader 联动。\n{{link:技术文档：:https://my.feishu.cn/wiki/ThmAwKxUFieoeukqswdcbMiHnic}}"},
+    {id:"a0", type:"image", cat:"ai",
+     title:"【AI】角色管线", tag:"蓝图 · Agent · 资产管线",
+     src:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/ai/ai-char-pipeline.webp", portrait:true,
+     desc:"背景：做 TA 项目时角色资产要反复生产，从一段描述到能在 UE 里跑起来，中间要过建模、拓扑、UV、烘焙、贴图、骨骼、动作好几个环节，每次手动串一遍很费时间。想把这一整套收成一条能复用的管线，每一步单独拆开，既能单独验，也能串起来跑。\n流程：以蓝图做调度台，把「文字 → 四视图 → 高模 → 低模 → UV → 贴图 → 骨骼 → 动作 → UE」串成一条主链，共 17 个节点（5 个基础透传 + 12 个能力节点），每个能力节点另配一张单步图单独验。生成动作都在各节点自己的工具里做，节点只负责搬路径、接上下游，不在蓝图里直接调 API；右侧对话区可以用自然语言指挥 AI 改管线。成本上做了取舍——文生图 5 次调用约 ¥1.10，多图生高模约 ¥2.8/次（实测 69~166 秒），重拓扑可选云端付费或本地 Blender 免费，其余环节不花钱。\n收获：17 个节点都建好并接进主链，免费环节（重拓扑、展UV、烘焙、贴图组、模型后处理、绑骨）已用样例模型实测跑通；文生图刚接完参考图槽、联网图落盘、单张重抽和比例打分，还没真跑。踩过的坑也摸清了，比如 Tripo 产出的模型朝 +X，要绕 Y 转 −90° 才对得上 UE 的 +Z；UE 渲完直接释放 RT 会让引擎崩，得先摘 texture_target 再释放。最大的收获不是某个效果，而是把一条长流程拆成「每步单独可验」的节点——哪一步出问题不用从头摸。"},
     {id:"a1", type:"image", cat:"ai",
      title:"【AI】UE 资产读取工具", tag:"MCP · UAssetAPI · Python",
      src:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/ai/ue-asset-tool.webp?v=2", portrait:true,
@@ -130,6 +134,7 @@
         {
           title: "目录",
           items: [
+            "AI应用：【AI】角色管线",
             "AI应用：【AI】UE 资产读取工具",
             "AI应用：【AI】视频转文字流水线",
             "AI应用：【AI】飞书知识库共享",
@@ -141,7 +146,7 @@
           items: [
             "Visual Studio Code：主力开发环境，Claude Code 等 AI 工具集成在这里",
             "Claude Code：先部署 CLI，再通过 VS Code 扩展集成进编辑器，主力 AI 开发助理",
-            "DeepSeek-V4 Flash：主力模型，经 API 接入，作为 Claude Code 的底层模型，累计消费 500+ CNY",
+            "DeepSeek-V4 Flash：主力模型，经 API 接入，作为 Claude Code 的底层模型，累计消费 1500+ CNY",
             "Qwen-VL-Plus：阿里通义千问视觉模型，用于图像理解与 OCR"
           ]
         }
