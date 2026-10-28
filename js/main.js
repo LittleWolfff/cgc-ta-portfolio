@@ -264,11 +264,10 @@
     }
     // image — 横排大图卡片；portrait 竖图改为贴合图片自身高度，不留左右黑边
     var wrapStyle = w.portrait ? 'background:#000;width:28%' : 'background:#000';
-    // contain：贴合图片自身比例（不固定 16:9，避免图比框窄时下方留黑）
     var imgStyle = w.portrait
       ? 'display:block;width:100%;height:auto;cursor:pointer'
       : w.contain
-        ? 'display:block;width:100%;height:auto;cursor:pointer'
+        ? 'display:block;width:100%;aspect-ratio:16/9;object-fit:contain;cursor:pointer'
         : 'width:100%;aspect-ratio:16/9;object-fit:cover;object-position:top;display:block;cursor:pointer';
     // 多图竖向叠放：给 srcs 数组就按顺序从上往下排，单图仍用 src
     var imgList = (w.srcs && w.srcs.length) ? w.srcs : [w.src];
