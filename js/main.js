@@ -158,7 +158,7 @@
           title: "我常用的 AI 工具&模型（复杂任务使用）",
           items: [
             "OpenAI Codex：桌面端编程 Agent，与 Claude Code 并行使用，负责读工程文件、改代码、跑任务",
-            "GPT-6：Codex 的底层模型，累计消费 120+ CNY"
+            "GPT-6：Codex 的底层模型，累计消费 300+ CNY"
           ]
         }
       ]
@@ -267,9 +267,14 @@
     var imgStyle = w.portrait
       ? 'display:block;width:100%;height:auto;cursor:pointer'
       : 'width:100%;aspect-ratio:16/9;'+(w.contain ? 'object-fit:contain;' : 'object-fit:cover;object-position:top;')+'display:block;cursor:pointer';
+    // 多图竖向叠放：给 srcs 数组就按顺序从上往下排，单图仍用 src
+    var imgList = (w.srcs && w.srcs.length) ? w.srcs : [w.src];
+    var imgsHTML = imgList.map(function(s, k){
+      return '<img loading="lazy" src="'+s+'" alt="'+esc(w.title)+'" style="'+imgStyle+(k?';margin-top:8px':'')+'">';
+    }).join('');
     return '<article class="work-card work-card-h" data-open="image">'+
       '<span class="work-cat">'+CAT_LABEL[w.cat]+'</span>'+
-      '<div class="work-video-wrap" style="'+wrapStyle+'"><img loading="lazy" src="'+w.src+'" alt="'+esc(w.title)+'" style="'+imgStyle+'"></div>'+
+      '<div class="work-video-wrap" style="'+wrapStyle+'">'+imgsHTML+'</div>'+
       '<div class="work-info"><h3 class="work-title">'+esc(w.title)+'</h3>'+
       (w.desc ? '<p class="work-desc">'+formatDesc(w)+'</p>' : '<p class="work-desc">点击图片查看大图</p>')+
       '</div></article>';
