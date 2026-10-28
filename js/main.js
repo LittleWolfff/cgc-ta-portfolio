@@ -147,6 +147,8 @@
             "Visual Studio Code：主力开发环境，Claude Code 等 AI 工具集成在这里",
             "Claude Code：先部署 CLI，再通过 VS Code 扩展集成进编辑器，主力 AI 开发助理",
             "DeepSeek-V4 Flash：主力模型，经 API 接入，作为 Claude Code 的底层模型，累计消费 1500+ CNY",
+            "OpenAI Codex：桌面端编程 Agent，与 Claude Code 并行使用，负责读工程文件、改代码、跑任务",
+            "GPT-6：Codex 的底层模型，累计消费 120+ CNY",
             "Qwen-VL-Plus：阿里通义千问视觉模型，用于图像理解与 OCR"
           ]
         }
