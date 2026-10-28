@@ -27,7 +27,7 @@
      desc:"背景：想了解 Unity 的 VFX 特效制作，跟着教程做一个完整的爆炸效果。\n流程：用粒子系统搭出火花、烟雾球、烟圈多层结构；烟雾球和烟圈在 Blender 里建模、Krita 画无缝贴图，再用噪声图加 custom 值做 clip 溶解，让烟雾按黑灰白顺序消散；粒子颜色走顶点色传给 shader 实现烟雾变黑，材质用 HDR 让火花和橙环发光。\n收获：了解了特效从 DCC 建模、画贴图到引擎粒子系统和溶解 shader 的完整流程，也学会了用 custom 数据让粒子系统和 shader 联动。\n{{link:技术文档：:https://my.feishu.cn/wiki/ThmAwKxUFieoeukqswdcbMiHnic}}"},
     {id:"a0", type:"image", cat:"ai",
      title:"【AI】角色管线", tag:"蓝图 · Agent · 资产管线",
-     src:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/ai/ai-char-pipeline.webp", portrait:true,
+     src:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/ai/ai-char-pipeline.webp?v=3", contain:true,
      desc:"背景：想搭建一条高可扩展性、高便捷性的 AI 角色管线，并用于实际资产生产。\n流程：以蓝图做调度台，把「文字 → 四视图 → 高模 → 低模 → UV → 贴图 → 骨骼 → 动作 → UE」串成一条主链，共 17 个节点（5 个基础透传 + 12 个能力节点），每个能力节点另配一张单步图单独验。生成动作都在各节点自己的工具里做，节点只负责搬路径、接上下游，不在蓝图里直接调 API；右侧对话区可以用自然语言指挥 AI 改管线。成本上做了取舍——文生图 5 次调用约 ¥1.10，多图生高模约 ¥2.8/次（实测 69~166 秒），重拓扑可选云端付费或本地 Blender 免费，其余环节不花钱。\n收获：17 个节点都建好并接进主链，免费环节（重拓扑、展UV、烘焙、贴图组、模型后处理、绑骨）已用样例模型实测跑通；文生图刚接完参考图槽、联网图落盘、单张重抽和比例打分，还没真跑。踩过的坑也摸清了，比如 Tripo 产出的模型朝 +X，要绕 Y 转 −90° 才对得上 UE 的 +Z；UE 渲完直接释放 RT 会让引擎崩，得先摘 texture_target 再释放。把长流程拆成「每步单独可验」的节点之后，哪一步出问题不用从头摸。"},
     {id:"a1", type:"image", cat:"ai",
      title:"【AI】UE 资产读取工具", tag:"MCP · UAssetAPI · Python",
@@ -83,6 +83,10 @@
      title:"【工具】布料参数读取工具", tag:"Chaos Cloth · Dataflow · MCP",
      src:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/tool/cloth-param-reader.webp", contain:true,
      desc:"背景：不同布料（比如西装和披风）质感不一样，对应的布料参数差别也很大——想用一套参数模板套所有布料并不现实。\n流程：连通了 Dataflow 的 MCP，再写了个小工具，可以直接读取某个 CA 里改动过的参数并留档；之后遇到质感相近的布料，就能快速翻出参考。\n收获：布料参数能方便地留档，慢慢攒成自己的「布料种子库」；另外 AI 能读到 Dataflow 的逻辑和节点参数，给出的参考建议实测确实有效，也让我对各个参数的作用理解更深了。"},
+    {id:"c6", type:"image", cat:"fuchenlu",
+     title:"【工具】模型验收网页", tag:"WebGL · FBX SDK · GitHub Actions",
+     src:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/tool/model-review.webp", contain:true,
+     desc:"背景：项目里角色越做越多，导入 UE 前要检查骨架名、骨骼数量、是否归零、缩放、材质槽、权重、完整素体和切割素体有没有重叠这些项。这些检查项全是从实际踩过的坑里攒出来的，踩一个记一条，归档进《角色开发管线流程》文档。但流程太繁琐，靠人一项项核对既慢又容易漏，想让美术在 DCC 里自己先过一遍，不用每个人都来问我。\n流程：做成网页而不是本地工具，美术不用装任何软件。拖 .glb 立刻打开，拖 .fbx 会自动上传到云端、用官方 FBX SDK 转成 GLB 再自动打开。中间试过浏览器里的几个转换器——three 的 FBXLoader 骨架缩在脚边、Assimp 骨架对了但眼珠飞到头顶之外、Blender 直接导入报 KeyError，只有官方 SDK 全部对得上，所以网页里一律走云端，不给选错的机会。网页里能切白模、看布线、查 UV、看纯法线、显示骨架和骨名、摆姿态、播动画，右下角直接显示三角面数。\n收获：美术拿到模型先进网页过一遍，有问题在 DCC 里返修好再导入 UE，不用等我在引擎里发现问题再回头找人；我这边也从逐项核对变成了看最后结果。下一步打算把检查项接成自动化数据验收，同一个网址里跑。"},
     {id:"p3", type:"project", cat:"dreamaker",
      title:"【Unity】《游戏造梦师》", date:"2024.06 — 2025.06", role:"Unity / 3D美术 / 技术美术",
      video:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/projects/project-dream-maker.mp4",
@@ -111,7 +115,8 @@
         "应用于项目：【UE】管线——角色管线",
         "应用于项目：【UE】角色渲染——克雷斯蒂娜",
         "应用于项目：【UE】布料模拟系统",
-        "应用于项目：【工具】布料参数读取工具"
+        "应用于项目：【工具】布料参数读取工具",
+        "应用于项目：【工具】模型验收网页"
       ]
     },
     dreamaker: {
