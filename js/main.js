@@ -86,6 +86,7 @@
     {id:"c6", type:"image", cat:"fuchenlu",
      title:"【工具】模型验收网页", tag:"WebGL · FBX SDK · GitHub Actions",
      src:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/tool/model-review.webp", contain:true,
+     tryLink:"https://littlewolfff.github.io/model-review/", tryLabel:"在线试用：拖模型进去就能验收 →",
      desc:"背景：项目里角色越做越多，导入 UE 前要检查骨架名、骨骼数量、是否归零、缩放、材质槽、权重、完整素体和切割素体有没有重叠这些项。这些检查项全是从实际踩过的坑里攒出来的，踩一个记一条，归档进《角色开发管线流程》文档。但流程太繁琐，靠人一项项核对既慢又容易漏，想让美术在 DCC 里自己先过一遍，不用每个人都来问我。\n流程：做成网页而不是本地工具，美术不用装任何软件。拖 .glb 立刻打开，拖 .fbx 会自动上传到云端、用官方 FBX SDK 转成 GLB 再自动打开。中间试过浏览器里的几个转换器——three 的 FBXLoader 骨架缩在脚边、Assimp 骨架对了但眼珠飞到头顶之外、Blender 直接导入报 KeyError，只有官方 SDK 全部对得上，所以网页里一律走云端，不给选错的机会。网页里能切白模、看布线、查 UV、看纯法线、显示骨架和骨名、摆姿态、播动画，右下角直接显示三角面数。\n收获：美术拿到模型先进网页过一遍，有问题在 DCC 里返修好再导入 UE，不用等我在引擎里发现问题再回头找人；我这边也从逐项核对变成了看最后结果。下一步打算把检查项接成自动化数据验收，同一个网址里跑。"},
     {id:"p3", type:"project", cat:"dreamaker",
      title:"【Unity】《游戏造梦师》", date:"2024.06 — 2025.06", role:"Unity / 3D美术 / 技术美术",
@@ -279,6 +280,7 @@
       '<div class="work-video-wrap" style="'+wrapStyle+'">'+imgsHTML+'</div>'+
       '<div class="work-info"><h3 class="work-title">'+esc(w.title)+'</h3>'+
       (w.desc ? '<p class="work-desc">'+formatDesc(w)+'</p>' : '<p class="work-desc">点击图片查看大图</p>')+
+      (w.tryLink ? '<a class="try-btn" href="'+esc(w.tryLink)+'" target="_blank" rel="noopener">'+esc(w.tryLabel||"在线试用 →")+'</a>' : '')+
       '</div></article>';
   }
 
