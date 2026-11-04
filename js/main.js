@@ -28,6 +28,10 @@
     {id:"a0", type:"image", cat:"ai",
      title:"【AI】角色管线", tag:"蓝图 · Agent · 资产管线",
      src:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/ai/ai-char-pipeline.webp?v=3", contain:true,
+     media:[
+       {type:"video", src:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/pipeline/ai-pipeline-demo.mp4", poster:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/pipeline/ai-pipeline-poster.jpg"},
+       {type:"image", src:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/ai/ai-char-pipeline.webp?v=3"}
+     ],
      desc:"背景：想搭建一条高可扩展性、高便捷性的 AI 角色管线，并用于实际资产生产。\n流程：以蓝图做调度台，把「文字 → 四视图 → 高模 → 低模 → UV → 贴图 → 骨骼 → 动作 → UE」串成一条主链，共 17 个节点（5 个基础透传 + 12 个能力节点），每个能力节点另配一张单步图单独验。生成动作都在各节点自己的工具里做，节点只负责搬路径、接上下游，不在蓝图里直接调 API；右侧对话区可以用自然语言指挥 AI 改管线。成本上做了取舍——文生图 5 次调用约 ¥1.10，多图生高模约 ¥2.8/次（实测 69~166 秒），重拓扑可选云端付费或本地 Blender 免费，其余环节不花钱。\n收获：17 个节点都建好并接进主链，免费环节（重拓扑、展UV、烘焙、贴图组、模型后处理、绑骨）已用样例模型实测跑通；文生图刚接完参考图槽、联网图落盘、单张重抽和比例打分，还没真跑。踩过的坑也摸清了，比如 Tripo 产出的模型朝 +X，要绕 Y 转 −90° 才对得上 UE 的 +Z；UE 渲完直接释放 RT 会让引擎崩，得先摘 texture_target 再释放。把长流程拆成「每步单独可验」的节点之后，哪一步出问题不用从头摸。"},
     {id:"a1", type:"image", cat:"ai",
      title:"【AI】UE 资产读取工具", tag:"MCP · UAssetAPI · Python",
@@ -264,6 +268,21 @@
         '<p class="work-sub">'+esc(w.desc)+'</p></div></article>';
     }
     // image — 横排大图卡片；portrait 竖图改为贴合图片自身高度，不留左右黑边
+    // media：多段媒体竖排（视频在上、图片在下），卡片加宽
+    if (w.media && w.media.length){
+      var mediaHTML = w.media.map(function(m){
+        if (m.type === "video"){
+          return '<video src="'+esc(m.src)+'"'+(m.poster?' poster="'+esc(m.poster)+'"':'')+' controls preload="metadata" playsinline></video>';
+        }
+        return '<img loading="lazy" src="'+esc(m.src)+'" alt="'+esc(w.title)+'">';
+      }).join('');
+      return '<article class="work-card work-card-h work-card-big" data-open="image">'+
+        '<span class="work-cat">'+CAT_LABEL[w.cat]+'</span>'+
+        '<div class="work-video-wrap work-media-stack">'+mediaHTML+'</div>'+
+        '<div class="work-info"><h3 class="work-title">'+esc(w.title)+'</h3>'+
+        (w.desc ? '<p class="work-desc">'+formatDesc(w)+'</p>' : '')+
+        '</div></article>';
+    }
     var wrapStyle = w.portrait ? 'background:#000;width:28%' : 'background:#000';
     var imgStyle = w.portrait
       ? 'display:block;width:100%;height:auto;cursor:pointer'
