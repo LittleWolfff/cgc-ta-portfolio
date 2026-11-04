@@ -197,24 +197,36 @@
   function formatDesc(w){
     var s = esc(w.desc);
     s = s.replace(/^(背景|流程|收获|目标|结论|方案|原理|版本)[：:]/gm, '<span class="desc-label">$1：</span>');
-    // 链接统一渲染成胶囊按钮（与「在线试用」同一套视觉），文字用前缀，不露长 URL
-    function docBtn(label, url){
+    // 链接统一收集起来，全部放到卡片最下面一排，渲染成胶囊按钮（不露长 URL）
+    var links = [];
+    function addLink(label, url){
       label = String(label || "流程笔记链接").replace(/[：:]\s*$/, "");
-      return '<a class="doc-btn" href="'+esc(url)+'" target="_blank" rel="noopener">'+label+' →</a>';
+      links.push({label: label, url: String(url || "")});
     }
-    // 支持 {{link:前缀:URL}} 带 URL 的占位符（可多个）
-    s = s.replace(/\{\{link:([^:}]*):([^}]*)\}\}。?/g, function(m, prefix, url){
-      return docBtn(prefix, url || w.link);
+    // 占位符连同紧随的句号一起吃掉；后面跟着（说明）时保留成普通文字
+    function placeholder(prefix, url, tail){
+      addLink(prefix, url);
+      return tail ? String(prefix).replace(/[：:]\s*$/, "") + tail : "";
+    }
+    s = s.replace(/\{\{link:([^:}]*):([^}]*)\}\}(（[^）]*）)?。?/g, function(m, prefix, url, tail){
+      return placeholder(prefix, url || w.link, tail);
     });
-    // {{plainlink:前缀:URL}} —— 同样做成按钮，保持全站统一
-    s = s.replace(/\{\{plainlink:([^:}]*):([^}]*)\}\}/g, function(m, prefix, url){
-      return docBtn(prefix, url);
+    s = s.replace(/\{\{plainlink:([^:}]*):([^}]*)\}\}(（[^）]*）)?。?/g, function(m, prefix, url, tail){
+      return placeholder(prefix, url, tail);
     });
-    if (w.link) s = s.replace(/\{\{link:([^}]*)\}\}。?/g, function(m, prefix){
-      return docBtn(prefix, w.link);
+    if (w.link) s = s.replace(/\{\{link:([^}]*)\}\}(（[^）]*）)?。?/g, function(m, prefix, tail){
+      return placeholder(prefix, esc(w.link), tail);
     });
-    s = s.replace(/\{\{link\}\}。?/g, function(){ return docBtn("流程笔记链接", w.link); });
+    s = s.replace(/\{\{link\}\}(（[^）]*）)?。?/g, function(m, tail){
+      return placeholder("流程笔记链接", esc(w.link), tail);
+    });
     s = s.replace(/\n/g,'<br>');
+    if (links.length){
+      var btns = links.map(function(l){
+        return '<a class="doc-btn" href="'+l.url+'" target="_blank" rel="noopener">'+l.label+' →</a>';
+      }).join('');
+      s += '<span class="doc-links">'+btns+'</span>';
+    }
     return s;
   }
 
