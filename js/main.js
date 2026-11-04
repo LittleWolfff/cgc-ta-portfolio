@@ -197,19 +197,23 @@
   function formatDesc(w){
     var s = esc(w.desc);
     s = s.replace(/^(背景|流程|收获|目标|结论|方案|原理|版本)[：:]/gm, '<span class="desc-label">$1：</span>');
+    // 链接统一渲染成胶囊按钮（与「在线试用」同一套视觉），文字用前缀，不露长 URL
+    function docBtn(label, url){
+      label = String(label || "流程笔记链接").replace(/[：:]\s*$/, "");
+      return '<a class="doc-btn" href="'+esc(url)+'" target="_blank" rel="noopener">'+label+' →</a>';
+    }
     // 支持 {{link:前缀:URL}} 带 URL 的占位符（可多个）
-    s = s.replace(/\{\{link:([^:}]*):([^}]*)\}\}/g, function(m, prefix, url){
-      var href = esc(url || w.link);
-      return '<span class="desc-label">'+(prefix||'流程笔记链接：')+'</span><a class="desc-link" href="'+href+'" target="_blank" rel="noopener">'+href+'</a>';
+    s = s.replace(/\{\{link:([^:}]*):([^}]*)\}\}。?/g, function(m, prefix, url){
+      return docBtn(prefix, url || w.link);
     });
-    // {{plainlink:前缀:URL}} —— 前缀当普通文字（不高亮/不加粗），用于不想抢眼的链接
+    // {{plainlink:前缀:URL}} —— 同样做成按钮，保持全站统一
     s = s.replace(/\{\{plainlink:([^:}]*):([^}]*)\}\}/g, function(m, prefix, url){
-      return prefix+'<a class="desc-link" href="'+esc(url)+'" target="_blank" rel="noopener">'+esc(url)+'</a>';
+      return docBtn(prefix, url);
     });
-    if (w.link) s = s.replace(/\{\{link:([^}]*)\}\}/g, function(m, prefix){
-      return '<span class="desc-label">'+(prefix||'流程笔记链接：')+'</span><a class="desc-link" href="'+esc(w.link)+'" target="_blank" rel="noopener">'+esc(w.link)+'</a>';
+    if (w.link) s = s.replace(/\{\{link:([^}]*)\}\}。?/g, function(m, prefix){
+      return docBtn(prefix, w.link);
     });
-    s = s.replace(/\{\{link\}\}/g, '<span class="desc-label">流程笔记链接：</span><a class="desc-link" href="'+esc(w.link)+'" target="_blank" rel="noopener">'+esc(w.link)+'</a>');
+    s = s.replace(/\{\{link\}\}。?/g, function(){ return docBtn("流程笔记链接", w.link); });
     s = s.replace(/\n/g,'<br>');
     return s;
   }
