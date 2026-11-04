@@ -89,7 +89,11 @@
      desc:"背景：不同布料（比如西装和披风）质感不一样，对应的布料参数差别也很大——想用一套参数模板套所有布料并不现实。\n流程：连通了 Dataflow 的 MCP，再写了个小工具，可以直接读取某个 CA 里改动过的参数并留档；之后遇到质感相近的布料，就能快速翻出参考。\n收获：布料参数能方便地留档，慢慢攒成自己的「布料种子库」；另外 AI 能读到 Dataflow 的逻辑和节点参数，给出的参考建议实测确实有效，也让我对各个参数的作用理解更深了。"},
     {id:"c6", type:"image", cat:"fuchenlu",
      title:"【工具】模型验收网页", tag:"WebGL · FBX SDK · GitHub Actions",
-     src:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/tool/model-review.webp", contain:true,
+     srcs:[
+       {src:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/tool/mr-problem.webp", caption:"1. 开发过程中遇到的问题，记录进「角色开发问题汇总」，按优先级排期处理"},
+       {src:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/tool/mr-doc.webp", caption:"2. 问题与检查项最终归档成《角色开发管线流程》文档"},
+       {src:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/tool/mr-site.webp", caption:"3. 为减少人工逐项核对，做成自动化验收网站——美术不用装任何东西，点开网址按指引操作即可"}
+     ], contain:true,
      tryLink:"https://littlewolfff.github.io/model-review/", tryLabel:"在线试用：拖模型进去就能验收 →",
      desc:"背景：项目里角色越做越多，导入 UE 前要检查骨架名、骨骼数量、是否归零、缩放、材质槽、权重、完整素体和切割素体有没有重叠这些项。这些检查项全是从实际踩过的坑里攒出来的，踩一个记一条，归档进《角色开发管线流程》文档。但流程太繁琐，靠人一项项核对既慢又容易漏，想让美术在 DCC 里自己先过一遍，不用每个人都来问我。\n流程：做成网页而不是本地工具，美术不用装任何软件。拖 .glb 立刻打开，拖 .fbx 会自动上传到云端、用官方 FBX SDK 转成 GLB 再自动打开。中间试过浏览器里的几个转换器——three 的 FBXLoader 骨架缩在脚边、Assimp 骨架对了但眼珠飞到头顶之外、Blender 直接导入报 KeyError，只有官方 SDK 全部对得上，所以网页里一律走云端，不给选错的机会。网页里能切白模、看布线、查 UV、看纯法线、显示骨架和骨名、摆姿态、播动画，右下角直接显示三角面数。\n收获：美术拿到模型先进网页过一遍，有问题在 DCC 里返修好再导入 UE，不用等我在引擎里发现问题再回头找人；我这边也从逐项核对变成了看最后结果。下一步打算把检查项接成自动化数据验收，同一个网址里跑。"},
     {id:"p3", type:"project", cat:"dreamaker",
@@ -291,8 +295,10 @@
         : 'width:100%;aspect-ratio:16/9;object-fit:cover;object-position:top;display:block;cursor:pointer';
     // 多图竖向叠放：给 srcs 数组就按顺序从上往下排，单图仍用 src
     var imgList = (w.srcs && w.srcs.length) ? w.srcs : [w.src];
-    var imgsHTML = imgList.map(function(s, k){
-      return '<img loading="lazy" src="'+s+'" alt="'+esc(w.title)+'" style="'+imgStyle+(k?';margin-top:8px':'')+'">';
+    var imgsHTML = imgList.map(function(item, k){
+      var src = (item && item.src) ? item.src : item;
+      var cap = (item && item.caption) ? '<div class="work-cap">'+esc(item.caption)+'</div>' : '';
+      return '<img loading="lazy" src="'+src+'" alt="'+esc(w.title)+'" style="'+imgStyle+(k?';margin-top:8px':'')+'">'+cap;
     }).join('');
     return '<article class="work-card work-card-h" data-open="image">'+
       '<span class="work-cat">'+CAT_LABEL[w.cat]+'</span>'+
