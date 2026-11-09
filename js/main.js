@@ -96,6 +96,14 @@
      ], contain:true,
      tryLink:"https://littlewolfff.github.io/model-review/", tryLabel:"在线试用：拖模型进去就能验收 →",
      desc:"背景：项目里角色越做越多，导入 UE 前要检查骨架名、骨骼数量、是否归零、缩放、材质槽、权重、完整素体和切割素体有没有重叠这些项。这些检查项全是从实际踩过的坑里攒出来的，踩一个记一条，归档进《角色开发管线流程》文档。但流程太繁琐，靠人一项项核对既慢又容易漏，想让美术在 DCC 里自己先过一遍，不用每个人都来问我。\n流程：做成网页而不是本地工具，美术不用装任何软件。拖 .glb 立刻打开，拖 .fbx 会自动上传到云端、用官方 FBX SDK 转成 GLB 再自动打开。中间试过浏览器里的几个转换器——three 的 FBXLoader 骨架缩在脚边、Assimp 骨架对了但眼珠飞到头顶之外、Blender 直接导入报 KeyError，只有官方 SDK 全部对得上，所以网页里一律走云端，不给选错的机会。网页里能切白模、看布线、查 UV、看纯法线、显示骨架和骨名、摆姿态、播动画，右下角直接显示三角面数。\n收获：美术拿到模型先进网页过一遍，有问题在 DCC 里返修好再导入 UE，不用等我在引擎里发现问题再回头找人；我这边也从逐项核对变成了看最后结果。下一步打算把检查项接成自动化数据验收，同一个网址里跑。"},
+    {id:"c7", type:"image", cat:"fuchenlu",
+     title:"【工具】蒙太奇特效 Gizmo 调整器", tag:"UE Editor Plugin · C++ · Niagara",
+     srcs:[
+       {src:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/tool/montage-gizmo-top.webp", caption:"1. 在蒙太奇视口选中原生 Niagara 通知，直接用 Gizmo 调位置、旋转和缩放；参照物永远显示在模型上层"},
+       {src:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/tool/montage-gizmo-scale.webp", caption:"2. 缩放参照：青色线框球随 Scale 变化，非等比会变椭球"},
+       {src:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/tool/montage-gizmo-preview.webp", caption:"3. 当前姿态刷新预览：松开鼠标或 F5 重新触发 Niagara，不用重播整段动画"}
+     ], contain:true,
+     desc:"背景：项目里特效同学在蒙太奇里调刀光的位置和朝向，原来只能在 Details 面板反复改偏移数值、重播整段动画看效果，效率很低。\n流程：开发了一个 UE 5.6 编辑器插件（纯 C++，不改引擎源码）——注册自定义 FEdMode 接管视口 Gizmo，通过包装 Persona 的 Details 定制拿到当前选中的原生 Niagara 通知，拖动时把世界位移反算成通知的 LocationOffset / RotationOffset / Scale，再走事务写回，支持 Undo/Redo 和保存持久化。另外做了缩放线框球、旋转箭头等可视参照，以及当前姿态刷新预览、循环播放。\n技能点：UE Editor API、FEdMode / EditorModeManager、Details 定制桥接、Transform 坐标空间换算、事务与 Undo、Niagara 组件重模拟、C++ 插件构建与分发包制作。\n收获：把「改数值 → 保存 → 重播 → 看效果」的循环缩短成拖完即时看；也完整走了一遍插件从调研、实现、编译、验收、打包到交付美术的流程。"},
     {id:"p3", type:"project", cat:"dreamaker",
      title:"【Unity】《游戏造梦师》", date:"2024.06 — 2025.06", role:"Unity / 3D美术 / 技术美术",
      video:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/projects/project-dream-maker.mp4",
