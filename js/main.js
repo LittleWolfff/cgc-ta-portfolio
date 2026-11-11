@@ -104,6 +104,11 @@
        {src:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/tool/montage-gizmo-preview.webp", caption:"3. 当前姿态刷新预览：松开鼠标或 F5 重新触发 Niagara，不用重播整段动画"}
      ], contain:true,
      desc:"背景：项目里特效同学在蒙太奇里调刀光的位置和朝向，原来只能在 Details 面板反复改偏移数值、重播整段动画看效果，效率很低。\n流程：开发了一个 UE 5.6 编辑器插件（纯 C++，不改引擎源码）——注册自定义 FEdMode 接管视口 Gizmo，通过包装 Persona 的 Details 定制拿到当前选中的原生 Niagara 通知，拖动时把世界位移反算成通知的 LocationOffset / RotationOffset / Scale，再走事务写回，支持 Undo/Redo 和保存持久化。另外做了缩放线框球、旋转箭头等可视参照，以及当前姿态刷新预览、循环播放。\n技能点：UE Editor API、FEdMode / EditorModeManager、Details 定制桥接、Transform 坐标空间换算、事务与 Undo、Niagara 组件重模拟、C++ 插件构建与分发包制作。\n收获：把「改数值 → 保存 → 重播 → 看效果」的循环缩短成拖完即时看；也完整走了一遍插件从调研、实现、编译、验收、打包到交付美术的流程。"},
+    {id:"c8", type:"video", cat:"fuchenlu",
+     title:"【工具】自动化导入工作流——角色模型", tag:"Python · UE 编辑器脚本 · Dataflow · 管线自动化",
+     file:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/pipeline/fcl-auto-import.mp4", poster:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/works/pipeline/fcl-auto-import-poster.webp",
+     size:"约19MB · 1920x1200 · 8分21秒",
+     desc:"背景：项目里角色越做越多，一个角色从 FBX 到能直接拖进关卡用，中间要经过建工程、建目录、导模型、骨架改名、生成物理资产、搬插件成品、减面、挂布料、配材质、调碰撞体十几步，每一步都有固定的命名和路径规矩。全靠人记、人点，慢是其次，一旦漏一步或者记错一个名字，问题要到很后面才暴露，返工成本很高。\n流程：把这套流程拆成 14 个环节，每环节一份说明加一份检查脚本，用 UE 的 Python 编辑器脚本把能量化的全自动化——导入前按 FBX 声明的单位把英寸烘进顶点，避免骨架根上挂 2.54 缩放、物理资产跟着整体放大；资产按相对路径一一落位，两份素体各生成一份骨架互不干扰；插件里调好的材质、贴图、布料资产搬进项目，再把所有引用改到项目内副本，硬引用和软引用一起清零；减面走 GeometryScript 精确控到目标三角形数；物理资产按参考逐根骨头重建碰撞体。每个环节跑完先过检查，报红就停，不带着问题往下走。\n优点：一条口令跑完一个角色，人工只剩最后验收；每环节都有检查脚本兜底，漏步、名字写错、引用没改干净都会当场报出来，不靠人盯，人工误差被卡在流程里；全程幂等，同一份工程重复跑不会出岔子，改坏了重跑一遍就回到干净状态；好扩展——加一条检查项、加一个新环节、换一个角色，都只是多加一条规则或换一份表单，流程本身不用重写；最后交付的工程完全脱离插件，别人拉下来不装任何东西就能打开。\n技能点：UE Python Editor Scripting（LevelEditorSubsystem / SubobjectDataSubsystem / DataflowBlueprintLibrary / AssetRegistry 依赖扫描）、FBX 单位归一化、GeometryScript 网格简化、Chaos Cloth 数据流重建、按参考重建物理资产、C++ 桥接 DLL。\n收获：把一个全靠手工和记忆的流程，变成跑一遍几分钟、每一步都能核对结果的流水线。"},
     {id:"p3", type:"project", cat:"dreamaker",
      title:"【Unity】《游戏造梦师》", date:"2024.06 — 2025.06", role:"Unity / 3D美术 / 技术美术",
      video:"https://cgc-portfolio-1466904848.cos.ap-guangzhou.myqcloud.com/projects/project-dream-maker.mp4",
@@ -134,7 +139,8 @@
         "应用于项目：【UE】布料模拟系统",
         "应用于项目：【工具】布料参数读取工具",
         "应用于项目：【工具】模型验收网页",
-        "应用于项目：【工具】蒙太奇特效 Gizmo 调整器"
+        "应用于项目：【工具】蒙太奇特效 Gizmo 调整器",
+        "应用于项目：【工具】自动化导入工作流——角色模型"
       ]
     },
     dreamaker: {
